@@ -7,7 +7,8 @@ const swaggerJsdoc = require('swagger-jsdoc');       // อ่าน JSDoc comme
 const swaggerUi    = require('swagger-ui-express');   // serve spec เป็น Interactive UI
 
 const app        = express();
-const PORT       = 3001;
+const PORT=process.env.BACKEND_PORT || 3001;
+//const PORT       = 3001;
 // ─────────────────────────────────────────────────────────────
 // Swagger / OpenAPI Configuration
 // ─────────────────────────────────────────────────────────────
@@ -20,7 +21,7 @@ const swaggerOptions = {
       description: 'REST API สำหรับระบบจองห้องพักออนไลน์ — ใบงาน Lab02A',
     },
     servers: [
-      { url: 'http://localhost:3001', description: 'Development Server' }
+      { url: `http://localhost:${PORT}`, description: 'Development Server' }
     ],
     components: {
       // Security Scheme — บอก Swagger ว่า API ใช้ Bearer JWT
@@ -80,7 +81,7 @@ const swaggerSpec = swaggerJsdoc(swaggerOptions);
 // Mount Swagger UI ที่ path /api-docs
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 
-console.log('📄 Swagger UI: http://localhost:3001/api-docs');
+console.log(`📄 Swagger UI: http://localhost:${PORT}/api-docs`);
 
 const JWT_SECRET = process.env.JWT_SECRET || 'your-secret-key';
 
