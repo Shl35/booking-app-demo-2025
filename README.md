@@ -153,3 +153,190 @@ jobs:
 3. ถ้า runner ทำงานได้สำเร็จ แสดงว่า setup ถูกต้อง.
 
 > หมายเหตุ: ถ้าใช้ Docker ใน runner ให้ตรวจสอบว่า Docker service ทำงานได้บนเครื่อง self-hosted.
+
+## CI/CD Deployment
+
+This repository supports CI/CD deployment with frontend on Vercel and backend on cloud platforms.
+
+### Frontend Deployment on Vercel
+
+1. **Connect Repository to Vercel**:
+   - Sign up/login to [Vercel](https://vercel.com)
+   - Click "New Project" and import your GitHub repository
+   - Select the repository and configure:
+
+2. **Vercel Configuration**:
+   - **Framework Preset**: Vite
+   - **Root Directory**: `frontend`
+   - **Build Command**: `npm run build`
+   - **Output Directory**: `dist`
+
+3. **Environment Variables**:
+   Add these environment variables in Vercel dashboard:
+   ```
+   VITE_API_URL=https://your-backend-domain.com
+   ```
+
+4. **Deploy**:
+   - Vercel will automatically deploy on every push to `main` branch
+   - Get the frontend URL from Vercel dashboard
+
+### Backend Deployment Options
+
+Choose one of the following platforms for backend deployment:
+
+#### Option 1: Render
+
+1. **Create Render Account**:
+   - Sign up at [Render](https://render.com)
+
+2. **Create PostgreSQL Database**:
+   - Go to Dashboard > New > PostgreSQL
+   - Create database and note the connection string
+
+3. **Deploy Backend**:
+   - New > Web Service
+   - Connect GitHub repository
+   - Configure:
+     - **Runtime**: Node
+     - **Build Command**: `npm install && npx prisma generate`
+     - **Start Command**: `npm start`
+     - **Root Directory**: `backend`
+
+4. **Environment Variables**:
+   ```
+   DATABASE_URL=postgresql://user:password@host:5432/database
+   JWT_SECRET=your-secret-key
+   NODE_ENV=production
+   ```
+
+#### Option 2: Railway
+
+1. **Create Railway Account**:
+   - Sign up at [Railway.app](https://railway.app)
+
+2. **Create Project**:
+   - New Project > Deploy from GitHub
+   - Select repository
+
+3. **Database Setup**:
+   - Add PostgreSQL plugin
+   - Railway will provide `DATABASE_URL` automatically
+
+4. **Environment Variables**:
+   ```
+   JWT_SECRET=your-secret-key
+   NODE_ENV=production
+   ```
+
+#### Option 3: Digital Ocean App Platform
+
+1. **Create Digital Ocean Account**:
+   - Sign up at [Digital Ocean](https://digitalocean.com)
+
+2. **Create App**:
+   - Apps > Create App
+   - Connect GitHub repository
+   - **Source Directory**: `backend`
+
+3. **Database Setup**:
+   - Create PostgreSQL database in Digital Ocean
+   - Add database connection string
+
+4. **Environment Variables**:
+   ```
+   DATABASE_URL=postgresql://user:password@host:5432/database
+   JWT_SECRET=your-secret-key
+   NODE_ENV=production
+   ```
+
+### Nginx Reverse Proxy Configuration
+
+For production deployment with custom domain, use Nginx as reverse proxy:
+
+1. **Install Nginx**:
+   ```bash
+   sudo apt update
+   sudo apt install nginx
+   ```
+
+2. **Create Nginx Configuration**:
+   Create `/etc/nginx/sites-available/booking-app`:
+
+   ```nginx
+   server {
+       listen 80;
+       server_name your-domain.com;
+
+       # Frontend (served by Vercel or static files)
+       location / {
+           proxy_pass https://your-vercel-app.vercel.app;
+           proxy_set_header Host $host;
+           proxy_set_header X-Real-IP $remote_addr;
+           proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+           proxy_set_header X-Forwarded-Proto $scheme;
+       }
+
+       # Backend API
+       location /api/ {
+           proxy_pass http://localhost:3001;
+           proxy_set_header Host $host;
+           proxy_set_header X-Real-IP $remote_addr;
+           proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+           proxy_set_header X-Forwarded-Proto $scheme;
+
+           # CORS headers
+           add_header 'Access-Control-Allow-Origin' 'https://your-vercel-app.vercel.app' always;
+           add_header 'Access-Control-Allow-Methods' 'GET, POST, PUT, DELETE, OPTIONS' always;
+           add_header 'Access-Control-Allow-Headers' 'Authorization, Content-Type' always;
+
+           if ($request_method = 'OPTIONS') {
+               return 204;
+           }
+       }
+   }
+   ```
+
+3. **Enable Site**:
+   ```bash
+   sudo ln -s /etc/nginx/sites-available/booking-app /etc/nginx/sites-enabled/
+   sudo nginx -t
+   sudo systemctl reload nginx
+   ```
+
+4. **SSL with Let's Encrypt** (optional):
+   ```bash
+   sudo apt install certbot python3-certbot-nginx
+   sudo certbot --nginx -d your-domain.com
+   ```
+
+### Environment Variables Configuration
+
+#### Frontend (.env.local for local development):
+```
+VITE_API_URL=http://localhost:3001
+```
+
+#### Frontend (Vercel environment variables):
+```
+VITE_API_URL=https://your-backend-domain.com
+```
+
+#### Backend (.env for all environments):
+```
+DATABASE_URL=postgresql://user:password@host:5432/database
+JWT_SECRET=your-secure-jwt-secret
+NODE_ENV=production
+```
+
+### Deployment Checklist
+
+- [ ] Frontend deployed on Vercel
+- [ ] Backend deployed on chosen platform (Render/Railway/Digital Ocean)
+- [ ] Database configured and migrated
+- [ ] Environment variables set correctly
+- [ ] Nginx reverse proxy configured (if using custom domain)
+- [ ] SSL certificate configured
+- [ ] Test API endpoints from frontend
+- [ ] Verify CORS configuration
+
