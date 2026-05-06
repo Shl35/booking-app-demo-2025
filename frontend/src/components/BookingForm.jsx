@@ -4,6 +4,7 @@ import API_URL from '../config';
 
 const BookingForm = () => {
   const [rooms, setRooms] = useState([]);
+  const [loadingRooms, setLoadingRooms] = useState(true);
   const [formData, setFormData] = useState({
     fullname: '', email: '', phone: '',
     checkin: '', checkout: '', roomId: '', guests: 1, comment: ''
@@ -13,11 +14,14 @@ const BookingForm = () => {
 
   useEffect(() => {
     const fetchRooms = async () => {
+      setLoadingRooms(true);
       try {
         const response = await axios.get(`${API_URL}/api/rooms`);
         setRooms(response.data);
-      } catch (err) {
+      } catch {
         setError('ไม่สามารถดึงข้อมูลห้องพักได้');
+      } finally {
+        setLoadingRooms(false);
       }
     };
     fetchRooms();
@@ -117,14 +121,27 @@ const BookingForm = () => {
         <div>
           <label className="block text-gray-700 mb-2">ประเภทห้องพัก:</label>
           <select name="roomId" value={formData.roomId} onChange={handleChange}
-            className="w-full p-2 border rounded-md focus:ring-2 focus:ring-blue-500" required>
-            <option value="">กรุณาเลือกห้องพัก</option>
-            {rooms.map((room) => (
-              <option key={room.id} value={room.id}>
-                {room.name} ({room.capacity} ท่าน, {room.price} บาท/คืน)
-              </option>
-            ))}
+            className="w-full p-2 border rounded-md focus:ring-2 focus:ring-blue-500"
+            required
+            disabled={loadingRooms || rooms.length === 0}>
+            {loadingRooms ? (
+              <option value="">กำลังโหลดประเภทห้องพัก...</option>
+            ) : rooms.length === 0 ? (
+              <option value="">ยังไม่มีห้องพักให้เลือก</option>
+            ) : (
+              <>
+                <option value="">กรุณาเลือกห้องพัก</option>
+                {rooms.map((room) => (
+                  <option key={room.id} value={room.id}>
+                    {room.name} ({room.capacity} ท่าน, {room.price} บาท/คืน)
+                  </option>
+                ))}
+              </>
+            )}
           </select>
+          {!loadingRooms && rooms.length === 0 && (
+            <p className="text-sm text-gray-500 mt-2">ยังไม่มีห้องพักให้เลือกในขณะนี้ กรุณาลองใหม่อีกครั้งภายหลัง</p>
+          )}
         </div>
 
         <div>
@@ -141,7 +158,8 @@ const BookingForm = () => {
         </div>
 
         <button type="submit"
-          className="w-full bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600 transition-colors">
+          className="w-full bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600 transition-colors"
+          disabled={loadingRooms || rooms.length === 0}>
           จองห้องพัก
         </button>
       </form>
