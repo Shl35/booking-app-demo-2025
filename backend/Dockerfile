@@ -5,7 +5,7 @@ FROM node:20-slim
 WORKDIR /app
 
 # Install netcat for database readiness check
-RUN apt-get update && apt-get install -y --no-install-recommends netcat-openbsd && rm -rf /var/lib/apt/lists/*
+RUN apt-get update && apt-get install -y --no-install-recommends netcat-openbsd openssl && rm -rf /var/lib/apt/lists/*
 
 # Copy package files
 COPY package*.json ./
@@ -24,6 +24,7 @@ COPY . .
 
 # Copy entrypoint script
 COPY docker-entrypoint.sh ./
+RUN sed -i 's/\r$//' ./docker-entrypoint.sh   # ← เพิ่มบรรทัดนี้
 RUN chmod +x ./docker-entrypoint.sh
 
 # Create non-root user for security
