@@ -2,14 +2,29 @@ const express    = require('express');
 const cors       = require('cors');
 const jwt        = require('jsonwebtoken');
 const bcrypt     = require('bcryptjs');
+const helmet     = require('helmet');
+const rateLimit  = require('express-rate-limit');
 const db         = require('./database');
 
 const app        = express();
 const PORT       = 3001;
 const JWT_SECRET = process.env.JWT_SECRET || 'your-secret-key';
 
+// ── 1. Security Headers (Helmet) ─────────────────
+app.use(helmet());
+
+// ── 2. CORS Configuration ─────────────────────
 app.use(cors());
-app.use(express.json()); // Express 4.16+ — ไม่ต้องใช้ body-parser อีกต่อไป
+
+// ── 3. Rate Limiting ──────────────────────────
+const generalLimiter = rateLimit({
+  windowMs: 15 * 60 * 1000,
+  max: 100,
+  message: { error: 'Too many requests, please try again later.' }
+});
+app.use('/api/', generalLimiter);
+
+app.use(express.json());
 
 // Middleware: ตรวจสอบ JWT Token ก่อนเข้าถึง protected routes
 const authenticateToken = (req, res, next) => {
@@ -28,6 +43,8 @@ const authenticateToken = (req, res, next) => {
     next();
   });
 };
+
+// ── API Endpoints ──
 
 // POST /api/login — ตรวจสอบ username/password และออก JWT
 app.post('/api/login', (req, res) => {
@@ -59,6 +76,16 @@ app.post('/api/login', (req, res) => {
   });
 });
 
+// GET /api/rooms — ดูรายการห้องทั้งหมด
+app.get('/api/rooms', (req, res) => {
+  const rooms = [
+    { id: 1, name: "Standard Room", type: "standard", capacity: 2, price: 1200 },
+    { id: 2, name: "Deluxe Room", type: "deluxe", capacity: 4, price: 2500 },
+    { id: 3, name: "Suite Room", type: "suite", capacity: 6, price: 5000 }
+  ];
+  res.json(rooms);
+});
+
 // POST /api/bookings — สร้างการจองใหม่ (ไม่ต้อง login)
 app.post('/api/bookings', (req, res) => {
   const { fullname, email, phone, checkin, checkout, roomtype, guests } = req.body;
@@ -82,42 +109,22 @@ app.get('/api/bookings', authenticateToken, (req, res) => {
   });
 });
 
-// GET /api/bookings/:id — ดึงข้อมูลตาม ID (ต้อง login)
-app.get('/api/bookings/:id', authenticateToken, (req, res) => {
-  db.get('SELECT * FROM bookings WHERE id = ?', [req.params.id], (err, row) => {
-    if (err)  return res.status(400).json({ error: err.message });
-    if (!row) return res.status(404).json({ error: 'ไม่พบข้อมูลการจอง' });
-    res.json(row);
-  });
-});
-
-// PUT /api/bookings/:id — อัปเดตการจอง (ต้อง login)
-app.put('/api/bookings/:id', authenticateToken, (req, res) => {
-  const { fullname, email, phone, checkin, checkout, roomtype, guests, comment } = req.body;
-  const sql = `UPDATE bookings
-               SET fullname=?, email=?, phone=?, checkin=?, checkout=?,
-                   roomtype=?, guests=?, comment=?
-               WHERE id=?`;
-
-  db.run(sql, [fullname, email, phone, checkin, checkout, roomtype, guests, comment, req.params.id],
-    function(err) {
-      if (err)             return res.status(400).json({ error: err.message });
-      if (this.changes === 0) return res.status(404).json({ error: 'ไม่พบข้อมูลการจอง' });
-
-      db.get('SELECT * FROM bookings WHERE id = ?', [req.params.id], (err, row) => {
-        if (err) return res.status(400).json({ error: err.message });
-        res.json(row);
-      });
-    }
-  );
-});
-
-// DELETE /api/bookings/:id — ลบการจอง (ต้อง login)
-app.delete('/api/bookings/:id', authenticateToken, (req, res) => {
-  db.run('DELETE FROM bookings WHERE id = ?', [req.params.id], function(err) {
-    if (err)             return res.status(400).json({ error: err.message });
-    if (this.changes === 0) return res.status(404).json({ error: 'ไม่พบข้อมูลการจอง' });
-    res.json({ message: 'ลบข้อมูลสำเร็จ', id: req.params.id });
+// GET /api/reports — ดูรายงาน (ต้อง login)
+app.get('/api/reports', authenticateToken, (req, res) => {
+  const sql = `
+    SELECT 
+      roomtype,
+      COUNT(*) as total_bookings,
+      SUM(guests) as total_guests
+    FROM bookings
+    GROUP BY roomtype
+  `;
+  db.all(sql, [], (err, rows) => {
+    if (err) return res.status(500).json({ error: err.message });
+    res.json({
+      reportGeneratedAt: new Date().toISOString(),
+      data: rows
+    });
   });
 });
 
