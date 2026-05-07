@@ -7,7 +7,7 @@ const isProduction = !!process.env.DATABASE_URL;
 let db;
 
 if (isProduction) {
-    // ☁️ CLOUD MODE: Use PostgreSQL with EXPLICIT TYPE CASTING for Login
+    // ☁️ CLOUD MODE: Use PostgreSQL
     const { Pool } = require('pg');
     const pool = new Pool({
         connectionString: process.env.DATABASE_URL,
@@ -18,23 +18,20 @@ if (isProduction) {
     
     const pgWrapper = {
         get: (sql, params, cb) => {
-            // Force Type Casting for PostgreSQL parameters
-            let i = 1;
-            const pgSql = sql.replace(/\?/g, () => `$${i++}::text`);
+            // Use standard parameters without forced casting to allow PG to infer types (Dates, Booleans, etc.)
+            const pgSql = sql.replace(/\?/g, (m, i) => `$${i + 1}`);
             pool.query(pgSql, params)
                 .then(r => cb(null, r.rows[0]))
                 .catch(cb);
         },
         all: (sql, params, cb) => {
-            let i = 1;
-            const pgSql = sql.replace(/\?/g, () => `$${i++}::text`);
+            const pgSql = sql.replace(/\?/g, (m, i) => `$${i + 1}`);
             pool.query(pgSql, params)
                 .then(r => cb(null, r.rows))
                 .catch(cb);
         },
         run: function(sql, params, cb) {
-            let i = 1;
-            const pgSql = sql.replace(/\?/g, () => `$${i++}::text`);
+            const pgSql = sql.replace(/\?/g, (m, i) => `$${i + 1}`);
             pool.query(pgSql, params)
                 .then(r => {
                     const resultContext = { 
