@@ -7,7 +7,7 @@ const isProduction = !!process.env.DATABASE_URL;
 let db;
 
 if (isProduction) {
-    // ☁️ CLOUD MODE: Use PostgreSQL (Must be this way to prevent GLIBC errors)
+    // ☁️ CLOUD MODE: Use PostgreSQL
     const { Pool } = require('pg');
     const pool = new Pool({
         connectionString: process.env.DATABASE_URL,
@@ -16,9 +16,9 @@ if (isProduction) {
     
     console.log('Production Mode: Using Cloud PostgreSQL Database');
     
-    // PG Wrapper to maintain compatibility with server.js logic
     const pgWrapper = {
         get: (sql, params, cb) => {
+            // Fix: Standard PostgreSQL parameter query format
             const pgSql = sql.replace(/\?/g, (m, i) => `$${i + 1}`);
             pool.query(pgSql, params)
                 .then(r => cb(null, r.rows[0]))
@@ -34,7 +34,11 @@ if (isProduction) {
             const pgSql = sql.replace(/\?/g, (m, i) => `$${i + 1}`);
             pool.query(pgSql, params)
                 .then(r => {
-                    if (cb) cb.call({ lastID: Date.now() }, null);
+                    const resultContext = { 
+                        lastID: (r.rows && r.rows[0]) ? r.rows[0].id : Date.now(),
+                        changes: r.rowCount 
+                    };
+                    if (cb) cb.call(resultContext, null);
                 })
                 .catch(err => {
                     if (cb) cb(err);
@@ -42,6 +46,7 @@ if (isProduction) {
         }
     };
     db = pgWrapper;
+
 } else {
     // 💻 LOCAL MODE: Use SQLite (Easy for testing on Windows)
     const sqlite3 = require('sqlite3').verbose();
