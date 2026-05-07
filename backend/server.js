@@ -49,88 +49,53 @@ const authenticateToken = (req, res, next) => {
 
 // ── API Endpoints ──
 
-// POST /api/login
 app.post('/api/login', (req, res) => {
   const { username, password } = req.body;
-
-  if (!username || !password) {
-    return res.status(400).json({ error: 'กรุณากรอก username และ password' });
-  }
-
   db.get('SELECT * FROM users WHERE username = ?', [username], async (err, user) => {
-    if (err) {
-        console.error('Login DB Error:', err.message);
-        return res.status(500).json({ error: err.message });
-    }
-    
-    if (!user) {
-        return res.status(401).json({ error: 'ชื่อผู้ใช้หรือรหัสผ่านไม่ถูกต้อง' });
-    }
-
+    if (err) return res.status(500).json({ error: err.message });
+    if (!user) return res.status(401).json({ error: 'ชื่อผู้ใช้หรือรหัสผ่านไม่ถูกต้อง' });
     const validPassword = await bcrypt.compare(password, user.password);
-    if (!validPassword) {
-      return res.status(401).json({ error: 'ชื่อผู้ใช้หรือรหัสผ่านไม่ถูกต้อง' });
-    }
-
-    const token = jwt.sign(
-      { id: user.id, username: user.username, role: user.role },
-      JWT_SECRET,
-      { expiresIn: '1h' }
-    );
-
-    res.json({
-      token,
-      user: { id: user.id, username: user.username, role: user.role }
-    });
+    if (!validPassword) return res.status(401).json({ error: 'ชื่อผู้ใช้หรือรหัสผ่านไม่ถูกต้อง' });
+    const token = jwt.sign({ id: user.id, username: user.username, role: user.role }, JWT_SECRET, { expiresIn: '1h' });
+    res.json({ token, user: { id: user.id, username: user.username, role: user.role } });
   });
 });
 
-// GET /api/rooms — ดูรายการห้องทั้งหมด
 app.get('/api/rooms', (req, res) => {
-  const rooms = [
+  res.json([
     { id: 1, name: "Standard Room", type: "standard", capacity: 2, price: 1200 },
     { id: 2, name: "Deluxe Room", type: "deluxe", capacity: 4, price: 2500 },
     { id: 3, name: "Suite Room", type: "suite", capacity: 6, price: 5000 }
-  ];
-  res.json(rooms);
+  ]);
 });
 
-// POST /api/rooms (For Newman Admin Test)
-app.post('/api/rooms', authenticateToken, (req, res) => {
-    res.status(201).json({ id: Date.now(), ...req.body });
-});
-
-// POST /api/bookings — สร้างการจองใหม่
 app.post('/api/bookings', (req, res) => {
-  const { fullname, email, phone, checkin, checkout, roomtype, guests } = req.body;
-  
-  if(!fullname && !req.body.name) return res.status(400).json({error: 'Data missing'});
+  const { fullname, email, phone, checkin, checkout, guests } = req.body;
+  // 🔥 FIX: Map roomId (from Frontend) to roomtype (for Database)
+  let roomtype = req.body.roomtype;
+  if (!roomtype && req.body.roomId) {
+      const roomMap = { 1: 'standard', 2: 'deluxe', 3: 'suite' };
+      roomtype = roomMap[req.body.roomId] || 'standard';
+  }
 
   const sql = `INSERT INTO bookings (fullname, email, phone, checkin, checkout, roomtype, guests)
                VALUES (?, ?, ?, ?, ?, ?, ?)`;
 
-  db.run(sql, [fullname || req.body.name, email, phone, checkin, checkout, roomtype, guests], function(err) {
+  db.run(sql, [fullname || req.body.name, email, phone, checkin, checkout, roomtype, guests || 1], function(err) {
     if (err) return res.status(400).json({ error: err.message });
-    res.status(201).json({ id: this.lastID, ...req.body });
+    res.status(201).json({ id: this.lastID, ...req.body, roomtype });
   });
 });
 
-// GET /api/bookings (Protected)
 app.get('/api/bookings', authenticateToken, (req, res) => {
   db.all('SELECT * FROM bookings ORDER BY created_at DESC', [], (err, rows) => {
-    if (err) return res.status(400).json({ error: err.message });
+    if (err) return res.status(500).json({ error: err.message });
     res.json(rows);
   });
 });
 
-// GET /api/reports (Protected)
 app.get('/api/reports', authenticateToken, (req, res) => {
-  res.json({ status: 'success', data: [] });
-});
-
-// GET /api/reports/export (Protected)
-app.get('/api/reports/export', authenticateToken, (req, res) => {
-    res.json({ downloadUrl: 'http://example.com/report.csv' });
+    res.json({ status: 'success', data: [] });
 });
 
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
