@@ -1,0 +1,148 @@
+{
+  "info": {
+    "name": "Booking API Tests",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:5000"
+    },
+    {
+      "key": "authToken",
+      "value": ""
+    }
+  ],
+  "item": [
+    {
+      "name": "Login Success",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test('Status is 200', function () {",
+              "    pm.response.to.have.status(200);",
+              "});",
+              "",
+              "const json = pm.response.json();",
+              "pm.collectionVariables.set('authToken', json.token);"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"username\":\"admin\",\"password\":\"admin123\"}"
+        },
+        "url": "{{baseUrl}}/api/login"
+      }
+    },
+    {
+      "name": "Login Wrong Password",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test('Status is 401', function () {",
+              "    pm.response.to.have.status(401);",
+              "});"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"username\":\"admin\",\"password\":\"wrongpassword\"}"
+        },
+        "url": "{{baseUrl}}/api/login"
+      }
+    },
+    {
+      "name": "Get Rooms",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test('Status is 200', function () {",
+              "    pm.response.to.have.status(200);",
+              "});"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "url": "{{baseUrl}}/api/rooms"
+      }
+    },
+    {
+      "name": "Get Bookings",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test('Status is 200', function () {",
+              "    pm.response.to.have.status(200);",
+              "});"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{authToken}}"
+          }
+        ],
+        "url": "{{baseUrl}}/api/bookings"
+      }
+    },
+    {
+      "name": "Get Reports",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test('Status is 200', function () {",
+              "    pm.response.to.have.status(200);",
+              "});"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{authToken}}"
+          }
+        ],
+        "url": "{{baseUrl}}/api/reports"
+      }
+    }
+  ]
+}

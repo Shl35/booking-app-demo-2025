@@ -1,13 +1,13 @@
-const express    = require('express');
-const cors       = require('cors');
-const jwt        = require('jsonwebtoken');
-const bcrypt     = require('bcryptjs');
-const db         = require('./database');
+const express = require('express');
+const cors = require('cors');
+const jwt = require('jsonwebtoken');
+const bcrypt = require('bcryptjs');
+const db = require('./database');
 const swaggerJsdoc = require('swagger-jsdoc');       // อ่าน JSDoc comment → สร้าง spec
-const swaggerUi    = require('swagger-ui-express');   // serve spec เป็น Interactive UI
+const swaggerUi = require('swagger-ui-express');   // serve spec เป็น Interactive UI
 
-const app        = express();
-const PORT=process.env.BACKEND_PORT || 5000;
+const app = express();
+const PORT = process.env.BACKEND_PORT || 5000;
 //const PORT       = 3001;
 // ─────────────────────────────────────────────────────────────
 // Swagger / OpenAPI Configuration
@@ -16,8 +16,8 @@ const swaggerOptions = {
   definition: {
     openapi: '3.0.0',
     info: {
-      title:       'Hotel Booking API',
-      version:     '1.0.0',
+      title: 'Hotel Booking API',
+      version: '1.0.0',
       description: 'REST API สำหรับระบบจองห้องพักออนไลน์ — ใบงาน Lab02A',
     },
     servers: [
@@ -27,8 +27,8 @@ const swaggerOptions = {
       // Security Scheme — บอก Swagger ว่า API ใช้ Bearer JWT
       securitySchemes: {
         bearerAuth: {
-          type:         'http',
-          scheme:       'bearer',
+          type: 'http',
+          scheme: 'bearer',
           bearerFormat: 'JWT',
         },
       },
@@ -38,36 +38,36 @@ const swaggerOptions = {
           type: 'object',
           required: ['fullname', 'email', 'phone', 'checkin', 'checkout', 'roomtype', 'guests'],
           properties: {
-            id:         { type: 'integer', example: 1 },
-            fullname:   { type: 'string',  example: 'สมชาย ใจดี' },
-            email:      { type: 'string',  format: 'email', example: 'somchai@example.com' },
-            phone:      { type: 'string',  example: '0812345678' },
-            checkin:    { type: 'string',  format: 'date',  example: '2026-12-01' },
-            checkout:   { type: 'string',  format: 'date',  example: '2026-12-03' },
-            roomtype:   { type: 'string',  enum: ['standard', 'deluxe', 'suite'], example: 'standard' },
-            guests:     { type: 'integer', minimum: 1, maximum: 4, example: 2 },
-            status:     { type: 'string',  example: 'pending' },
-            comment:    { type: 'string',  example: 'ต้องการห้องชั้นล่าง' },
-            created_at: { type: 'string',  example: '2026-01-01T00:00:00.000Z' },
+            id: { type: 'integer', example: 1 },
+            fullname: { type: 'string', example: 'สมชาย ใจดี' },
+            email: { type: 'string', format: 'email', example: 'somchai@example.com' },
+            phone: { type: 'string', example: '0812345678' },
+            checkin: { type: 'string', format: 'date', example: '2026-12-01' },
+            checkout: { type: 'string', format: 'date', example: '2026-12-03' },
+            roomtype: { type: 'string', enum: ['standard', 'deluxe', 'suite'], example: 'standard' },
+            guests: { type: 'integer', minimum: 1, maximum: 4, example: 2 },
+            status: { type: 'string', example: 'pending' },
+            comment: { type: 'string', example: 'ต้องการห้องชั้นล่าง' },
+            created_at: { type: 'string', example: '2026-01-01T00:00:00.000Z' },
           },
         },
         LoginResponse: {
-  type: 'object',
-  properties: {
-    token: {
-      type: 'string',
-      description: 'แก้ไข Login Response Description โดย Surachai'  // ← แก้ไข description เป็นการระบุว่า แก้ไข Response description โดยใคร
-    },
-    user: {
-      type: 'object',
-      properties: {
-        id:       { type: 'integer' },
-        username: { type: 'string' },
-        role:     { type: 'string', enum: ['admin', 'user'] }
-      }
-    }
-  }
-}
+          type: 'object',
+          properties: {
+            token: {
+              type: 'string',
+              description: 'แก้ไข Login Response Description โดย Surachai'  // ← แก้ไข description เป็นการระบุว่า แก้ไข Response description โดยใคร
+            },
+            user: {
+              type: 'object',
+              properties: {
+                id: { type: 'integer' },
+                username: { type: 'string' },
+                role: { type: 'string', enum: ['admin', 'user'] }
+              }
+            }
+          }
+        }
       },
     },
   },
@@ -148,7 +148,7 @@ app.post('/api/login', (req, res) => {
   }
 
   db.get('SELECT * FROM users WHERE username = ?', [username], async (err, user) => {
-    if (err)   return res.status(500).json({ error: err.message });
+    if (err) return res.status(500).json({ error: err.message });
     if (!user) return res.status(401).json({ error: 'ชื่อผู้ใช้หรือรหัสผ่านไม่ถูกต้อง' });
 
     const validPassword = await bcrypt.compare(password, user.password);
@@ -198,7 +198,7 @@ app.post('/api/bookings', (req, res) => {
   const sql = `INSERT INTO bookings (fullname, email, phone, checkin, checkout, roomtype, guests)
                VALUES (?, ?, ?, ?, ?, ?, ?)`;
 
-  db.run(sql, [fullname, email, phone, checkin, checkout, roomtype, guests], function(err) {
+  db.run(sql, [fullname, email, phone, checkin, checkout, roomtype, guests], function (err) {
     if (err) return res.status(400).json({ error: err.message });
     db.get('SELECT * FROM bookings WHERE id = ?', [this.lastID], (err, row) => {
       if (err) return res.status(400).json({ error: err.message });
@@ -269,7 +269,7 @@ app.get('/api/bookings', authenticateToken, (req, res) => {
 // GET /api/bookings/:id — ดึงข้อมูลตาม ID (ต้อง login)
 app.get('/api/bookings/:id', authenticateToken, (req, res) => {
   db.get('SELECT * FROM bookings WHERE id = ?', [req.params.id], (err, row) => {
-    if (err)  return res.status(400).json({ error: err.message });
+    if (err) return res.status(400).json({ error: err.message });
     if (!row) return res.status(404).json({ error: 'ไม่พบข้อมูลการจอง' });
     res.json(row);
   });
@@ -317,8 +317,8 @@ app.put('/api/bookings/:id', authenticateToken, (req, res) => {
                WHERE id=?`;
 
   db.run(sql, [fullname, email, phone, checkin, checkout, roomtype, guests, comment, req.params.id],
-    function(err) {
-      if (err)             return res.status(400).json({ error: err.message });
+    function (err) {
+      if (err) return res.status(400).json({ error: err.message });
       if (this.changes === 0) return res.status(404).json({ error: 'ไม่พบข้อมูลการจอง' });
 
       db.get('SELECT * FROM bookings WHERE id = ?', [req.params.id], (err, row) => {
@@ -361,8 +361,8 @@ app.put('/api/bookings/:id', authenticateToken, (req, res) => {
  */
 // DELETE /api/bookings/:id — ลบการจอง (ต้อง login)
 app.delete('/api/bookings/:id', authenticateToken, (req, res) => {
-  db.run('DELETE FROM bookings WHERE id = ?', [req.params.id], function(err) {
-    if (err)             return res.status(400).json({ error: err.message });
+  db.run('DELETE FROM bookings WHERE id = ?', [req.params.id], function (err) {
+    if (err) return res.status(400).json({ error: err.message });
     if (this.changes === 0) return res.status(404).json({ error: 'ไม่พบข้อมูลการจอง' });
     res.json({ message: 'ลบข้อมูลสำเร็จ', id: req.params.id });
   });
@@ -390,7 +390,7 @@ app.get('/api/health', (req, res) => {
   res.json({
     status: 'ok',
     uptime: process.uptime(),    // จำนวนวินาทีที่ server รันมา
-    time:   new Date().toISOString()
+    time: new Date().toISOString()
   });
 });
 
@@ -399,4 +399,59 @@ app.use((req, res, next) => {
   next();
 });
 
+// GET /api/reports — ดูรายงานการจองทั้งหมด
+app.get('/api/reports', authenticateToken, (req, res) => {
+
+  const sql = `
+    SELECT 
+      roomtype,
+      COUNT(*) as total_bookings,
+      SUM(guests) as total_guests
+    FROM bookings
+    GROUP BY roomtype
+  `;
+
+  db.all(sql, [], (err, rows) => {
+    if (err) {
+      return res.status(500).json({
+        error: err.message
+      });
+    }
+
+    res.json({
+      reportGeneratedAt: new Date().toISOString(),
+      data: rows
+    });
+  });
+});
+
+// GET /api/rooms — ดูรายการห้องทั้งหมด
+app.get('/api/rooms', (req, res) => {
+
+  const rooms = [
+    {
+      id: 1,
+      name: "Standard Room",
+      type: "standard",
+      capacity: 2,
+      price: 1200
+    },
+    {
+      id: 2,
+      name: "Deluxe Room",
+      type: "deluxe",
+      capacity: 4,
+      price: 2500
+    },
+    {
+      id: 3,
+      name: "Suite Room",
+      type: "suite",
+      capacity: 6,
+      price: 5000
+    }
+  ];
+
+  res.json(rooms);
+});
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
