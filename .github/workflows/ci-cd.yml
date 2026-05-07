@@ -154,13 +154,41 @@ jobs:
           path: frontend/dist/
 
   # ─────────────────────────────────────────────
-  # Job 3: Deploy Frontend to Vercel
-  # (เฉพาะเมื่อ push ไปที่ main เท่านั้น)
+  # Job 3: Security Scanning
+  # ─────────────────────────────────────────────
+  security-scan:
+    name: Security Scanning
+    runs-on: ubuntu-latest
+    needs: [backend-test, frontend-build]
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+
+      - name: Backend — npm audit
+        run: |
+          cd backend
+          npm ci
+          npm audit --audit-level=high
+
+      - name: Frontend — npm audit
+        run: |
+          cd frontend
+          npm ci
+          npm audit --audit-level=high
+
+  # ─────────────────────────────────────────────
+  # Job 4: Deploy Frontend to Vercel
   # ─────────────────────────────────────────────
   deploy-frontend:
     name: Deploy Frontend → Vercel
     runs-on: ubuntu-latest
-    needs: [backend-test, frontend-build]
+    needs: security-scan
     if: github.ref == 'refs/heads/main' && github.event_name == 'push'
 
     steps:
@@ -180,13 +208,12 @@ jobs:
             --yes
 
   # ─────────────────────────────────────────────
-  # Job 4: Deploy Backend to Render
-  # (เฉพาะเมื่อ push ไปที่ main เท่านั้น)
+  # Job 5: Deploy Backend to Render
   # ─────────────────────────────────────────────
   deploy-backend-render:
     name: Deploy Backend → Render
     runs-on: ubuntu-latest
-    needs: [backend-test, frontend-build]
+    needs: security-scan
     if: github.ref == 'refs/heads/main' && github.event_name == 'push'
 
     steps:
@@ -211,7 +238,40 @@ jobs:
             sleep $INTERVAL
             ELAPSED=$((ELAPSED + INTERVAL))
           done
-          echo "❌ Render health check failed after ${TIMEOUT}s"
+          echo "❌ Render health check failed"
           exit 1
+
+  # ─────────────────────────────────────────────
+  # Job 6: Post-Deployment Smoke Tests
+  # ─────────────────────────────────────────────
+  post-deploy-smoke-test:
+    name: Post-Deploy Smoke Tests (Production)
+    runs-on: ubuntu-latest
+    needs: [deploy-frontend, deploy-backend-render]
+    if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Install Newman
+        run: npm install -g newman
+
+      - name: Check Frontend is Reachable
+        run: |
+          HTTP_STATUS=$(curl -s -o /dev/null -w "%{http_code}" "${{ secrets.VERCEL_FRONTEND_URL }}")
+          if [ "$HTTP_STATUS" = "200" ]; then
+            echo "✅ Frontend is up"
+          else
+            echo "❌ Frontend returned $HTTP_STATUS"
+            exit 1
+          fi
+
+      - name: Run Smoke Tests on Production
+        run: |
+          newman run tests/smoke-tests.postman_collection.json \
+            --env-var "baseUrl=${{ secrets.RENDER_BACKEND_URL }}" \
+            --bail
+
 
 

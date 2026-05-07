@@ -1,0 +1,75 @@
+{
+  "info": {
+    "name": "Production Smoke Tests",
+    "description": "Read-only tests for production verification. No data modification.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    { "key": "baseUrl", "value": "https://your-backend.onrender.com" }
+  ],
+  "item": [
+    {
+      "name": "1. API is Reachable",
+      "event": [{
+        "listen": "test",
+        "script": {
+          "exec": [
+            "pm.test('API returns 200', () => pm.response.to.have.status(200));",
+            "pm.test('Response time < 3000ms', () => pm.expect(pm.response.responseTime).to.be.below(3000));"
+          ]
+        }
+      }],
+      "request": { "method": "GET", "url": "{{baseUrl}}/api/rooms" }
+    },
+    {
+      "name": "2. Authentication Works",
+      "event": [{
+        "listen": "test",
+        "script": {
+          "exec": [
+            "pm.test('Login returns token', () => {",
+            "  pm.response.to.have.status(200);",
+            "  pm.expect(pm.response.json()).to.have.property('token');",
+            "});"
+          ]
+        }
+      }],
+      "request": {
+        "method": "POST",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "body": { "mode": "raw", "raw": "{\"username\":\"admin\",\"password\":\"admin123\"}" },
+        "url": "{{baseUrl}}/api/login"
+      }
+    },
+    {
+      "name": "3. Protected Routes Require Auth",
+      "event": [{
+        "listen": "test",
+        "script": {
+          "exec": [
+            "pm.test('Returns 401 without token', () => pm.response.to.have.status(401));"
+          ]
+        }
+      }],
+      "request": {
+        "method": "GET",
+        "url": "{{baseUrl}}/api/bookings"
+      }
+    },
+    {
+      "name": "4. CORS Headers Present",
+      "event": [{
+        "listen": "test",
+        "script": {
+          "exec": [
+            "pm.test('Has security headers', () => {",
+            "  pm.expect(pm.response.headers.has('x-frame-options') ||",
+            "            pm.response.headers.has('content-security-policy')).to.be.true;",
+            "});"
+          ]
+        }
+      }],
+      "request": { "method": "GET", "url": "{{baseUrl}}/api/rooms" }
+    }
+  ]
+}

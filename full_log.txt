@@ -1,0 +1,48 @@
+8076a70 Fix merge conflicts and sync with origin/main
+2da0f18 Add CI/CD workflow
+d46a81c Add complete CI/CD workflow
+f6443df Merge pull request #3 from surachaigit2025/main
+e09fbda chore: install backend dependencies in node_modules
+a222336 fix: bug
+379be16 fix prisma
+d00f3ab fix ci
+199b8d1 fix: newman
+56abb24 fix:newman
+46e3570 Fix: server
+d0fd21d ci: add complete CI/CD pipeline with Newman testing and security scanning
+aea6a05 fix: server
+06583ad Merge branch 'main' of https://github.com/surachaigit2025/booking-app-demo-2025
+d674b8c Merge branch 'surachai-p:main' into main
+d63205d fix: new server.js
+f2306ef Merge branch 'main' of https://github.com/surachaigit2025/booking-app-demo-2025
+9d32cfb Merge branch 'surachai-p:main' into main
+9616fde fix: docker entriespoint
+c4641b0 Merge branch 'surachai-p:main' into main
+d483861 fix:server.js
+203f986 chore: enforce LF line endings for Docker compatibility
+6376981 Add GitHub Actions workflow for QA deployment
+0096f01 Add CI/CD pipeline for Booking App
+abc3640 chore: enforce LF line ending for Docker compatibility
+9c28e2b fix
+148020b fix
+226b4e9 fix
+69d4ef2 fix
+e3bb32b fix
+e7616e1 Fix: can't run compose, prisma can't migrate
+e916878 Add Docker configuration for backend deployment
+885812e Update API URL configuration for remote backend server
+ad14d77 Improve room selection handling with loading states and empty room messages
+7fb8e12 Add comprehensive Features section to README with core features, technical stack, and API overview
+1de69eb Add multiple environments guide for QA, Staging, Production with branching strategy and deployment workflows
+7619bf1 Add CI/CD deployment guide for Vercel frontend, backend platforms, and Nginx reverse proxy
+d8af571 Add GitHub self-hosted runner workflow and update README
+d4a951f Reapply preserve-local backend/frontend work onto updated origin/main
+417e281 Delete backend/node_modules directory
+bbc0270 .1
+f6af4a2 2.2 ตรวจสอบ Container
+086bad8 Delete node_modules directory
+4708033 Update server.js
+378ce23 Update server.js
+60ebb5f Fix: add instruction in lab hands on
+7a454a5 initial
+9f9d7e5 Initial commit
