@@ -5,18 +5,31 @@ import { useAuth } from '../contexts/AuthContext';
 import API_URL from '../config';
 
 const BookingEdit = () => {
-  const { id }         = useParams();
-  const navigate       = useNavigate();
-  const { token }      = useAuth();
+  const { id } = useParams();
+  const navigate = useNavigate();
+  const { token } = useAuth();
   const [loading, setLoading] = useState(true);
+  const [rooms, setRooms] = useState([]);
   const [formData, setFormData] = useState({
     fullname: '', email: '', phone: '',
-    checkin: '', checkout: '', roomtype: '', guests: 1, comment: '',
+    checkin: '', checkout: '', roomId: '', guests: 1, comment: '', status: 'pending',
   });
 
-  const maxGuests = { standard: 2, deluxe: 3, suite: 4 };
+  useEffect(() => {
+    fetchRooms();
+    fetchBooking();
+  }, [id]);
 
-  useEffect(() => { fetchBooking(); }, [id]);
+  const fetchRooms = async () => {
+    try {
+      const response = await axios.get(`${API_URL}/api/rooms`, {
+        headers: { Authorization: `Bearer ${token}` },
+      });
+      setRooms(response.data);
+    } catch (err) {
+      alert('ไม่สามารถดึงรายการห้องพักได้');
+    }
+  };
 
   const fetchBooking = async () => {
     try {
@@ -24,8 +37,9 @@ const BookingEdit = () => {
         headers: { Authorization: `Bearer ${token}` },
       });
       const booking = response.data;
-      booking.checkin  = booking.checkin.split('T')[0];
+      booking.checkin = booking.checkin.split('T')[0];
       booking.checkout = booking.checkout.split('T')[0];
+      booking.roomId = booking.roomId || '';
       setFormData(booking);
       setLoading(false);
     } catch (err) {
@@ -34,9 +48,11 @@ const BookingEdit = () => {
     }
   };
 
+  const selectedRoom = rooms.find((room) => room.id === Number(formData.roomId));
+
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormData(prev => ({ ...prev, [name]: value }));
+    setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
   const handleSubmit = async (e) => {
@@ -58,12 +74,10 @@ const BookingEdit = () => {
     <div className="max-w-md mx-auto mt-10 p-6 bg-white rounded-lg shadow-md">
       <h2 className="text-2xl font-bold mb-6 text-center">แก้ไขข้อมูลการจอง</h2>
       <form onSubmit={handleSubmit} className="space-y-4">
-
-        {/* ---- ข้อมูลผู้จอง ---- */}
         {[
           { label: 'ชื่อ-นามสกุล:', name: 'fullname', type: 'text' },
-          { label: 'อีเมล:',        name: 'email',    type: 'email' },
-          { label: 'เบอร์โทรศัพท์:', name: 'phone',    type: 'tel' },
+          { label: 'อีเมล:', name: 'email', type: 'email' },
+          { label: 'เบอร์โทรศัพท์:', name: 'phone', type: 'tel' },
         ].map(({ label, name, type }) => (
           <div key={name}>
             <label className="block text-gray-700 mb-2">{label}</label>
@@ -72,7 +86,6 @@ const BookingEdit = () => {
           </div>
         ))}
 
-        {/* ---- วันที่ ---- */}
         <div>
           <label className="block text-gray-700 mb-2">วันที่เช็คอิน:</label>
           <input type="date" name="checkin" value={formData.checkin} onChange={handleChange}
@@ -85,26 +98,37 @@ const BookingEdit = () => {
             className="w-full p-2 border rounded-md focus:ring-2 focus:ring-blue-500" required />
         </div>
 
-        {/* ---- ประเภทห้อง ---- */}
         <div>
           <label className="block text-gray-700 mb-2">ประเภทห้องพัก:</label>
-          <select name="roomtype" value={formData.roomtype} onChange={handleChange}
+          <select name="roomId" value={formData.roomId} onChange={handleChange}
             className="w-full p-2 border rounded-md focus:ring-2 focus:ring-blue-500" required>
-            <option value="standard">ห้องมาตรฐาน (สูงสุด 2 ท่าน)</option>
-            <option value="deluxe">ห้องดีลักซ์ (สูงสุด 3 ท่าน)</option>
-            <option value="suite">ห้องสวีท (สูงสุด 4 ท่าน)</option>
+            <option value="">กรุณาเลือกประเภทห้องพัก</option>
+            {rooms.map((room) => (
+              <option key={room.id} value={room.id}>
+                {room.name} ({room.capacity} ท่าน, {room.price} บาท/คืน)
+              </option>
+            ))}
           </select>
         </div>
 
-        {/* ---- จำนวนผู้เข้าพัก ---- */}
+        <div>
+          <label className="block text-gray-700 mb-2">สถานะการจอง:</label>
+          <select name="status" value={formData.status || 'pending'} onChange={handleChange}
+            className="w-full p-2 border rounded-md focus:ring-2 focus:ring-blue-500" required>
+            <option value="pending">รอดำเนินการ</option>
+            <option value="confirmed">ยืนยันแล้ว</option>
+            <option value="cancelled">ยกเลิก</option>
+            <option value="completed">เสร็จสิ้น</option>
+          </select>
+        </div>
+
         <div>
           <label className="block text-gray-700 mb-2">จำนวนผู้เข้าพัก:</label>
           <input type="number" name="guests" value={formData.guests} onChange={handleChange}
-            min="1" max={formData.roomtype ? maxGuests[formData.roomtype] : 4}
+            min="1" max={selectedRoom ? selectedRoom.capacity : 4}
             className="w-full p-2 border rounded-md focus:ring-2 focus:ring-blue-500" required />
         </div>
 
-        {/* ---- หมายเหตุ ---- */}
         <div>
           <label className="block text-gray-700 mb-2">หมายเหตุ:</label>
           <input type="text" name="comment" value={formData.comment || ''} onChange={handleChange}

@@ -2,96 +2,26 @@ const express = require('express');
 const cors = require('cors');
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcryptjs');
+const fs = require('fs');
+const path = require('path');
 const db = require('./database');
-const swaggerJsdoc = require('swagger-jsdoc');       // อ่าน JSDoc comment → สร้าง spec
-const swaggerUi = require('swagger-ui-express');   // serve spec เป็น Interactive UI
 
 const app = express();
-const PORT = process.env.BACKEND_PORT || 5000;
-//const PORT       = 3001;
-// ─────────────────────────────────────────────────────────────
-// Swagger / OpenAPI Configuration
-// ─────────────────────────────────────────────────────────────
-const swaggerOptions = {
-  definition: {
-    openapi: '3.0.0',
-    info: {
-      title: 'Hotel Booking API',
-      version: '1.0.0',
-      description: 'REST API สำหรับระบบจองห้องพักออนไลน์ — ใบงาน Lab02A',
-    },
-    servers: [
-      { url: `http://localhost:${PORT}`, description: 'Development Server' }
-    ],
-    components: {
-      // Security Scheme — บอก Swagger ว่า API ใช้ Bearer JWT
-      securitySchemes: {
-        bearerAuth: {
-          type: 'http',
-          scheme: 'bearer',
-          bearerFormat: 'JWT',
-        },
-      },
-      // Schema — โครงสร้างข้อมูลที่ใช้ซ้ำใน Request/Response
-      schemas: {
-        Booking: {
-          type: 'object',
-          required: ['fullname', 'email', 'phone', 'checkin', 'checkout', 'roomtype', 'guests'],
-          properties: {
-            id: { type: 'integer', example: 1 },
-            fullname: { type: 'string', example: 'สมชาย ใจดี' },
-            email: { type: 'string', format: 'email', example: 'somchai@example.com' },
-            phone: { type: 'string', example: '0812345678' },
-            checkin: { type: 'string', format: 'date', example: '2026-12-01' },
-            checkout: { type: 'string', format: 'date', example: '2026-12-03' },
-            roomtype: { type: 'string', enum: ['standard', 'deluxe', 'suite'], example: 'standard' },
-            guests: { type: 'integer', minimum: 1, maximum: 4, example: 2 },
-            status: { type: 'string', example: 'pending' },
-            comment: { type: 'string', example: 'ต้องการห้องชั้นล่าง' },
-            created_at: { type: 'string', example: '2026-01-01T00:00:00.000Z' },
-          },
-        },
-        LoginResponse: {
-          type: 'object',
-          properties: {
-            token: {
-              type: 'string',
-              description: 'แก้ไข Login Response Description โดย Surachai'  // ← แก้ไข description เป็นการระบุว่า แก้ไข Response description โดยใคร
-            },
-            user: {
-              type: 'object',
-              properties: {
-                id: { type: 'integer' },
-                username: { type: 'string' },
-                role: { type: 'string', enum: ['admin', 'user'] }
-              }
-            }
-          }
-        }
-      },
-    },
-  },
-  // บอก swagger-jsdoc ให้อ่าน @swagger comment จากไฟล์เหล่านี้
-  apis: ['./server.js'],
-};
-
-// สร้าง OpenAPI spec จาก options และ @swagger comments ในไฟล์
-const swaggerSpec = swaggerJsdoc(swaggerOptions);
-
-// Mount Swagger UI ที่ path /api-docs
-app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
-
-console.log(`📄 Swagger UI: http://localhost:${PORT}/api-docs`);
-
+const PORT = 3001;
 const JWT_SECRET = process.env.JWT_SECRET || 'your-secret-key';
+const REPORT_DIR = path.join(__dirname, 'reports');
+if (!fs.existsSync(REPORT_DIR)) {
+  fs.mkdirSync(REPORT_DIR, { recursive: true });
+}
 
 app.use(cors());
-app.use(express.json()); // Express 4.16+ — ไม่ต้องใช้ body-parser อีกต่อไป
+app.use(express.json());
 
-// Middleware: ตรวจสอบ JWT Token ก่อนเข้าถึง protected routes
+const STATUS_VALUES = ['pending', 'confirmed', 'cancelled', 'completed'];
+
 const authenticateToken = (req, res, next) => {
   const authHeader = req.headers['authorization'];
-  const token = authHeader && authHeader.split(' ')[1]; // "Bearer TOKEN"
+  const token = authHeader && authHeader.split(' ')[1];
 
   if (!token) {
     return res.status(401).json({ error: 'กรุณาเข้าสู่ระบบก่อน' });
@@ -106,50 +36,106 @@ const authenticateToken = (req, res, next) => {
   });
 };
 
-/**
- * @swagger
- * /api/login:
- *   post:
- *     summary: เข้าสู่ระบบ
- *     description: ตรวจสอบ username/password และคืนค่า JWT Token
- *     tags: [Authentication]
- *     requestBody:
- *       required: true
- *       content:
- *         application/json:
- *           schema:
- *             type: object
- *             required: [username, password]
- *             properties:
- *               username:
- *                 type: string
- *                 example: admin
- *               password:
- *                 type: string
- *                 example: admin123
- *     responses:
- *       200:
- *         description: เข้าสู่ระบบสำเร็จ — คืน JWT Token
- *         content:
- *           application/json:
- *             schema:
- *               $ref: '#/components/schemas/LoginResponse'
- *       400:
- *         description: ไม่ได้ส่ง username หรือ password
- *       401:
- *         description: ชื่อผู้ใช้หรือรหัสผ่านไม่ถูกต้อง
- */
-// POST /api/login — ตรวจสอบ username/password และออก JWT
-app.post('/api/login', (req, res) => {
+const requireAdmin = (req, res, next) => {
+  if (req.user.role !== 'admin') {
+    return res.status(403).json({ error: 'ผู้ใช้ไม่มีสิทธิ์เข้าถึง' });
+  }
+  next();
+};
+
+const validateBookingData = async (data, isUpdate = false) => {
+  const errors = [];
+  const requiredFields = ['fullname', 'email', 'phone', 'checkin', 'checkout', 'roomId', 'guests'];
+
+  if (!isUpdate) {
+    requiredFields.forEach((field) => {
+      if (!data[field] && data[field] !== 0) {
+        errors.push(`${field} is required`);
+      }
+    });
+  }
+
+  if (data.email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data.email)) {
+    errors.push('อีเมลไม่ถูกต้อง');
+  }
+
+  if (data.phone && !/^[0-9]{10}$/.test(data.phone)) {
+    errors.push('เบอร์โทรศัพท์ต้องเป็นตัวเลข 10 หลัก');
+  }
+
+  if (data.checkin && data.checkout) {
+    const checkin = new Date(data.checkin);
+    const checkout = new Date(data.checkout);
+    if (isNaN(checkin) || isNaN(checkout)) {
+      errors.push('วันที่ไม่ถูกต้อง');
+    } else if (checkout <= checkin) {
+      errors.push('วันเช็คเอาท์ต้องอยู่หลังวันเช็คอิน');
+    }
+  }
+
+  let room = null;
+  if (data.roomId !== undefined && data.roomId !== null) {
+    room = await db.room.findUnique({ where: { id: Number(data.roomId) } });
+    if (!room) {
+      errors.push('ไม่พบห้องพักที่เลือก');
+    } else if (data.guests !== undefined && Number(data.guests) > room.capacity) {
+      errors.push(`จำนวนผู้เข้าพักสูงสุดสำหรับห้องนี้คือ ${room.capacity} ท่าน`);
+    }
+  } else if (!isUpdate) {
+    errors.push('กรุณาเลือกห้องพัก');
+  }
+
+  if (data.status && !STATUS_VALUES.includes(data.status)) {
+    errors.push('สถานะการจองไม่ถูกต้อง');
+  }
+
+  return { errors, room };
+};
+
+const normalizeRoomData = (data) => ({
+  roomType: data.roomType || data.type,
+  name: data.name,
+  description: data.description,
+  capacity: data.capacity,
+  price: data.price
+});
+
+const normalizeBookingData = (data) => ({
+  ...data,
+  fullname: data.fullname || data.guestName,
+  email: data.email || data.guestEmail,
+  checkin: data.checkin || data.checkIn,
+  checkout: data.checkout || data.checkOut,
+  guests: data.guests !== undefined ? data.guests : data.numberOfGuests
+});
+
+const validateRoomData = (data) => {
+  const normalized = normalizeRoomData(data);
+  const errors = [];
+  if (!normalized.roomType) errors.push('roomType is required');
+  if (!normalized.name) errors.push('name is required');
+  if (!normalized.description) errors.push('description is required');
+  if (normalized.capacity === undefined || normalized.capacity === null || Number.isNaN(Number(normalized.capacity)) || Number(normalized.capacity) < 1) {
+    errors.push('capacity ต้องเป็นจำนวนเต็มมากกว่า 0');
+  }
+  if (normalized.price === undefined || normalized.price === null || Number.isNaN(Number(normalized.price)) || Number(normalized.price) < 0) {
+    errors.push('price ต้องเป็นจำนวนเต็มไม่ติดลบ');
+  }
+  return errors;
+};
+
+app.post('/api/login', async (req, res) => {
   const { username, password } = req.body;
 
   if (!username || !password) {
     return res.status(400).json({ error: 'กรุณากรอก username และ password' });
   }
 
-  db.get('SELECT * FROM users WHERE username = ?', [username], async (err, user) => {
-    if (err) return res.status(500).json({ error: err.message });
-    if (!user) return res.status(401).json({ error: 'ชื่อผู้ใช้หรือรหัสผ่านไม่ถูกต้อง' });
+  try {
+    const user = await db.user.findUnique({ where: { username } });
+    if (!user) {
+      return res.status(401).json({ error: 'ชื่อผู้ใช้หรือรหัสผ่านไม่ถูกต้อง' });
+    }
 
     const validPassword = await bcrypt.compare(password, user.password);
     if (!validPassword) {
@@ -166,292 +152,248 @@ app.post('/api/login', (req, res) => {
       token,
       user: { id: user.id, username: user.username, role: user.role }
     });
-  });
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
 });
 
-/**
- * @swagger
- * /api/bookings:
- *   post:
- *     summary: สร้างการจองใหม่
- *     description: สร้างข้อมูลการจองห้องพัก — ไม่ต้องการ Authentication
- *     tags: [Bookings]
- *     requestBody:
- *       required: true
- *       content:
- *         application/json:
- *           schema:
- *             $ref: '#/components/schemas/Booking'
- *     responses:
- *       201:
- *         description: สร้างการจองสำเร็จ
- *         content:
- *           application/json:
- *             schema:
- *               $ref: '#/components/schemas/Booking'
- *       400:
- *         description: ข้อมูลไม่ครบถ้วน
- */
-// POST /api/bookings — สร้างการจองใหม่ (ไม่ต้อง login)
-app.post('/api/bookings', (req, res) => {
-  const { fullname, email, phone, checkin, checkout, roomtype, guests } = req.body;
-  const sql = `INSERT INTO bookings (fullname, email, phone, checkin, checkout, roomtype, guests)
-               VALUES (?, ?, ?, ?, ?, ?, ?)`;
+app.post('/api/bookings', async (req, res) => {
+  const bookingData = normalizeBookingData(req.body);
+  const { errors, room } = await validateBookingData(bookingData);
+  if (errors.length > 0) {
+    return res.status(400).json({ error: errors.join(', ') });
+  }
 
-  db.run(sql, [fullname, email, phone, checkin, checkout, roomtype, guests], function (err) {
-    if (err) return res.status(400).json({ error: err.message });
-    db.get('SELECT * FROM bookings WHERE id = ?', [this.lastID], (err, row) => {
-      if (err) return res.status(400).json({ error: err.message });
-      res.status(201).json(row);
+  try {
+    const booking = await db.booking.create({
+      data: {
+        fullname: bookingData.fullname,
+        email: bookingData.email,
+        phone: bookingData.phone,
+        checkin: new Date(bookingData.checkin),
+        checkout: new Date(bookingData.checkout),
+        roomtype: room ? room.roomType : bookingData.roomtype,
+        roomId: room ? room.id : undefined,
+        guests: Number(bookingData.guests),
+        comment: bookingData.comment || undefined,
+        status: bookingData.status || 'pending'
+      }
     });
-  });
+    res.status(201).json(booking);
+  } catch (error) {
+    res.status(400).json({ error: error.message });
+  }
 });
 
-/**
- * @swagger
- * /api/bookings:
- *   get:
- *     summary: ดึงข้อมูลการจองทั้งหมด
- *     description: ต้องการ JWT Token — กด Authorize ที่มุมบนขวาก่อนทดลองใช้
- *     tags: [Bookings]
- *     security:
- *       - bearerAuth: []
- *     responses:
- *       200:
- *         description: 'จองห้องสำเร็จ  '
- *         content:
- *           application/json:
- *             schema:
- *               type: array
- *               items:
- *                 $ref: '#/components/schemas/Booking'
- *       401:
- *         description: ไม่ได้ส่ง Token
- *       403:
- *         description: Token ไม่ถูกต้องหรือหมดอายุ
- */
-// GET /api/bookings — ดึงข้อมูลทั้งหมด (ต้อง login)
-app.get('/api/bookings', authenticateToken, (req, res) => {
-  db.all('SELECT * FROM bookings ORDER BY created_at DESC', [], (err, rows) => {
-    if (err) return res.status(400).json({ error: err.message });
+app.get('/api/bookings', authenticateToken, async (req, res) => {
+  try {
+    const rows = await db.booking.findMany({
+      orderBy: { createdAt: 'desc' },
+      include: { room: true }
+    });
     res.json(rows);
-  });
+  } catch (error) {
+    res.status(400).json({ error: error.message });
+  }
 });
 
-/**
- * @swagger
- * /api/bookings/{id}:
- *   get:
- *     summary: ดึงข้อมูลการจองตาม ID
- *     tags: [Bookings]
- *     security:
- *       - bearerAuth: []
- *     parameters:
- *       - in: path
- *         name: id
- *         required: true
- *         schema:
- *           type: integer
- *         description: ID ของการจอง
- *         example: 1
- *     responses:
- *       200:
- *         description: ข้อมูลการจอง
- *         content:
- *           application/json:
- *             schema:
- *               $ref: '#/components/schemas/Booking'
- *       401:
- *         description: ไม่ได้ส่ง Token
- *       404:
- *         description: ไม่พบข้อมูลการจอง
- */
-// GET /api/bookings/:id — ดึงข้อมูลตาม ID (ต้อง login)
-app.get('/api/bookings/:id', authenticateToken, (req, res) => {
-  db.get('SELECT * FROM bookings WHERE id = ?', [req.params.id], (err, row) => {
-    if (err) return res.status(400).json({ error: err.message });
-    if (!row) return res.status(404).json({ error: 'ไม่พบข้อมูลการจอง' });
-    res.json(row);
-  });
-});
-
-/**
- * @swagger
- * /api/bookings/{id}:
- *   put:
- *     summary: แก้ไขข้อมูลการจอง
- *     tags: [Bookings]
- *     security:
- *       - bearerAuth: []
- *     parameters:
- *       - in: path
- *         name: id
- *         required: true
- *         schema:
- *           type: integer
- *         example: 1
- *     requestBody:
- *       required: true
- *       content:
- *         application/json:
- *           schema:
- *             $ref: '#/components/schemas/Booking'
- *     responses:
- *       200:
- *         description: แก้ไขสำเร็จ คืนข้อมูลที่อัปเดตแล้ว
- *         content:
- *           application/json:
- *             schema:
- *               $ref: '#/components/schemas/Booking'
- *       401:
- *         description: ไม่ได้ส่ง Token
- *       404:
- *         description: ไม่พบข้อมูลการจอง
- */
-// PUT /api/bookings/:id — อัปเดตการจอง (ต้อง login)
-app.put('/api/bookings/:id', authenticateToken, (req, res) => {
-  const { fullname, email, phone, checkin, checkout, roomtype, guests, comment } = req.body;
-  const sql = `UPDATE bookings
-               SET fullname=?, email=?, phone=?, checkin=?, checkout=?,
-                   roomtype=?, guests=?, comment=?
-               WHERE id=?`;
-
-  db.run(sql, [fullname, email, phone, checkin, checkout, roomtype, guests, comment, req.params.id],
-    function (err) {
-      if (err) return res.status(400).json({ error: err.message });
-      if (this.changes === 0) return res.status(404).json({ error: 'ไม่พบข้อมูลการจอง' });
-
-      db.get('SELECT * FROM bookings WHERE id = ?', [req.params.id], (err, row) => {
-        if (err) return res.status(400).json({ error: err.message });
-        res.json(row);
-      });
-    }
-  );
-});
-
-/**
- * @swagger
- * /api/bookings/{id}:
- *   delete:
- *     summary: ลบข้อมูลการจอง
- *     tags: [Bookings]
- *     security:
- *       - bearerAuth: []
- *     parameters:
- *       - in: path
- *         name: id
- *         required: true
- *         schema:
- *           type: integer
- *         example: 1
- *     responses:
- *       200:
- *         description: ลบสำเร็จ
- *         content:
- *           application/json:
- *             schema:
- *               type: object
- *               properties:
- *                 message: { type: string, example: ลบข้อมูลสำเร็จ }
- *                 id:      { type: string, example: "1" }
- *       401:
- *         description: ไม่ได้ส่ง Token
- *       404:
- *         description: ไม่พบข้อมูลการจอง
- */
-// DELETE /api/bookings/:id — ลบการจอง (ต้อง login)
-app.delete('/api/bookings/:id', authenticateToken, (req, res) => {
-  db.run('DELETE FROM bookings WHERE id = ?', [req.params.id], function (err) {
-    if (err) return res.status(400).json({ error: err.message });
-    if (this.changes === 0) return res.status(404).json({ error: 'ไม่พบข้อมูลการจอง' });
-    res.json({ message: 'ลบข้อมูลสำเร็จ', id: req.params.id });
-  });
-});
-/**
- * @swagger
- * /api/health:
- *   get:
- *     summary: ตรวจสอบสถานะของ Server
- *     description: ใช้สำหรับ Health Check — ไม่ต้องการ Authentication
- *     tags: [System]
- *     responses:
- *       200:
- *         description: Server ทำงานปกติ
- *         content:
- *           application/json:
- *             schema:
- *               type: object
- *               properties:
- *                 status:  { type: string,  example: ok }
- *                 uptime:  { type: number,  example: 120.5 }
- *                 time:    { type: string,  example: '2026-01-01T00:00:00.000Z' }
- */
-app.get('/api/health', (req, res) => {
-  res.json({
-    status: 'ok',
-    uptime: process.uptime(),    // จำนวนวินาทีที่ server รันมา
-    time: new Date().toISOString()
-  });
-});
-
-app.use((req, res, next) => {
-  res.setHeader('Content-Type', 'application/json; charset=utf-8');
-  next();
-});
-
-// GET /api/reports — ดูรายงานการจองทั้งหมด
-app.get('/api/reports', authenticateToken, (req, res) => {
-
-  const sql = `
-    SELECT 
-      roomtype,
-      COUNT(*) as total_bookings,
-      SUM(guests) as total_guests
-    FROM bookings
-    GROUP BY roomtype
-  `;
-
-  db.all(sql, [], (err, rows) => {
-    if (err) {
-      return res.status(500).json({
-        error: err.message
-      });
-    }
-
-    res.json({
-      reportGeneratedAt: new Date().toISOString(),
-      data: rows
+app.get('/api/bookings/:id', authenticateToken, async (req, res) => {
+  try {
+    const booking = await db.booking.findUnique({
+      where: { id: Number(req.params.id) },
+      include: { room: true }
     });
-  });
-});
-
-// GET /api/rooms — ดูรายการห้องทั้งหมด
-app.get('/api/rooms', (req, res) => {
-
-  const rooms = [
-    {
-      id: 1,
-      name: "Standard Room",
-      type: "standard",
-      capacity: 2,
-      price: 1200
-    },
-    {
-      id: 2,
-      name: "Deluxe Room",
-      type: "deluxe",
-      capacity: 4,
-      price: 2500
-    },
-    {
-      id: 3,
-      name: "Suite Room",
-      type: "suite",
-      capacity: 6,
-      price: 5000
+    if (!booking) {
+      return res.status(404).json({ error: 'ไม่พบข้อมูลการจอง' });
     }
-  ];
-
-  res.json(rooms);
+    res.json(booking);
+  } catch (error) {
+    res.status(400).json({ error: error.message });
+  }
 });
+
+app.put('/api/bookings/:id', authenticateToken, async (req, res) => {
+  const bookingData = normalizeBookingData(req.body);
+  const { errors, room } = await validateBookingData(bookingData, true);
+  if (errors.length > 0) {
+    return res.status(400).json({ error: errors.join(', ') });
+  }
+
+  try {
+    const updated = await db.booking.update({
+      where: { id: Number(req.params.id) },
+      data: {
+        fullname: bookingData.fullname,
+        email: bookingData.email,
+        phone: bookingData.phone,
+        checkin: new Date(bookingData.checkin),
+        checkout: new Date(bookingData.checkout),
+        roomtype: room ? room.roomType : bookingData.roomtype,
+        roomId: room ? room.id : undefined,
+        guests: Number(bookingData.guests),
+        comment: bookingData.comment || undefined,
+        status: bookingData.status || 'pending'
+      }
+    });
+    res.json(updated);
+  } catch (error) {
+    if (error.code === 'P2025') {
+      return res.status(404).json({ error: 'ไม่พบข้อมูลการจอง' });
+    }
+    res.status(400).json({ error: error.message });
+  }
+});
+
+app.delete('/api/bookings/:id', authenticateToken, async (req, res) => {
+  try {
+    await db.booking.delete({ where: { id: Number(req.params.id) } });
+    res.json({ message: 'ลบข้อมูลสำเร็จ', id: req.params.id });
+  } catch (error) {
+    if (error.code === 'P2025') {
+      return res.status(404).json({ error: 'ไม่พบข้อมูลการจอง' });
+    }
+    res.status(400).json({ error: error.message });
+  }
+});
+
+app.get('/api/rooms', async (req, res) => {
+  try {
+    const rooms = await db.room.findMany({ orderBy: { roomType: 'asc' } });
+    res.json(rooms);
+  } catch (error) {
+    res.status(400).json({ error: error.message });
+  }
+});
+
+app.post('/api/rooms', authenticateToken, requireAdmin, async (req, res) => {
+  const roomData = normalizeRoomData(req.body);
+  const errors = validateRoomData(roomData);
+  if (errors.length > 0) {
+    return res.status(400).json({ error: errors.join(', ') });
+  }
+
+  try {
+    const room = await db.room.create({
+      data: {
+        roomType: roomData.roomType,
+        name: roomData.name,
+        description: roomData.description,
+        capacity: Number(roomData.capacity),
+        price: Number(roomData.price)
+      }
+    });
+    res.status(201).json(room);
+  } catch (error) {
+    res.status(400).json({ error: error.message });
+  }
+});
+
+app.put('/api/rooms/:id', authenticateToken, requireAdmin, async (req, res) => {
+  const errors = validateRoomData(req.body, true);
+  if (errors.length > 0) {
+    return res.status(400).json({ error: errors.join(', ') });
+  }
+
+  try {
+    const updated = await db.room.update({
+      where: { id: Number(req.params.id) },
+      data: {
+        roomType: req.body.roomType,
+        name: req.body.name,
+        description: req.body.description,
+        capacity: Number(req.body.capacity),
+        price: Number(req.body.price)
+      }
+    });
+    res.json(updated);
+  } catch (error) {
+    if (error.code === 'P2025') {
+      return res.status(404).json({ error: 'ไม่พบข้อมูลห้องพัก' });
+    }
+    res.status(400).json({ error: error.message });
+  }
+});
+
+app.delete('/api/rooms/:id', authenticateToken, requireAdmin, async (req, res) => {
+  try {
+    await db.room.delete({ where: { id: Number(req.params.id) } });
+    res.json({ message: 'ลบห้องพักสำเร็จ', id: req.params.id });
+  } catch (error) {
+    if (error.code === 'P2025') {
+      return res.status(404).json({ error: 'ไม่พบข้อมูลห้องพัก' });
+    }
+    res.status(400).json({ error: error.message });
+  }
+});
+
+app.get('/api/reports', authenticateToken, async (req, res) => {
+  try {
+    const bookings = await db.booking.findMany({ include: { room: true }, orderBy: { createdAt: 'desc' } });
+    const summaryByRoom = bookings.reduce((acc, booking) => {
+      const name = booking.room?.name || booking.roomtype;
+      acc[name] = (acc[name] || 0) + 1;
+      return acc;
+    }, {});
+    const summaryByStatus = bookings.reduce((acc, booking) => {
+      acc[booking.status] = (acc[booking.status] || 0) + 1;
+      return acc;
+    }, {});
+    const totalNights = bookings.reduce((acc, booking) => {
+      const checkin = new Date(booking.checkin);
+      const checkout = new Date(booking.checkout);
+      return acc + Math.max(0, Math.ceil((checkout - checkin) / (1000 * 60 * 60 * 24)));
+    }, 0);
+    res.json({ bookings, summaryByRoom, summaryByStatus, totalNights, totalBookings: bookings.length });
+  } catch (error) {
+    res.status(400).json({ error: error.message });
+  }
+});
+
+app.get('/api/reports/export', authenticateToken, async (req, res) => {
+  const format = req.query.format === 'json' ? 'json' : 'csv';
+  try {
+    const bookings = await db.booking.findMany({ include: { room: true }, orderBy: { createdAt: 'desc' } });
+    const reportData = bookings.map((booking) => ({
+      id: booking.id,
+      fullname: booking.fullname,
+      email: booking.email,
+      phone: booking.phone,
+      room: booking.room?.name || booking.roomtype,
+      roomType: booking.room?.roomType || booking.roomtype,
+      guests: booking.guests,
+      status: booking.status,
+      checkin: booking.checkin.toISOString(),
+      checkout: booking.checkout.toISOString(),
+      comment: booking.comment || '',
+      createdAt: booking.createdAt.toISOString(),
+      roomPrice: booking.room?.price || ''
+    }));
+
+    const fileName = `report-${Date.now()}.${format}`;
+    const filePath = path.join(REPORT_DIR, fileName);
+
+    if (format === 'json') {
+      const content = JSON.stringify(reportData, null, 2);
+      fs.writeFileSync(filePath, content, 'utf-8');
+      res.setHeader('Content-Type', 'application/json');
+      res.setHeader('Content-Disposition', `attachment; filename="${fileName}"`);
+      res.send(content);
+    } else {
+      const header = 'id,fullname,email,phone,room,roomType,guests,status,checkin,checkout,comment,createdAt,roomPrice';
+      const rows = reportData.map((row) =>
+        [row.id, row.fullname, row.email, row.phone, row.room, row.roomType, row.guests, row.status,
+          row.checkin, row.checkout, `"${String(row.comment).replace(/"/g, '""')}"`, row.createdAt, row.roomPrice]
+          .join(',')
+      );
+      const content = [header, ...rows].join('\n');
+      fs.writeFileSync(filePath, content, 'utf-8');
+      res.setHeader('Content-Type', 'text/csv');
+      res.setHeader('Content-Disposition', `attachment; filename="${fileName}"`);
+      res.send(content);
+    }
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+});
+
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));

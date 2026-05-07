@@ -48,8 +48,11 @@ const BookingList = () => {
 
   return (
     <div className="container mx-auto px-4 py-8">
-      <div className="flex justify-between items-center mb-6">
-        <h2 className="text-2xl font-bold">รายการจองห้องพัก</h2>
+      <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-6 gap-4">
+        <div>
+          <h2 className="text-2xl font-bold">รายการจองห้องพัก</h2>
+          <p className="text-gray-600 mt-1">จัดการการจอง ดูรายละเอียด และแก้ไขสถานะ</p>
+        </div>
         <Link to="/admin/bookings/new"
           className="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600">
           + เพิ่มการจอง
@@ -62,14 +65,18 @@ const BookingList = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
           {bookings.map((booking) => (
             <div key={booking.id} className="bg-white p-4 rounded-lg shadow">
-              <div className="flex justify-between items-start mb-2">
-                <h3 className="font-bold">{booking.fullname}</h3>
-                <div className="space-x-2">
-                  <Link to={`/admin/bookings/edit/${booking.id}`}
-                    className="text-blue-500 hover:text-blue-700 text-sm">แก้ไข</Link>
-                  <button onClick={() => handleDelete(booking.id)}
-                    className="text-red-500 hover:text-red-700 text-sm">ลบ</button>
+              <div className="flex justify-between items-start mb-3">
+                <div>
+                  <h3 className="font-bold">{booking.fullname}</h3>
+                  <p className="text-xs text-gray-500">สร้างเมื่อ {new Date(booking.createdAt).toLocaleDateString('th-TH')}</p>
                 </div>
+                <span className={`px-2 py-1 rounded-full text-xs font-semibold ${
+                  booking.status === 'confirmed' ? 'bg-green-100 text-green-700' :
+                  booking.status === 'cancelled' ? 'bg-red-100 text-red-700' :
+                  booking.status === 'completed' ? 'bg-blue-100 text-blue-700' : 'bg-yellow-100 text-yellow-700'
+                }`}>
+                  {booking.status}
+                </span>
               </div>
               <p className="text-gray-600 text-sm">อีเมล: {booking.email}</p>
               <p className="text-gray-600 text-sm">เบอร์โทร: {booking.phone}</p>
@@ -84,6 +91,12 @@ const BookingList = () => {
               {booking.comment && (
                 <p className="text-gray-500 text-sm mt-1 italic">หมายเหตุ: {booking.comment}</p>
               )}
+              <div className="mt-4 flex items-center justify-between gap-2">
+                <Link to={`/admin/bookings/edit/${booking.id}`}
+                  className="text-blue-500 hover:text-blue-700 text-sm font-medium">แก้ไข</Link>
+                <button onClick={() => handleDelete(booking.id)}
+                  className="text-red-500 hover:text-red-700 text-sm font-medium">ลบ</button>
+              </div>
             </div>
           ))}
         </div>

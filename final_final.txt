@@ -1,0 +1,2758 @@
+On branch main
+Your branch and 'origin/main' have diverged,
+and have 6 and 35 different commits each, respectively.
+  (use "git pull" if you want to integrate the remote branch with yours)
+
+You have unmerged paths.
+  (fix conflicts and run "git commit")
+  (use "git merge --abort" to abort the merge)
+
+Changes to be committed:
+	modified:   .DS_Store
+	new file:   .github/workflows/deploy-qa
+	modified:   README.md
+	new file:   backend/.env.example
+	renamed:    backend/node_modules/buffer-equal-constant-time/.npmignore -> backend/.gitignore
+	new file:   backend/docker-compose.yml
+	new file:   backend/docker-entrypoint.sh
+	new file:   backend/healthcheck.js
+	deleted:    backend/node_modules/@apidevtools/json-schema-ref-parser/LICENSE
+	deleted:    backend/node_modules/@apidevtools/json-schema-ref-parser/README.md
+	deleted:    backend/node_modules/@apidevtools/json-schema-ref-parser/lib/bundle.js
+	deleted:    backend/node_modules/@apidevtools/json-schema-ref-parser/lib/dereference.js
+	deleted:    backend/node_modules/@apidevtools/json-schema-ref-parser/lib/index.d.ts
+	deleted:    backend/node_modules/@apidevtools/json-schema-ref-parser/lib/index.js
+	deleted:    backend/node_modules/@apidevtools/json-schema-ref-parser/lib/normalize-args.js
+	deleted:    backend/node_modules/@apidevtools/json-schema-ref-parser/lib/options.js
+	deleted:    backend/node_modules/@apidevtools/json-schema-ref-parser/lib/parse.js
+	deleted:    backend/node_modules/@apidevtools/json-schema-ref-parser/lib/parsers/binary.js
+	deleted:    backend/node_modules/@apidevtools/json-schema-ref-parser/lib/parsers/json.js
+	deleted:    backend/node_modules/@apidevtools/json-schema-ref-parser/lib/parsers/text.js
+	deleted:    backend/node_modules/@apidevtools/json-schema-ref-parser/lib/parsers/yaml.js
+	deleted:    backend/node_modules/@apidevtools/json-schema-ref-parser/lib/pointer.js
+	deleted:    backend/node_modules/@apidevtools/json-schema-ref-parser/lib/ref.js
+	deleted:    backend/node_modules/@apidevtools/json-schema-ref-parser/lib/refs.js
+	deleted:    backend/node_modules/@apidevtools/json-schema-ref-parser/lib/resolve-external.js
+	deleted:    backend/node_modules/@apidevtools/json-schema-ref-parser/lib/resolvers/file.js
+	deleted:    backend/node_modules/@apidevtools/json-schema-ref-parser/lib/resolvers/http.js
+	deleted:    backend/node_modules/@apidevtools/json-schema-ref-parser/lib/util/errors.js
+	deleted:    backend/node_modules/@apidevtools/json-schema-ref-parser/lib/util/plugins.js
+	deleted:    backend/node_modules/@apidevtools/json-schema-ref-parser/lib/util/url.js
+	deleted:    backend/node_modules/@apidevtools/json-schema-ref-parser/package.json
+	deleted:    backend/node_modules/@apidevtools/openapi-schemas/CHANGELOG.md
+	deleted:    backend/node_modules/@apidevtools/openapi-schemas/LICENSE
+	deleted:    backend/node_modules/@apidevtools/openapi-schemas/README.md
+	deleted:    backend/node_modules/@apidevtools/openapi-schemas/lib/index.d.ts
+	deleted:    backend/node_modules/@apidevtools/openapi-schemas/lib/index.js
+	deleted:    backend/node_modules/@apidevtools/openapi-schemas/lib/index.js.map
+	deleted:    backend/node_modules/@apidevtools/openapi-schemas/lib/json-schema.d.ts
+	deleted:    backend/node_modules/@apidevtools/openapi-schemas/lib/json-schema.js
+	deleted:    backend/node_modules/@apidevtools/openapi-schemas/lib/json-schema.js.map
+	deleted:    backend/node_modules/@apidevtools/openapi-schemas/package.json
+	deleted:    backend/node_modules/@apidevtools/openapi-schemas/schemas/v1.2/README.md
+	deleted:    backend/node_modules/@apidevtools/openapi-schemas/schemas/v1.2/apiDeclaration.json
+	deleted:    backend/node_modules/@apidevtools/openapi-schemas/schemas/v1.2/authorizationObject.json
+	deleted:    backend/node_modules/@apidevtools/openapi-schemas/schemas/v1.2/dataType.json
+	deleted:    backend/node_modules/@apidevtools/openapi-schemas/schemas/v1.2/dataTypeBase.json
+	deleted:    backend/node_modules/@apidevtools/openapi-schemas/schemas/v1.2/infoObject.json
+	deleted:    backend/node_modules/@apidevtools/openapi-schemas/schemas/v1.2/modelsObject.json
+	deleted:    backend/node_modules/@apidevtools/openapi-schemas/schemas/v1.2/oauth2GrantType.json
+	deleted:    backend/node_modules/@apidevtools/openapi-schemas/schemas/v1.2/operationObject.json
+	deleted:    backend/node_modules/@apidevtools/openapi-schemas/schemas/v1.2/parameterObject.json
+	deleted:    backend/node_modules/@apidevtools/openapi-schemas/schemas/v1.2/resourceListing.json
+	deleted:    backend/node_modules/@apidevtools/openapi-schemas/schemas/v1.2/resourceObject.json
+	deleted:    backend/node_modules/@apidevtools/openapi-schemas/schemas/v2.0/README.md
+	deleted:    backend/node_modules/@apidevtools/openapi-schemas/schemas/v2.0/schema.json
+	deleted:    backend/node_modules/@apidevtools/openapi-schemas/schemas/v3.0/README.md
+	deleted:    backend/node_modules/@apidevtools/openapi-schemas/schemas/v3.0/schema.json
+	deleted:    backend/node_modules/@apidevtools/openapi-schemas/schemas/v3.0/schema.yaml
+	deleted:    backend/node_modules/@apidevtools/openapi-schemas/schemas/v3.1/README.md
+	deleted:    backend/node_modules/@apidevtools/openapi-schemas/schemas/v3.1/dialect/base.schema.json
+	deleted:    backend/node_modules/@apidevtools/openapi-schemas/schemas/v3.1/meta/base.schema.json
+	deleted:    backend/node_modules/@apidevtools/openapi-schemas/schemas/v3.1/schema-base.json
+	deleted:    backend/node_modules/@apidevtools/openapi-schemas/schemas/v3.1/schema-base.yaml
+	deleted:    backend/node_modules/@apidevtools/openapi-schemas/schemas/v3.1/schema.json
+	deleted:    backend/node_modules/@apidevtools/openapi-schemas/schemas/v3.1/schema.yaml
+	deleted:    backend/node_modules/@apidevtools/swagger-methods/CHANGELOG.md
+	deleted:    backend/node_modules/@apidevtools/swagger-methods/LICENSE
+	deleted:    backend/node_modules/@apidevtools/swagger-methods/README.md
+	deleted:    backend/node_modules/@apidevtools/swagger-methods/lib/index.js
+	deleted:    backend/node_modules/@apidevtools/swagger-methods/package.json
+	deleted:    backend/node_modules/@apidevtools/swagger-parser/CHANGELOG.md
+	deleted:    backend/node_modules/@apidevtools/swagger-parser/LICENSE
+	deleted:    backend/node_modules/@apidevtools/swagger-parser/README.md
+	deleted:    backend/node_modules/@apidevtools/swagger-parser/lib/index.d.ts
+	deleted:    backend/node_modules/@apidevtools/swagger-parser/lib/index.js
+	deleted:    backend/node_modules/@apidevtools/swagger-parser/lib/options.js
+	deleted:    backend/node_modules/@apidevtools/swagger-parser/lib/util.js
+	deleted:    backend/node_modules/@apidevtools/swagger-parser/lib/validators/schema.js
+	deleted:    backend/node_modules/@apidevtools/swagger-parser/lib/validators/spec.js
+	deleted:    backend/node_modules/@apidevtools/swagger-parser/package.json
+	deleted:    backend/node_modules/@gar/promisify/LICENSE.md
+	deleted:    backend/node_modules/@gar/promisify/README.md
+	deleted:    backend/node_modules/@gar/promisify/index.js
+	deleted:    backend/node_modules/@gar/promisify/package.json
+	deleted:    backend/node_modules/@jsdevtools/ono/CHANGELOG.md
+	deleted:    backend/node_modules/@jsdevtools/ono/LICENSE
+	deleted:    backend/node_modules/@jsdevtools/ono/README.md
+	deleted:    backend/node_modules/@jsdevtools/ono/cjs/constructor.d.ts
+	deleted:    backend/node_modules/@jsdevtools/ono/cjs/constructor.js
+	deleted:    backend/node_modules/@jsdevtools/ono/cjs/constructor.js.map
+	deleted:    backend/node_modules/@jsdevtools/ono/cjs/extend-error.d.ts
+	deleted:    backend/node_modules/@jsdevtools/ono/cjs/extend-error.js
+	deleted:    backend/node_modules/@jsdevtools/ono/cjs/extend-error.js.map
+	deleted:    backend/node_modules/@jsdevtools/ono/cjs/index.d.ts
+	deleted:    backend/node_modules/@jsdevtools/ono/cjs/index.js
+	deleted:    backend/node_modules/@jsdevtools/ono/cjs/index.js.map
+	deleted:    backend/node_modules/@jsdevtools/ono/cjs/isomorphic.browser.d.ts
+	deleted:    backend/node_modules/@jsdevtools/ono/cjs/isomorphic.browser.js
+	deleted:    backend/node_modules/@jsdevtools/ono/cjs/isomorphic.browser.js.map
+	deleted:    backend/node_modules/@jsdevtools/ono/cjs/isomorphic.node.d.ts
+	deleted:    backend/node_modules/@jsdevtools/ono/cjs/isomorphic.node.js
+	deleted:    backend/node_modules/@jsdevtools/ono/cjs/isomorphic.node.js.map
+	deleted:    backend/node_modules/@jsdevtools/ono/cjs/normalize.d.ts
+	deleted:    backend/node_modules/@jsdevtools/ono/cjs/normalize.js
+	deleted:    backend/node_modules/@jsdevtools/ono/cjs/normalize.js.map
+	deleted:    backend/node_modules/@jsdevtools/ono/cjs/singleton.d.ts
+	deleted:    backend/node_modules/@jsdevtools/ono/cjs/singleton.js
+	deleted:    backend/node_modules/@jsdevtools/ono/cjs/singleton.js.map
+	deleted:    backend/node_modules/@jsdevtools/ono/cjs/stack.d.ts
+	deleted:    backend/node_modules/@jsdevtools/ono/cjs/stack.js
+	deleted:    backend/node_modules/@jsdevtools/ono/cjs/stack.js.map
+	deleted:    backend/node_modules/@jsdevtools/ono/cjs/to-json.d.ts
+	deleted:    backend/node_modules/@jsdevtools/ono/cjs/to-json.js
+	deleted:    backend/node_modules/@jsdevtools/ono/cjs/to-json.js.map
+	deleted:    backend/node_modules/@jsdevtools/ono/cjs/types.d.ts
+	deleted:    backend/node_modules/@jsdevtools/ono/cjs/types.js
+	deleted:    backend/node_modules/@jsdevtools/ono/cjs/types.js.map
+	deleted:    backend/node_modules/@jsdevtools/ono/esm/constructor.d.ts
+	deleted:    backend/node_modules/@jsdevtools/ono/esm/constructor.js
+	deleted:    backend/node_modules/@jsdevtools/ono/esm/constructor.js.map
+	deleted:    backend/node_modules/@jsdevtools/ono/esm/extend-error.d.ts
+	deleted:    backend/node_modules/@jsdevtools/ono/esm/extend-error.js
+	deleted:    backend/node_modules/@jsdevtools/ono/esm/extend-error.js.map
+	deleted:    backend/node_modules/@jsdevtools/ono/esm/index.d.ts
+	deleted:    backend/node_modules/@jsdevtools/ono/esm/index.js
+	deleted:    backend/node_modules/@jsdevtools/ono/esm/index.js.map
+	deleted:    backend/node_modules/@jsdevtools/ono/esm/isomorphic.browser.d.ts
+	deleted:    backend/node_modules/@jsdevtools/ono/esm/isomorphic.browser.js
+	deleted:    backend/node_modules/@jsdevtools/ono/esm/isomorphic.browser.js.map
+	deleted:    backend/node_modules/@jsdevtools/ono/esm/isomorphic.node.d.ts
+	deleted:    backend/node_modules/@jsdevtools/ono/esm/isomorphic.node.js
+	deleted:    backend/node_modules/@jsdevtools/ono/esm/isomorphic.node.js.map
+	deleted:    backend/node_modules/@jsdevtools/ono/esm/normalize.d.ts
+	deleted:    backend/node_modules/@jsdevtools/ono/esm/normalize.js
+	deleted:    backend/node_modules/@jsdevtools/ono/esm/normalize.js.map
+	deleted:    backend/node_modules/@jsdevtools/ono/esm/singleton.d.ts
+	deleted:    backend/node_modules/@jsdevtools/ono/esm/singleton.js
+	deleted:    backend/node_modules/@jsdevtools/ono/esm/singleton.js.map
+	deleted:    backend/node_modules/@jsdevtools/ono/esm/stack.d.ts
+	deleted:    backend/node_modules/@jsdevtools/ono/esm/stack.js
+	deleted:    backend/node_modules/@jsdevtools/ono/esm/stack.js.map
+	deleted:    backend/node_modules/@jsdevtools/ono/esm/to-json.d.ts
+	deleted:    backend/node_modules/@jsdevtools/ono/esm/to-json.js
+	deleted:    backend/node_modules/@jsdevtools/ono/esm/to-json.js.map
+	deleted:    backend/node_modules/@jsdevtools/ono/esm/types.d.ts
+	deleted:    backend/node_modules/@jsdevtools/ono/esm/types.js
+	deleted:    backend/node_modules/@jsdevtools/ono/esm/types.js.map
+	deleted:    backend/node_modules/@jsdevtools/ono/package.json
+	deleted:    backend/node_modules/@npmcli/fs/LICENSE.md
+	deleted:    backend/node_modules/@npmcli/fs/README.md
+	deleted:    backend/node_modules/@npmcli/fs/lib/common/file-url-to-path/index.js
+	deleted:    backend/node_modules/@npmcli/fs/lib/common/file-url-to-path/polyfill.js
+	deleted:    backend/node_modules/@npmcli/fs/lib/common/get-options.js
+	deleted:    backend/node_modules/@npmcli/fs/lib/common/node.js
+	deleted:    backend/node_modules/@npmcli/fs/lib/common/owner.js
+	deleted:    backend/node_modules/@npmcli/fs/lib/copy-file.js
+	deleted:    backend/node_modules/@npmcli/fs/lib/cp/LICENSE
+	deleted:    backend/node_modules/@npmcli/fs/lib/cp/index.js
+	deleted:    backend/node_modules/@npmcli/fs/lib/cp/polyfill.js
+	deleted:    backend/node_modules/@npmcli/fs/lib/errors.js
+	deleted:    backend/node_modules/@npmcli/fs/lib/fs.js
+	deleted:    backend/node_modules/@npmcli/fs/lib/index.js
+	deleted:    backend/node_modules/@npmcli/fs/lib/mkdir/index.js
+	deleted:    backend/node_modules/@npmcli/fs/lib/mkdir/polyfill.js
+	deleted:    backend/node_modules/@npmcli/fs/lib/mkdtemp.js
+	deleted:    backend/node_modules/@npmcli/fs/lib/rm/index.js
+	deleted:    backend/node_modules/@npmcli/fs/lib/rm/polyfill.js
+	deleted:    backend/node_modules/@npmcli/fs/lib/with-temp-dir.js
+	deleted:    backend/node_modules/@npmcli/fs/lib/write-file.js
+	deleted:    backend/node_modules/@npmcli/fs/package.json
+	deleted:    backend/node_modules/@npmcli/move-file/LICENSE.md
+	deleted:    backend/node_modules/@npmcli/move-file/README.md
+	deleted:    backend/node_modules/@npmcli/move-file/index.js
+	deleted:    backend/node_modules/@npmcli/move-file/package.json
+	deleted:    backend/node_modules/@scarf/scarf/LICENSE
+	deleted:    backend/node_modules/@scarf/scarf/README.md
+	deleted:    backend/node_modules/@scarf/scarf/package.json
+	deleted:    backend/node_modules/@scarf/scarf/report.js
+	deleted:    backend/node_modules/@tootallnate/once/dist/index.d.ts
+	deleted:    backend/node_modules/@tootallnate/once/dist/index.js
+	deleted:    backend/node_modules/@tootallnate/once/dist/index.js.map
+	deleted:    backend/node_modules/@tootallnate/once/package.json
+	deleted:    backend/node_modules/@types/json-schema/LICENSE
+	deleted:    backend/node_modules/@types/json-schema/index.d.ts
+	deleted:    backend/node_modules/@types/json-schema/package.json
+	deleted:    backend/node_modules/abbrev/LICENSE
+	deleted:    backend/node_modules/abbrev/README.md
+	deleted:    backend/node_modules/abbrev/abbrev.js
+	deleted:    backend/node_modules/abbrev/package.json
+	deleted:    backend/node_modules/accepts/HISTORY.md
+	deleted:    backend/node_modules/accepts/LICENSE
+	deleted:    backend/node_modules/accepts/README.md
+	deleted:    backend/node_modules/accepts/index.js
+	deleted:    backend/node_modules/accepts/package.json
+	deleted:    backend/node_modules/agent-base/README.md
+	deleted:    backend/node_modules/agent-base/dist/src/index.d.ts
+	deleted:    backend/node_modules/agent-base/dist/src/index.js
+	deleted:    backend/node_modules/agent-base/dist/src/index.js.map
+	deleted:    backend/node_modules/agent-base/dist/src/promisify.d.ts
+	deleted:    backend/node_modules/agent-base/dist/src/promisify.js
+	deleted:    backend/node_modules/agent-base/dist/src/promisify.js.map
+	deleted:    backend/node_modules/agent-base/package.json
+	deleted:    backend/node_modules/agent-base/src/index.ts
+	deleted:    backend/node_modules/agent-base/src/promisify.ts
+	deleted:    backend/node_modules/agentkeepalive/LICENSE
+	deleted:    backend/node_modules/agentkeepalive/README.md
+	deleted:    backend/node_modules/agentkeepalive/browser.js
+	deleted:    backend/node_modules/agentkeepalive/index.d.ts
+	deleted:    backend/node_modules/agentkeepalive/index.js
+	deleted:    backend/node_modules/agentkeepalive/lib/agent.js
+	deleted:    backend/node_modules/agentkeepalive/lib/constants.js
+	deleted:    backend/node_modules/agentkeepalive/lib/https_agent.js
+	deleted:    backend/node_modules/agentkeepalive/package.json
+	deleted:    backend/node_modules/aggregate-error/index.d.ts
+	deleted:    backend/node_modules/aggregate-error/index.js
+	deleted:    backend/node_modules/aggregate-error/license
+	deleted:    backend/node_modules/aggregate-error/package.json
+	deleted:    backend/node_modules/aggregate-error/readme.md
+	deleted:    backend/node_modules/ansi-regex/index.d.ts
+	deleted:    backend/node_modules/ansi-regex/index.js
+	deleted:    backend/node_modules/ansi-regex/license
+	deleted:    backend/node_modules/ansi-regex/package.json
+	deleted:    backend/node_modules/ansi-regex/readme.md
+	deleted:    backend/node_modules/anymatch/LICENSE
+	deleted:    backend/node_modules/anymatch/README.md
+	deleted:    backend/node_modules/anymatch/index.d.ts
+	deleted:    backend/node_modules/anymatch/index.js
+	deleted:    backend/node_modules/anymatch/package.json
+	deleted:    backend/node_modules/aproba/LICENSE
+	deleted:    backend/node_modules/aproba/README.md
+	deleted:    backend/node_modules/aproba/index.js
+	deleted:    backend/node_modules/aproba/package.json
+	deleted:    backend/node_modules/are-we-there-yet/LICENSE.md
+	deleted:    backend/node_modules/are-we-there-yet/README.md
+	deleted:    backend/node_modules/are-we-there-yet/lib/index.js
+	deleted:    backend/node_modules/are-we-there-yet/lib/tracker-base.js
+	deleted:    backend/node_modules/are-we-there-yet/lib/tracker-group.js
+	deleted:    backend/node_modules/are-we-there-yet/lib/tracker-stream.js
+	deleted:    backend/node_modules/are-we-there-yet/lib/tracker.js
+	deleted:    backend/node_modules/are-we-there-yet/package.json
+	deleted:    backend/node_modules/argparse/CHANGELOG.md
+	deleted:    backend/node_modules/argparse/LICENSE
+	deleted:    backend/node_modules/argparse/README.md
+	deleted:    backend/node_modules/argparse/argparse.js
+	deleted:    backend/node_modules/argparse/lib/sub.js
+	deleted:    backend/node_modules/argparse/lib/textwrap.js
+	deleted:    backend/node_modules/argparse/package.json
+	deleted:    backend/node_modules/base64-js/LICENSE
+	deleted:    backend/node_modules/base64-js/README.md
+	deleted:    backend/node_modules/base64-js/base64js.min.js
+	deleted:    backend/node_modules/base64-js/index.d.ts
+	deleted:    backend/node_modules/base64-js/index.js
+	deleted:    backend/node_modules/base64-js/package.json
+	deleted:    backend/node_modules/bcryptjs/LICENSE
+	deleted:    backend/node_modules/bcryptjs/README.md
+	deleted:    backend/node_modules/bcryptjs/index.d.ts
+	deleted:    backend/node_modules/bcryptjs/index.js
+	deleted:    backend/node_modules/bcryptjs/package.json
+	deleted:    backend/node_modules/bcryptjs/types.d.ts
+	deleted:    backend/node_modules/bcryptjs/umd/index.d.ts
+	deleted:    backend/node_modules/bcryptjs/umd/index.js
+	deleted:    backend/node_modules/bcryptjs/umd/package.json
+	deleted:    backend/node_modules/bcryptjs/umd/types.d.ts
+	deleted:    backend/node_modules/binary-extensions/binary-extensions.json
+	deleted:    backend/node_modules/binary-extensions/binary-extensions.json.d.ts
+	deleted:    backend/node_modules/binary-extensions/index.d.ts
+	deleted:    backend/node_modules/binary-extensions/index.js
+	deleted:    backend/node_modules/binary-extensions/license
+	deleted:    backend/node_modules/binary-extensions/package.json
+	deleted:    backend/node_modules/binary-extensions/readme.md
+	deleted:    backend/node_modules/bindings/LICENSE.md
+	deleted:    backend/node_modules/bindings/README.md
+	deleted:    backend/node_modules/bindings/bindings.js
+	deleted:    backend/node_modules/bindings/package.json
+	deleted:    backend/node_modules/bl/.travis.yml
+	deleted:    backend/node_modules/bl/BufferList.js
+	deleted:    backend/node_modules/bl/LICENSE.md
+	deleted:    backend/node_modules/bl/README.md
+	deleted:    backend/node_modules/bl/bl.js
+	deleted:    backend/node_modules/bl/package.json
+	deleted:    backend/node_modules/bl/test/convert.js
+	deleted:    backend/node_modules/bl/test/indexOf.js
+	deleted:    backend/node_modules/bl/test/isBufferList.js
+	deleted:    backend/node_modules/bl/test/test.js
+	deleted:    backend/node_modules/body-parser/LICENSE
+	deleted:    backend/node_modules/body-parser/README.md
+	deleted:    backend/node_modules/body-parser/index.js
+	deleted:    backend/node_modules/body-parser/lib/read.js
+	deleted:    backend/node_modules/body-parser/lib/types/json.js
+	deleted:    backend/node_modules/body-parser/lib/types/raw.js
+	deleted:    backend/node_modules/body-parser/lib/types/text.js
+	deleted:    backend/node_modules/body-parser/lib/types/urlencoded.js
+	deleted:    backend/node_modules/body-parser/lib/utils.js
+	deleted:    backend/node_modules/body-parser/package.json
+	deleted:    backend/node_modules/braces/LICENSE
+	deleted:    backend/node_modules/braces/README.md
+	deleted:    backend/node_modules/braces/index.js
+	deleted:    backend/node_modules/braces/lib/compile.js
+	deleted:    backend/node_modules/braces/lib/constants.js
+	deleted:    backend/node_modules/braces/lib/expand.js
+	deleted:    backend/node_modules/braces/lib/parse.js
+	deleted:    backend/node_modules/braces/lib/stringify.js
+	deleted:    backend/node_modules/braces/lib/utils.js
+	deleted:    backend/node_modules/braces/package.json
+	deleted:    backend/node_modules/buffer-equal-constant-time/.travis.yml
+	deleted:    backend/node_modules/buffer-equal-constant-time/LICENSE.txt
+	deleted:    backend/node_modules/buffer-equal-constant-time/README.md
+	deleted:    backend/node_modules/buffer-equal-constant-time/index.js
+	deleted:    backend/node_modules/buffer-equal-constant-time/package.json
+	deleted:    backend/node_modules/buffer-equal-constant-time/test.js
+	deleted:    backend/node_modules/buffer/AUTHORS.md
+	deleted:    backend/node_modules/buffer/LICENSE
+	deleted:    backend/node_modules/buffer/README.md
+	deleted:    backend/node_modules/buffer/index.d.ts
+	deleted:    backend/node_modules/buffer/index.js
+	deleted:    backend/node_modules/buffer/package.json
+	deleted:    backend/node_modules/bytes/History.md
+	deleted:    backend/node_modules/bytes/LICENSE
+	deleted:    backend/node_modules/bytes/Readme.md
+	deleted:    backend/node_modules/bytes/index.js
+	deleted:    backend/node_modules/bytes/package.json
+	deleted:    backend/node_modules/cacache/LICENSE.md
+	deleted:    backend/node_modules/cacache/README.md
+	deleted:    backend/node_modules/cacache/get.js
+	deleted:    backend/node_modules/cacache/index.js
+	deleted:    backend/node_modules/cacache/lib/content/path.js
+	deleted:    backend/node_modules/cacache/lib/content/read.js
+	deleted:    backend/node_modules/cacache/lib/content/rm.js
+	deleted:    backend/node_modules/cacache/lib/content/write.js
+	deleted:    backend/node_modules/cacache/lib/entry-index.js
+	deleted:    backend/node_modules/cacache/lib/memoization.js
+	deleted:    backend/node_modules/cacache/lib/util/disposer.js
+	deleted:    backend/node_modules/cacache/lib/util/fix-owner.js
+	deleted:    backend/node_modules/cacache/lib/util/hash-to-segments.js
+	deleted:    backend/node_modules/cacache/lib/util/move-file.js
+	deleted:    backend/node_modules/cacache/lib/util/tmp.js
+	deleted:    backend/node_modules/cacache/lib/verify.js
+	deleted:    backend/node_modules/cacache/ls.js
+	deleted:    backend/node_modules/cacache/package.json
+	deleted:    backend/node_modules/cacache/put.js
+	deleted:    backend/node_modules/cacache/rm.js
+	deleted:    backend/node_modules/cacache/verify.js
+	deleted:    backend/node_modules/call-bind-apply-helpers/.eslintrc
+	deleted:    backend/node_modules/call-bind-apply-helpers/.github/FUNDING.yml
+	deleted:    backend/node_modules/call-bind-apply-helpers/.nycrc
+	deleted:    backend/node_modules/call-bind-apply-helpers/CHANGELOG.md
+	deleted:    backend/node_modules/call-bind-apply-helpers/LICENSE
+	deleted:    backend/node_modules/call-bind-apply-helpers/README.md
+	deleted:    backend/node_modules/call-bind-apply-helpers/actualApply.d.ts
+	deleted:    backend/node_modules/call-bind-apply-helpers/actualApply.js
+	deleted:    backend/node_modules/call-bind-apply-helpers/applyBind.d.ts
+	deleted:    backend/node_modules/call-bind-apply-helpers/applyBind.js
+	deleted:    backend/node_modules/call-bind-apply-helpers/functionApply.d.ts
+	deleted:    backend/node_modules/call-bind-apply-helpers/functionApply.js
+	deleted:    backend/node_modules/call-bind-apply-helpers/functionCall.d.ts
+	deleted:    backend/node_modules/call-bind-apply-helpers/functionCall.js
+	deleted:    backend/node_modules/call-bind-apply-helpers/index.d.ts
+	deleted:    backend/node_modules/call-bind-apply-helpers/index.js
+	deleted:    backend/node_modules/call-bind-apply-helpers/package.json
+	deleted:    backend/node_modules/call-bind-apply-helpers/reflectApply.d.ts
+	deleted:    backend/node_modules/call-bind-apply-helpers/reflectApply.js
+	deleted:    backend/node_modules/call-bind-apply-helpers/test/index.js
+	deleted:    backend/node_modules/call-bind-apply-helpers/tsconfig.json
+	deleted:    backend/node_modules/call-bound/.eslintrc
+	deleted:    backend/node_modules/call-bound/.github/FUNDING.yml
+	deleted:    backend/node_modules/call-bound/.nycrc
+	deleted:    backend/node_modules/call-bound/CHANGELOG.md
+	deleted:    backend/node_modules/call-bound/LICENSE
+	deleted:    backend/node_modules/call-bound/README.md
+	deleted:    backend/node_modules/call-bound/index.d.ts
+	deleted:    backend/node_modules/call-bound/index.js
+	deleted:    backend/node_modules/call-bound/package.json
+	deleted:    backend/node_modules/call-bound/test/index.js
+	deleted:    backend/node_modules/call-bound/tsconfig.json
+	deleted:    backend/node_modules/call-me-maybe/LICENSE
+	deleted:    backend/node_modules/call-me-maybe/README.md
+	deleted:    backend/node_modules/call-me-maybe/package.json
+	deleted:    backend/node_modules/call-me-maybe/src/maybe.js
+	deleted:    backend/node_modules/call-me-maybe/src/next.js
+	deleted:    backend/node_modules/chokidar/LICENSE
+	deleted:    backend/node_modules/chokidar/README.md
+	deleted:    backend/node_modules/chokidar/index.js
+	deleted:    backend/node_modules/chokidar/lib/constants.js
+	deleted:    backend/node_modules/chokidar/lib/fsevents-handler.js
+	deleted:    backend/node_modules/chokidar/lib/nodefs-handler.js
+	deleted:    backend/node_modules/chokidar/package.json
+	deleted:    backend/node_modules/chokidar/types/index.d.ts
+	deleted:    backend/node_modules/chownr/LICENSE
+	deleted:    backend/node_modules/chownr/README.md
+	deleted:    backend/node_modules/chownr/chownr.js
+	deleted:    backend/node_modules/chownr/package.json
+	deleted:    backend/node_modules/clean-stack/index.d.ts
+	deleted:    backend/node_modules/clean-stack/index.js
+	deleted:    backend/node_modules/clean-stack/license
+	deleted:    backend/node_modules/clean-stack/package.json
+	deleted:    backend/node_modules/clean-stack/readme.md
+	deleted:    backend/node_modules/color-support/LICENSE
+	deleted:    backend/node_modules/color-support/README.md
+	deleted:    backend/node_modules/color-support/browser.js
+	deleted:    backend/node_modules/color-support/index.js
+	deleted:    backend/node_modules/color-support/package.json
+	deleted:    backend/node_modules/commander/CHANGELOG.md
+	deleted:    backend/node_modules/commander/LICENSE
+	deleted:    backend/node_modules/commander/Readme.md
+	deleted:    backend/node_modules/commander/index.js
+	deleted:    backend/node_modules/commander/package.json
+	deleted:    backend/node_modules/commander/typings/index.d.ts
+	deleted:    backend/node_modules/concat-map/.travis.yml
+	deleted:    backend/node_modules/concat-map/LICENSE
+	deleted:    backend/node_modules/concat-map/README.markdown
+	deleted:    backend/node_modules/concat-map/example/map.js
+	deleted:    backend/node_modules/concat-map/index.js
+	deleted:    backend/node_modules/concat-map/package.json
+	deleted:    backend/node_modules/concat-map/test/map.js
+	deleted:    backend/node_modules/console-control-strings/LICENSE
+	deleted:    backend/node_modules/console-control-strings/README.md
+	deleted:    backend/node_modules/console-control-strings/README.md~
+	deleted:    backend/node_modules/console-control-strings/index.js
+	deleted:    backend/node_modules/console-control-strings/package.json
+	deleted:    backend/node_modules/content-disposition/LICENSE
+	deleted:    backend/node_modules/content-type/HISTORY.md
+	deleted:    backend/node_modules/content-type/LICENSE
+	deleted:    backend/node_modules/content-type/README.md
+	deleted:    backend/node_modules/content-type/index.js
+	deleted:    backend/node_modules/content-type/package.json
+	deleted:    backend/node_modules/cookie-signature/History.md
+	deleted:    backend/node_modules/cookie-signature/LICENSE
+	deleted:    backend/node_modules/cookie-signature/Readme.md
+	deleted:    backend/node_modules/cookie-signature/index.js
+	deleted:    backend/node_modules/cookie-signature/package.json
+	deleted:    backend/node_modules/cookie/LICENSE
+	deleted:    backend/node_modules/cookie/README.md
+	deleted:    backend/node_modules/cookie/SECURITY.md
+	deleted:    backend/node_modules/cookie/index.js
+	deleted:    backend/node_modules/cookie/package.json
+	deleted:    backend/node_modules/cors/LICENSE
+	deleted:    backend/node_modules/cors/README.md
+	deleted:    backend/node_modules/cors/lib/index.js
+	deleted:    backend/node_modules/cors/package.json
+	deleted:    backend/node_modules/debug/LICENSE
+	deleted:    backend/node_modules/debug/README.md
+	deleted:    backend/node_modules/debug/package.json
+	deleted:    backend/node_modules/debug/src/browser.js
+	deleted:    backend/node_modules/debug/src/common.js
+	deleted:    backend/node_modules/debug/src/index.js
+	deleted:    backend/node_modules/debug/src/node.js
+	deleted:    backend/node_modules/decompress-response/index.d.ts
+	deleted:    backend/node_modules/decompress-response/index.js
+	deleted:    backend/node_modules/decompress-response/license
+	deleted:    backend/node_modules/decompress-response/package.json
+	deleted:    backend/node_modules/decompress-response/readme.md
+	deleted:    backend/node_modules/deep-extend/CHANGELOG.md
+	deleted:    backend/node_modules/deep-extend/LICENSE
+	deleted:    backend/node_modules/deep-extend/README.md
+	deleted:    backend/node_modules/deep-extend/index.js
+	deleted:    backend/node_modules/deep-extend/lib/deep-extend.js
+	deleted:    backend/node_modules/deep-extend/package.json
+	deleted:    backend/node_modules/delegates/.npmignore
+	deleted:    backend/node_modules/delegates/History.md
+	deleted:    backend/node_modules/delegates/License
+	deleted:    backend/node_modules/delegates/Makefile
+	deleted:    backend/node_modules/delegates/Readme.md
+	deleted:    backend/node_modules/delegates/index.js
+	deleted:    backend/node_modules/delegates/package.json
+	deleted:    backend/node_modules/delegates/test/index.js
+	deleted:    backend/node_modules/depd/History.md
+	deleted:    backend/node_modules/depd/LICENSE
+	deleted:    backend/node_modules/depd/Readme.md
+	deleted:    backend/node_modules/depd/index.js
+	deleted:    backend/node_modules/depd/lib/browser/index.js
+	deleted:    backend/node_modules/depd/package.json
+	deleted:    backend/node_modules/detect-libc/LICENSE
+	deleted:    backend/node_modules/detect-libc/README.md
+	deleted:    backend/node_modules/detect-libc/index.d.ts
+	deleted:    backend/node_modules/detect-libc/lib/detect-libc.js
+	deleted:    backend/node_modules/detect-libc/lib/elf.js
+	deleted:    backend/node_modules/detect-libc/lib/filesystem.js
+	deleted:    backend/node_modules/detect-libc/lib/process.js
+	deleted:    backend/node_modules/detect-libc/package.json
+	deleted:    backend/node_modules/doctrine/CHANGELOG.md
+	deleted:    backend/node_modules/doctrine/LICENSE
+	deleted:    backend/node_modules/doctrine/LICENSE.closure-compiler
+	deleted:    backend/node_modules/doctrine/LICENSE.esprima
+	deleted:    backend/node_modules/doctrine/README.md
+	deleted:    backend/node_modules/doctrine/lib/doctrine.js
+	deleted:    backend/node_modules/doctrine/lib/typed.js
+	deleted:    backend/node_modules/doctrine/lib/utility.js
+	deleted:    backend/node_modules/doctrine/package.json
+	deleted:    backend/node_modules/dunder-proto/.eslintrc
+	deleted:    backend/node_modules/dunder-proto/.github/FUNDING.yml
+	deleted:    backend/node_modules/dunder-proto/.nycrc
+	deleted:    backend/node_modules/dunder-proto/CHANGELOG.md
+	deleted:    backend/node_modules/dunder-proto/LICENSE
+	deleted:    backend/node_modules/dunder-proto/README.md
+	deleted:    backend/node_modules/dunder-proto/get.d.ts
+	deleted:    backend/node_modules/dunder-proto/get.js
+	deleted:    backend/node_modules/dunder-proto/package.json
+	deleted:    backend/node_modules/dunder-proto/set.d.ts
+	deleted:    backend/node_modules/dunder-proto/set.js
+	deleted:    backend/node_modules/dunder-proto/test/get.js
+	deleted:    backend/node_modules/dunder-proto/test/index.js
+	deleted:    backend/node_modules/dunder-proto/test/set.js
+	deleted:    backend/node_modules/dunder-proto/tsconfig.json
+	deleted:    backend/node_modules/ecdsa-sig-formatter/CODEOWNERS
+	deleted:    backend/node_modules/ecdsa-sig-formatter/LICENSE
+	deleted:    backend/node_modules/ecdsa-sig-formatter/README.md
+	deleted:    backend/node_modules/ecdsa-sig-formatter/package.json
+	deleted:    backend/node_modules/ecdsa-sig-formatter/src/ecdsa-sig-formatter.d.ts
+	deleted:    backend/node_modules/ecdsa-sig-formatter/src/ecdsa-sig-formatter.js
+	deleted:    backend/node_modules/ecdsa-sig-formatter/src/param-bytes-for-alg.js
+	deleted:    backend/node_modules/ee-first/LICENSE
+	deleted:    backend/node_modules/ee-first/README.md
+	deleted:    backend/node_modules/ee-first/index.js
+	deleted:    backend/node_modules/ee-first/package.json
+	deleted:    backend/node_modules/emoji-regex/LICENSE-MIT.txt
+	deleted:    backend/node_modules/emoji-regex/README.md
+	deleted:    backend/node_modules/emoji-regex/es2015/index.js
+	deleted:    backend/node_modules/emoji-regex/es2015/text.js
+	deleted:    backend/node_modules/emoji-regex/index.d.ts
+	deleted:    backend/node_modules/emoji-regex/index.js
+	deleted:    backend/node_modules/emoji-regex/package.json
+	deleted:    backend/node_modules/emoji-regex/text.js
+	deleted:    backend/node_modules/encodeurl/LICENSE
+	deleted:    backend/node_modules/encodeurl/README.md
+	deleted:    backend/node_modules/encodeurl/index.js
+	deleted:    backend/node_modules/encodeurl/package.json
+	deleted:    backend/node_modules/encoding/.prettierrc.js
+	deleted:    backend/node_modules/encoding/.travis.yml
+	deleted:    backend/node_modules/encoding/LICENSE
+	deleted:    backend/node_modules/encoding/README.md
+	deleted:    backend/node_modules/encoding/lib/encoding.js
+	deleted:    backend/node_modules/encoding/node_modules/iconv-lite/.github/dependabot.yml
+	deleted:    backend/node_modules/encoding/node_modules/iconv-lite/.idea/codeStyles/Project.xml
+	deleted:    backend/node_modules/encoding/node_modules/iconv-lite/.idea/codeStyles/codeStyleConfig.xml
+	deleted:    backend/node_modules/encoding/node_modules/iconv-lite/.idea/iconv-lite.iml
+	deleted:    backend/node_modules/encoding/node_modules/iconv-lite/.idea/inspectionProfiles/Project_Default.xml
+	deleted:    backend/node_modules/encoding/node_modules/iconv-lite/.idea/modules.xml
+	deleted:    backend/node_modules/encoding/node_modules/iconv-lite/.idea/vcs.xml
+	deleted:    backend/node_modules/encoding/node_modules/iconv-lite/Changelog.md
+	deleted:    backend/node_modules/encoding/node_modules/iconv-lite/LICENSE
+	deleted:    backend/node_modules/encoding/node_modules/iconv-lite/README.md
+	deleted:    backend/node_modules/encoding/node_modules/iconv-lite/encodings/dbcs-codec.js
+	deleted:    backend/node_modules/encoding/node_modules/iconv-lite/encodings/dbcs-data.js
+	deleted:    backend/node_modules/encoding/node_modules/iconv-lite/encodings/index.js
+	deleted:    backend/node_modules/encoding/node_modules/iconv-lite/encodings/internal.js
+	deleted:    backend/node_modules/encoding/node_modules/iconv-lite/encodings/sbcs-codec.js
+	deleted:    backend/node_modules/encoding/node_modules/iconv-lite/encodings/sbcs-data-generated.js
+	deleted:    backend/node_modules/encoding/node_modules/iconv-lite/encodings/sbcs-data.js
+	deleted:    backend/node_modules/encoding/node_modules/iconv-lite/encodings/tables/big5-added.json
+	deleted:    backend/node_modules/encoding/node_modules/iconv-lite/encodings/tables/cp936.json
+	deleted:    backend/node_modules/encoding/node_modules/iconv-lite/encodings/tables/cp949.json
+	deleted:    backend/node_modules/encoding/node_modules/iconv-lite/encodings/tables/cp950.json
+	deleted:    backend/node_modules/encoding/node_modules/iconv-lite/encodings/tables/eucjp.json
+	deleted:    backend/node_modules/encoding/node_modules/iconv-lite/encodings/tables/gb18030-ranges.json
+	deleted:    backend/node_modules/encoding/node_modules/iconv-lite/encodings/tables/gbk-added.json
+	deleted:    backend/node_modules/encoding/node_modules/iconv-lite/encodings/tables/shiftjis.json
+	deleted:    backend/node_modules/encoding/node_modules/iconv-lite/encodings/utf16.js
+	deleted:    backend/node_modules/encoding/node_modules/iconv-lite/encodings/utf32.js
+	deleted:    backend/node_modules/encoding/node_modules/iconv-lite/encodings/utf7.js
+	deleted:    backend/node_modules/encoding/node_modules/iconv-lite/lib/bom-handling.js
+	deleted:    backend/node_modules/encoding/node_modules/iconv-lite/lib/index.d.ts
+	deleted:    backend/node_modules/encoding/node_modules/iconv-lite/lib/index.js
+	deleted:    backend/node_modules/encoding/node_modules/iconv-lite/lib/streams.js
+	deleted:    backend/node_modules/encoding/node_modules/iconv-lite/package.json
+	deleted:    backend/node_modules/encoding/package.json
+	deleted:    backend/node_modules/encoding/test/test.js
+	deleted:    backend/node_modules/end-of-stream/LICENSE
+	deleted:    backend/node_modules/end-of-stream/README.md
+	deleted:    backend/node_modules/end-of-stream/index.js
+	deleted:    backend/node_modules/end-of-stream/package.json
+	deleted:    backend/node_modules/env-paths/index.d.ts
+	deleted:    backend/node_modules/env-paths/index.js
+	deleted:    backend/node_modules/env-paths/license
+	deleted:    backend/node_modules/env-paths/package.json
+	deleted:    backend/node_modules/env-paths/readme.md
+	deleted:    backend/node_modules/err-code/.editorconfig
+	deleted:    backend/node_modules/err-code/.eslintrc.json
+	deleted:    backend/node_modules/err-code/.travis.yml
+	deleted:    backend/node_modules/err-code/README.md
+	deleted:    backend/node_modules/err-code/bower.json
+	deleted:    backend/node_modules/err-code/index.js
+	deleted:    backend/node_modules/err-code/index.umd.js
+	deleted:    backend/node_modules/err-code/package.json
+	deleted:    backend/node_modules/err-code/test/.eslintrc.json
+	deleted:    backend/node_modules/err-code/test/test.js
+	deleted:    backend/node_modules/es-define-property/.eslintrc
+	deleted:    backend/node_modules/es-define-property/.github/FUNDING.yml
+	deleted:    backend/node_modules/es-define-property/.nycrc
+	deleted:    backend/node_modules/es-define-property/CHANGELOG.md
+	deleted:    backend/node_modules/es-define-property/LICENSE
+	deleted:    backend/node_modules/es-define-property/README.md
+	deleted:    backend/node_modules/es-define-property/index.d.ts
+	deleted:    backend/node_modules/es-define-property/index.js
+	deleted:    backend/node_modules/es-define-property/package.json
+	deleted:    backend/node_modules/es-define-property/test/index.js
+	deleted:    backend/node_modules/es-define-property/tsconfig.json
+	deleted:    backend/node_modules/es-errors/.eslintrc
+	deleted:    backend/node_modules/es-errors/.github/FUNDING.yml
+	deleted:    backend/node_modules/es-errors/CHANGELOG.md
+	deleted:    backend/node_modules/es-errors/LICENSE
+	deleted:    backend/node_modules/es-errors/README.md
+	deleted:    backend/node_modules/es-errors/eval.d.ts
+	deleted:    backend/node_modules/es-errors/eval.js
+	deleted:    backend/node_modules/es-errors/index.d.ts
+	deleted:    backend/node_modules/es-errors/index.js
+	deleted:    backend/node_modules/es-errors/package.json
+	deleted:    backend/node_modules/es-errors/range.d.ts
+	deleted:    backend/node_modules/es-errors/range.js
+	deleted:    backend/node_modules/es-errors/ref.d.ts
+	deleted:    backend/node_modules/es-errors/ref.js
+	deleted:    backend/node_modules/es-errors/syntax.d.ts
+	deleted:    backend/node_modules/es-errors/syntax.js
+	deleted:    backend/node_modules/es-errors/test/index.js
+	deleted:    backend/node_modules/es-errors/tsconfig.json
+	deleted:    backend/node_modules/es-errors/type.d.ts
+	deleted:    backend/node_modules/es-errors/type.js
+	deleted:    backend/node_modules/es-errors/uri.d.ts
+	deleted:    backend/node_modules/es-errors/uri.js
+	deleted:    backend/node_modules/es-object-atoms/.eslintrc
+	deleted:    backend/node_modules/es-object-atoms/.github/FUNDING.yml
+	deleted:    backend/node_modules/es-object-atoms/CHANGELOG.md
+	deleted:    backend/node_modules/es-object-atoms/LICENSE
+	deleted:    backend/node_modules/es-object-atoms/README.md
+	deleted:    backend/node_modules/es-object-atoms/RequireObjectCoercible.d.ts
+	deleted:    backend/node_modules/es-object-atoms/RequireObjectCoercible.js
+	deleted:    backend/node_modules/es-object-atoms/ToObject.d.ts
+	deleted:    backend/node_modules/es-object-atoms/ToObject.js
+	deleted:    backend/node_modules/es-object-atoms/index.d.ts
+	deleted:    backend/node_modules/es-object-atoms/index.js
+	deleted:    backend/node_modules/es-object-atoms/isObject.d.ts
+	deleted:    backend/node_modules/es-object-atoms/isObject.js
+	deleted:    backend/node_modules/es-object-atoms/package.json
+	deleted:    backend/node_modules/es-object-atoms/test/index.js
+	deleted:    backend/node_modules/es-object-atoms/tsconfig.json
+	deleted:    backend/node_modules/escape-html/LICENSE
+	deleted:    backend/node_modules/escape-html/Readme.md
+	deleted:    backend/node_modules/escape-html/index.js
+	deleted:    backend/node_modules/escape-html/package.json
+	deleted:    backend/node_modules/esutils/LICENSE.BSD
+	deleted:    backend/node_modules/esutils/README.md
+	deleted:    backend/node_modules/esutils/lib/ast.js
+	deleted:    backend/node_modules/esutils/lib/code.js
+	deleted:    backend/node_modules/esutils/lib/keyword.js
+	deleted:    backend/node_modules/esutils/lib/utils.js
+	deleted:    backend/node_modules/esutils/package.json
+	deleted:    backend/node_modules/etag/HISTORY.md
+	deleted:    backend/node_modules/etag/LICENSE
+	deleted:    backend/node_modules/etag/README.md
+	deleted:    backend/node_modules/etag/index.js
+	deleted:    backend/node_modules/etag/package.json
+	deleted:    backend/node_modules/expand-template/.travis.yml
+	deleted:    backend/node_modules/expand-template/LICENSE
+	deleted:    backend/node_modules/expand-template/README.md
+	deleted:    backend/node_modules/expand-template/index.js
+	deleted:    backend/node_modules/expand-template/package.json
+	deleted:    backend/node_modules/expand-template/test.js
+	deleted:    backend/node_modules/express/LICENSE
+	deleted:    backend/node_modules/express/Readme.md
+	deleted:    backend/node_modules/express/index.js
+	deleted:    backend/node_modules/express/lib/application.js
+	deleted:    backend/node_modules/express/lib/express.js
+	deleted:    backend/node_modules/express/lib/request.js
+	deleted:    backend/node_modules/express/lib/response.js
+	deleted:    backend/node_modules/express/lib/utils.js
+	deleted:    backend/node_modules/express/lib/view.js
+	deleted:    backend/node_modules/express/package.json
+	deleted:    backend/node_modules/file-uri-to-path/.npmignore
+	deleted:    backend/node_modules/file-uri-to-path/.travis.yml
+	deleted:    backend/node_modules/file-uri-to-path/History.md
+	deleted:    backend/node_modules/file-uri-to-path/LICENSE
+	deleted:    backend/node_modules/file-uri-to-path/README.md
+	deleted:    backend/node_modules/file-uri-to-path/index.d.ts
+	deleted:    backend/node_modules/file-uri-to-path/index.js
+	deleted:    backend/node_modules/file-uri-to-path/package.json
+	deleted:    backend/node_modules/file-uri-to-path/test/test.js
+	deleted:    backend/node_modules/file-uri-to-path/test/tests.json
+	deleted:    backend/node_modules/fill-range/LICENSE
+	deleted:    backend/node_modules/fill-range/README.md
+	deleted:    backend/node_modules/fill-range/index.js
+	deleted:    backend/node_modules/fill-range/package.json
+	deleted:    backend/node_modules/finalhandler/HISTORY.md
+	deleted:    backend/node_modules/finalhandler/LICENSE
+	deleted:    backend/node_modules/finalhandler/README.md
+	deleted:    backend/node_modules/finalhandler/index.js
+	deleted:    backend/node_modules/finalhandler/package.json
+	deleted:    backend/node_modules/forwarded/HISTORY.md
+	deleted:    backend/node_modules/forwarded/LICENSE
+	deleted:    backend/node_modules/forwarded/README.md
+	deleted:    backend/node_modules/forwarded/index.js
+	deleted:    backend/node_modules/forwarded/package.json
+	deleted:    backend/node_modules/fresh/HISTORY.md
+	deleted:    backend/node_modules/fresh/LICENSE
+	deleted:    backend/node_modules/fresh/README.md
+	deleted:    backend/node_modules/fresh/index.js
+	deleted:    backend/node_modules/fresh/package.json
+	deleted:    backend/node_modules/fs-constants/LICENSE
+	deleted:    backend/node_modules/fs-constants/README.md
+	deleted:    backend/node_modules/fs-constants/browser.js
+	deleted:    backend/node_modules/fs-constants/index.js
+	deleted:    backend/node_modules/fs-constants/package.json
+	deleted:    backend/node_modules/fs-minipass/LICENSE
+	deleted:    backend/node_modules/fs-minipass/README.md
+	deleted:    backend/node_modules/fs-minipass/index.js
+	deleted:    backend/node_modules/fs-minipass/package.json
+	deleted:    backend/node_modules/fs.realpath/LICENSE
+	deleted:    backend/node_modules/fs.realpath/README.md
+	deleted:    backend/node_modules/fs.realpath/index.js
+	deleted:    backend/node_modules/fs.realpath/old.js
+	deleted:    backend/node_modules/fs.realpath/package.json
+	deleted:    backend/node_modules/function-bind/.eslintrc
+	deleted:    backend/node_modules/function-bind/.github/FUNDING.yml
+	deleted:    backend/node_modules/function-bind/.github/SECURITY.md
+	deleted:    backend/node_modules/function-bind/.nycrc
+	deleted:    backend/node_modules/function-bind/CHANGELOG.md
+	deleted:    backend/node_modules/function-bind/LICENSE
+	deleted:    backend/node_modules/function-bind/README.md
+	deleted:    backend/node_modules/function-bind/implementation.js
+	deleted:    backend/node_modules/function-bind/index.js
+	deleted:    backend/node_modules/function-bind/package.json
+	deleted:    backend/node_modules/function-bind/test/.eslintrc
+	deleted:    backend/node_modules/function-bind/test/index.js
+	deleted:    backend/node_modules/gauge/LICENSE.md
+	deleted:    backend/node_modules/gauge/README.md
+	deleted:    backend/node_modules/gauge/lib/base-theme.js
+	deleted:    backend/node_modules/gauge/lib/error.js
+	deleted:    backend/node_modules/gauge/lib/has-color.js
+	deleted:    backend/node_modules/gauge/lib/index.js
+	deleted:    backend/node_modules/gauge/lib/plumbing.js
+	deleted:    backend/node_modules/gauge/lib/process.js
+	deleted:    backend/node_modules/gauge/lib/progress-bar.js
+	deleted:    backend/node_modules/gauge/lib/render-template.js
+	deleted:    backend/node_modules/gauge/lib/set-immediate.js
+	deleted:    backend/node_modules/gauge/lib/set-interval.js
+	deleted:    backend/node_modules/gauge/lib/spin.js
+	deleted:    backend/node_modules/gauge/lib/template-item.js
+	deleted:    backend/node_modules/gauge/lib/theme-set.js
+	deleted:    backend/node_modules/gauge/lib/themes.js
+	deleted:    backend/node_modules/gauge/lib/wide-truncate.js
+	deleted:    backend/node_modules/gauge/package.json
+	deleted:    backend/node_modules/get-intrinsic/.eslintrc
+	deleted:    backend/node_modules/get-intrinsic/.github/FUNDING.yml
+	deleted:    backend/node_modules/get-intrinsic/.nycrc
+	deleted:    backend/node_modules/get-intrinsic/CHANGELOG.md
+	deleted:    backend/node_modules/get-intrinsic/LICENSE
+	deleted:    backend/node_modules/get-intrinsic/README.md
+	deleted:    backend/node_modules/get-intrinsic/index.js
+	deleted:    backend/node_modules/get-intrinsic/package.json
+	deleted:    backend/node_modules/get-intrinsic/test/GetIntrinsic.js
+	deleted:    backend/node_modules/get-proto/.eslintrc
+	deleted:    backend/node_modules/get-proto/.github/FUNDING.yml
+	deleted:    backend/node_modules/get-proto/.nycrc
+	deleted:    backend/node_modules/get-proto/CHANGELOG.md
+	deleted:    backend/node_modules/get-proto/LICENSE
+	deleted:    backend/node_modules/get-proto/Object.getPrototypeOf.d.ts
+	deleted:    backend/node_modules/get-proto/Object.getPrototypeOf.js
+	deleted:    backend/node_modules/get-proto/README.md
+	deleted:    backend/node_modules/get-proto/Reflect.getPrototypeOf.d.ts
+	deleted:    backend/node_modules/get-proto/Reflect.getPrototypeOf.js
+	deleted:    backend/node_modules/get-proto/index.d.ts
+	deleted:    backend/node_modules/get-proto/index.js
+	deleted:    backend/node_modules/get-proto/package.json
+	deleted:    backend/node_modules/get-proto/test/index.js
+	deleted:    backend/node_modules/get-proto/tsconfig.json
+	deleted:    backend/node_modules/github-from-package/.travis.yml
+	deleted:    backend/node_modules/github-from-package/LICENSE
+	deleted:    backend/node_modules/github-from-package/example/package.json
+	deleted:    backend/node_modules/github-from-package/example/url.js
+	deleted:    backend/node_modules/github-from-package/index.js
+	deleted:    backend/node_modules/github-from-package/package.json
+	deleted:    backend/node_modules/github-from-package/readme.markdown
+	deleted:    backend/node_modules/github-from-package/test/a.json
+	deleted:    backend/node_modules/github-from-package/test/b.json
+	deleted:    backend/node_modules/github-from-package/test/c.json
+	deleted:    backend/node_modules/github-from-package/test/d.json
+	deleted:    backend/node_modules/github-from-package/test/e.json
+	deleted:    backend/node_modules/github-from-package/test/url.js
+	deleted:    backend/node_modules/glob-parent/CHANGELOG.md
+	deleted:    backend/node_modules/glob-parent/LICENSE
+	deleted:    backend/node_modules/glob-parent/README.md
+	deleted:    backend/node_modules/glob-parent/index.js
+	deleted:    backend/node_modules/glob-parent/package.json
+	deleted:    backend/node_modules/glob/LICENSE
+	deleted:    backend/node_modules/glob/README.md
+	deleted:    backend/node_modules/glob/common.js
+	deleted:    backend/node_modules/glob/glob.js
+	deleted:    backend/node_modules/glob/package.json
+	deleted:    backend/node_modules/glob/sync.js
+	deleted:    backend/node_modules/gopd/.eslintrc
+	deleted:    backend/node_modules/gopd/.github/FUNDING.yml
+	deleted:    backend/node_modules/gopd/CHANGELOG.md
+	deleted:    backend/node_modules/gopd/LICENSE
+	deleted:    backend/node_modules/gopd/README.md
+	deleted:    backend/node_modules/gopd/gOPD.d.ts
+	deleted:    backend/node_modules/gopd/gOPD.js
+	deleted:    backend/node_modules/gopd/index.d.ts
+	deleted:    backend/node_modules/gopd/index.js
+	deleted:    backend/node_modules/gopd/package.json
+	deleted:    backend/node_modules/gopd/test/index.js
+	deleted:    backend/node_modules/gopd/tsconfig.json
+	deleted:    backend/node_modules/graceful-fs/LICENSE
+	deleted:    backend/node_modules/graceful-fs/README.md
+	deleted:    backend/node_modules/graceful-fs/clone.js
+	deleted:    backend/node_modules/graceful-fs/graceful-fs.js
+	deleted:    backend/node_modules/graceful-fs/legacy-streams.js
+	deleted:    backend/node_modules/graceful-fs/package.json
+	deleted:    backend/node_modules/graceful-fs/polyfills.js
+	deleted:    backend/node_modules/has-flag/index.js
+	deleted:    backend/node_modules/has-flag/license
+	deleted:    backend/node_modules/has-flag/package.json
+	deleted:    backend/node_modules/has-flag/readme.md
+	deleted:    backend/node_modules/has-symbols/.eslintrc
+	deleted:    backend/node_modules/has-symbols/.github/FUNDING.yml
+	deleted:    backend/node_modules/has-symbols/.nycrc
+	deleted:    backend/node_modules/has-symbols/CHANGELOG.md
+	deleted:    backend/node_modules/has-symbols/LICENSE
+	deleted:    backend/node_modules/has-symbols/README.md
+	deleted:    backend/node_modules/has-symbols/index.d.ts
+	deleted:    backend/node_modules/has-symbols/index.js
+	deleted:    backend/node_modules/has-symbols/package.json
+	deleted:    backend/node_modules/has-symbols/shams.d.ts
+	deleted:    backend/node_modules/has-symbols/shams.js
+	deleted:    backend/node_modules/has-symbols/test/index.js
+	deleted:    backend/node_modules/has-symbols/test/shams/core-js.js
+	deleted:    backend/node_modules/has-symbols/test/shams/get-own-property-symbols.js
+	deleted:    backend/node_modules/has-symbols/test/tests.js
+	deleted:    backend/node_modules/has-symbols/tsconfig.json
+	deleted:    backend/node_modules/has-unicode/LICENSE
+	deleted:    backend/node_modules/has-unicode/README.md
+	deleted:    backend/node_modules/has-unicode/index.js
+	deleted:    backend/node_modules/has-unicode/package.json
+	deleted:    backend/node_modules/hasown/.github/FUNDING.yml
+	deleted:    backend/node_modules/hasown/.nycrc
+	deleted:    backend/node_modules/hasown/LICENSE
+	deleted:    backend/node_modules/hasown/README.md
+	deleted:    backend/node_modules/hasown/index.js
+	deleted:    backend/node_modules/hasown/tsconfig.json
+	deleted:    backend/node_modules/http-cache-semantics/LICENSE
+	deleted:    backend/node_modules/http-cache-semantics/README.md
+	deleted:    backend/node_modules/http-cache-semantics/index.js
+	deleted:    backend/node_modules/http-cache-semantics/package.json
+	deleted:    backend/node_modules/http-errors/HISTORY.md
+	deleted:    backend/node_modules/http-errors/LICENSE
+	deleted:    backend/node_modules/http-errors/README.md
+	deleted:    backend/node_modules/http-errors/index.js
+	deleted:    backend/node_modules/http-errors/package.json
+	deleted:    backend/node_modules/http-proxy-agent/README.md
+	deleted:    backend/node_modules/http-proxy-agent/dist/agent.d.ts
+	deleted:    backend/node_modules/http-proxy-agent/dist/agent.js
+	deleted:    backend/node_modules/http-proxy-agent/dist/agent.js.map
+	deleted:    backend/node_modules/http-proxy-agent/dist/index.d.ts
+	deleted:    backend/node_modules/http-proxy-agent/dist/index.js
+	deleted:    backend/node_modules/http-proxy-agent/dist/index.js.map
+	deleted:    backend/node_modules/http-proxy-agent/package.json
+	deleted:    backend/node_modules/https-proxy-agent/README.md
+	deleted:    backend/node_modules/https-proxy-agent/dist/agent.d.ts
+	deleted:    backend/node_modules/https-proxy-agent/dist/agent.js
+	deleted:    backend/node_modules/https-proxy-agent/dist/agent.js.map
+	deleted:    backend/node_modules/https-proxy-agent/dist/index.d.ts
+	deleted:    backend/node_modules/https-proxy-agent/dist/index.js
+	deleted:    backend/node_modules/https-proxy-agent/dist/index.js.map
+	deleted:    backend/node_modules/https-proxy-agent/dist/parse-proxy-response.d.ts
+	deleted:    backend/node_modules/https-proxy-agent/dist/parse-proxy-response.js
+	deleted:    backend/node_modules/https-proxy-agent/dist/parse-proxy-response.js.map
+	deleted:    backend/node_modules/https-proxy-agent/package.json
+	deleted:    backend/node_modules/humanize-ms/History.md
+	deleted:    backend/node_modules/humanize-ms/LICENSE
+	deleted:    backend/node_modules/humanize-ms/README.md
+	deleted:    backend/node_modules/humanize-ms/index.js
+	deleted:    backend/node_modules/humanize-ms/package.json
+	deleted:    backend/node_modules/iconv-lite/LICENSE
+	deleted:    backend/node_modules/iconv-lite/README.md
+	deleted:    backend/node_modules/iconv-lite/encodings/dbcs-codec.js
+	deleted:    backend/node_modules/iconv-lite/encodings/dbcs-data.js
+	deleted:    backend/node_modules/iconv-lite/encodings/index.js
+	deleted:    backend/node_modules/iconv-lite/encodings/internal.js
+	deleted:    backend/node_modules/iconv-lite/encodings/sbcs-codec.js
+	deleted:    backend/node_modules/iconv-lite/encodings/sbcs-data-generated.js
+	deleted:    backend/node_modules/iconv-lite/encodings/sbcs-data.js
+	deleted:    backend/node_modules/iconv-lite/encodings/tables/big5-added.json
+	deleted:    backend/node_modules/iconv-lite/encodings/tables/cp936.json
+	deleted:    backend/node_modules/iconv-lite/encodings/tables/cp949.json
+	deleted:    backend/node_modules/iconv-lite/encodings/tables/cp950.json
+	deleted:    backend/node_modules/iconv-lite/encodings/tables/eucjp.json
+	deleted:    backend/node_modules/iconv-lite/encodings/tables/gb18030-ranges.json
+	deleted:    backend/node_modules/iconv-lite/encodings/tables/gbk-added.json
+	deleted:    backend/node_modules/iconv-lite/encodings/tables/shiftjis.json
+	deleted:    backend/node_modules/iconv-lite/encodings/utf16.js
+	deleted:    backend/node_modules/iconv-lite/encodings/utf32.js
+	deleted:    backend/node_modules/iconv-lite/encodings/utf7.js
+	deleted:    backend/node_modules/iconv-lite/lib/bom-handling.js
+	deleted:    backend/node_modules/iconv-lite/lib/helpers/merge-exports.js
+	deleted:    backend/node_modules/iconv-lite/lib/index.d.ts
+	deleted:    backend/node_modules/iconv-lite/lib/index.js
+	deleted:    backend/node_modules/iconv-lite/lib/streams.js
+	deleted:    backend/node_modules/iconv-lite/package.json
+	deleted:    backend/node_modules/iconv-lite/types/encodings.d.ts
+	deleted:    backend/node_modules/ieee754/LICENSE
+	deleted:    backend/node_modules/ieee754/README.md
+	deleted:    backend/node_modules/ieee754/index.d.ts
+	deleted:    backend/node_modules/ieee754/index.js
+	deleted:    backend/node_modules/ieee754/package.json
+	deleted:    backend/node_modules/ignore-by-default/LICENSE
+	deleted:    backend/node_modules/ignore-by-default/README.md
+	deleted:    backend/node_modules/ignore-by-default/index.js
+	deleted:    backend/node_modules/ignore-by-default/package.json
+	deleted:    backend/node_modules/imurmurhash/README.md
+	deleted:    backend/node_modules/imurmurhash/imurmurhash.js
+	deleted:    backend/node_modules/imurmurhash/imurmurhash.min.js
+	deleted:    backend/node_modules/imurmurhash/package.json
+	deleted:    backend/node_modules/indent-string/index.d.ts
+	deleted:    backend/node_modules/indent-string/index.js
+	deleted:    backend/node_modules/indent-string/license
+	deleted:    backend/node_modules/indent-string/package.json
+	deleted:    backend/node_modules/indent-string/readme.md
+	deleted:    backend/node_modules/infer-owner/LICENSE
+	deleted:    backend/node_modules/infer-owner/README.md
+	deleted:    backend/node_modules/infer-owner/index.js
+	deleted:    backend/node_modules/infer-owner/package.json
+	deleted:    backend/node_modules/inflight/LICENSE
+	deleted:    backend/node_modules/inflight/README.md
+	deleted:    backend/node_modules/inflight/inflight.js
+	deleted:    backend/node_modules/inflight/package.json
+	deleted:    backend/node_modules/inherits/LICENSE
+	deleted:    backend/node_modules/inherits/README.md
+	deleted:    backend/node_modules/inherits/inherits.js
+	deleted:    backend/node_modules/inherits/inherits_browser.js
+	deleted:    backend/node_modules/inherits/package.json
+	deleted:    backend/node_modules/ini/LICENSE
+	deleted:    backend/node_modules/ini/README.md
+	deleted:    backend/node_modules/ini/ini.js
+	deleted:    backend/node_modules/ini/package.json
+	deleted:    backend/node_modules/ip-address/LICENSE
+	deleted:    backend/node_modules/ip-address/dist/address-error.js
+	deleted:    backend/node_modules/ip-address/dist/ip-address.js
+	deleted:    backend/node_modules/ip-address/dist/v4/constants.js
+	deleted:    backend/node_modules/ip-address/dist/v6/regular-expressions.js
+	deleted:    backend/node_modules/ipaddr.js/LICENSE
+	deleted:    backend/node_modules/ipaddr.js/README.md
+	deleted:    backend/node_modules/ipaddr.js/ipaddr.min.js
+	deleted:    backend/node_modules/ipaddr.js/lib/ipaddr.js
+	deleted:    backend/node_modules/ipaddr.js/lib/ipaddr.js.d.ts
+	deleted:    backend/node_modules/ipaddr.js/package.json
+	deleted:    backend/node_modules/is-binary-path/index.d.ts
+	deleted:    backend/node_modules/is-binary-path/index.js
+	deleted:    backend/node_modules/is-binary-path/license
+	deleted:    backend/node_modules/is-binary-path/package.json
+	deleted:    backend/node_modules/is-binary-path/readme.md
+	deleted:    backend/node_modules/is-extglob/LICENSE
+	deleted:    backend/node_modules/is-extglob/README.md
+	deleted:    backend/node_modules/is-extglob/index.js
+	deleted:    backend/node_modules/is-extglob/package.json
+	deleted:    backend/node_modules/is-fullwidth-code-point/index.d.ts
+	deleted:    backend/node_modules/is-fullwidth-code-point/index.js
+	deleted:    backend/node_modules/is-fullwidth-code-point/license
+	deleted:    backend/node_modules/is-fullwidth-code-point/package.json
+	deleted:    backend/node_modules/is-fullwidth-code-point/readme.md
+	deleted:    backend/node_modules/is-glob/LICENSE
+	deleted:    backend/node_modules/is-glob/README.md
+	deleted:    backend/node_modules/is-glob/index.js
+	deleted:    backend/node_modules/is-glob/package.json
+	deleted:    backend/node_modules/is-lambda/.npmignore
+	deleted:    backend/node_modules/is-lambda/.travis.yml
+	deleted:    backend/node_modules/is-lambda/LICENSE
+	deleted:    backend/node_modules/is-lambda/README.md
+	deleted:    backend/node_modules/is-lambda/index.js
+	deleted:    backend/node_modules/is-lambda/package.json
+	deleted:    backend/node_modules/is-lambda/test.js
+	deleted:    backend/node_modules/is-number/LICENSE
+	deleted:    backend/node_modules/is-number/README.md
+	deleted:    backend/node_modules/is-number/index.js
+	deleted:    backend/node_modules/is-number/package.json
+	deleted:    backend/node_modules/is-promise/LICENSE
+	deleted:    backend/node_modules/is-promise/index.d.ts
+	deleted:    backend/node_modules/is-promise/index.js
+	deleted:    backend/node_modules/is-promise/index.mjs
+	deleted:    backend/node_modules/is-promise/package.json
+	deleted:    backend/node_modules/is-promise/readme.md
+	deleted:    backend/node_modules/isexe/.npmignore
+	deleted:    backend/node_modules/isexe/LICENSE
+	deleted:    backend/node_modules/isexe/README.md
+	deleted:    backend/node_modules/isexe/index.js
+	deleted:    backend/node_modules/isexe/mode.js
+	deleted:    backend/node_modules/isexe/package.json
+	deleted:    backend/node_modules/isexe/test/basic.js
+	deleted:    backend/node_modules/isexe/windows.js
+	deleted:    backend/node_modules/js-yaml/LICENSE
+	deleted:    backend/node_modules/js-yaml/README.md
+	deleted:    backend/node_modules/js-yaml/dist/js-yaml.js
+	deleted:    backend/node_modules/js-yaml/dist/js-yaml.min.js
+	deleted:    backend/node_modules/js-yaml/dist/js-yaml.mjs
+	deleted:    backend/node_modules/js-yaml/index.js
+	deleted:    backend/node_modules/js-yaml/lib/common.js
+	deleted:    backend/node_modules/js-yaml/lib/dumper.js
+	deleted:    backend/node_modules/js-yaml/lib/exception.js
+	deleted:    backend/node_modules/js-yaml/lib/loader.js
+	deleted:    backend/node_modules/js-yaml/lib/schema.js
+	deleted:    backend/node_modules/js-yaml/lib/schema/core.js
+	deleted:    backend/node_modules/js-yaml/lib/schema/default.js
+	deleted:    backend/node_modules/js-yaml/lib/schema/failsafe.js
+	deleted:    backend/node_modules/js-yaml/lib/schema/json.js
+	deleted:    backend/node_modules/js-yaml/lib/snippet.js
+	deleted:    backend/node_modules/js-yaml/lib/type.js
+	deleted:    backend/node_modules/js-yaml/lib/type/binary.js
+	deleted:    backend/node_modules/js-yaml/lib/type/bool.js
+	deleted:    backend/node_modules/js-yaml/lib/type/float.js
+	deleted:    backend/node_modules/js-yaml/lib/type/int.js
+	deleted:    backend/node_modules/js-yaml/lib/type/map.js
+	deleted:    backend/node_modules/js-yaml/lib/type/merge.js
+	deleted:    backend/node_modules/js-yaml/lib/type/null.js
+	deleted:    backend/node_modules/js-yaml/lib/type/omap.js
+	deleted:    backend/node_modules/js-yaml/lib/type/pairs.js
+	deleted:    backend/node_modules/js-yaml/lib/type/seq.js
+	deleted:    backend/node_modules/js-yaml/lib/type/set.js
+	deleted:    backend/node_modules/js-yaml/lib/type/str.js
+	deleted:    backend/node_modules/js-yaml/lib/type/timestamp.js
+	deleted:    backend/node_modules/js-yaml/package.json
+	deleted:    backend/node_modules/jsonwebtoken/LICENSE
+	deleted:    backend/node_modules/jsonwebtoken/README.md
+	deleted:    backend/node_modules/jsonwebtoken/decode.js
+	deleted:    backend/node_modules/jsonwebtoken/index.js
+	deleted:    backend/node_modules/jsonwebtoken/lib/JsonWebTokenError.js
+	deleted:    backend/node_modules/jsonwebtoken/lib/NotBeforeError.js
+	deleted:    backend/node_modules/jsonwebtoken/lib/TokenExpiredError.js
+	deleted:    backend/node_modules/jsonwebtoken/lib/asymmetricKeyDetailsSupported.js
+	deleted:    backend/node_modules/jsonwebtoken/lib/psSupported.js
+	deleted:    backend/node_modules/jsonwebtoken/lib/rsaPssKeyDetailsSupported.js
+	deleted:    backend/node_modules/jsonwebtoken/lib/timespan.js
+	deleted:    backend/node_modules/jsonwebtoken/lib/validateAsymmetricKey.js
+	deleted:    backend/node_modules/jsonwebtoken/package.json
+	deleted:    backend/node_modules/jsonwebtoken/sign.js
+	deleted:    backend/node_modules/jsonwebtoken/verify.js
+	deleted:    backend/node_modules/jwa/LICENSE
+	deleted:    backend/node_modules/jwa/README.md
+	deleted:    backend/node_modules/jwa/index.js
+	deleted:    backend/node_modules/jwa/opslevel.yml
+	deleted:    backend/node_modules/jwa/package.json
+	deleted:    backend/node_modules/jws/CHANGELOG.md
+	deleted:    backend/node_modules/jws/LICENSE
+	deleted:    backend/node_modules/jws/index.js
+	deleted:    backend/node_modules/jws/lib/data-stream.js
+	deleted:    backend/node_modules/jws/lib/sign-stream.js
+	deleted:    backend/node_modules/jws/lib/tostring.js
+	deleted:    backend/node_modules/jws/lib/verify-stream.js
+	deleted:    backend/node_modules/jws/opslevel.yml
+	deleted:    backend/node_modules/jws/package.json
+	deleted:    backend/node_modules/jws/readme.md
+	deleted:    backend/node_modules/lodash.get/LICENSE
+	deleted:    backend/node_modules/lodash.get/README.md
+	deleted:    backend/node_modules/lodash.get/index.js
+	deleted:    backend/node_modules/lodash.get/package.json
+	deleted:    backend/node_modules/lodash.includes/LICENSE
+	deleted:    backend/node_modules/lodash.includes/README.md
+	deleted:    backend/node_modules/lodash.includes/index.js
+	deleted:    backend/node_modules/lodash.includes/package.json
+	deleted:    backend/node_modules/lodash.isboolean/LICENSE
+	deleted:    backend/node_modules/lodash.isboolean/README.md
+	deleted:    backend/node_modules/lodash.isboolean/index.js
+	deleted:    backend/node_modules/lodash.isboolean/package.json
+	deleted:    backend/node_modules/lodash.isequal/LICENSE
+	deleted:    backend/node_modules/lodash.isequal/README.md
+	deleted:    backend/node_modules/lodash.isequal/index.js
+	deleted:    backend/node_modules/lodash.isequal/package.json
+	deleted:    backend/node_modules/lodash.isinteger/LICENSE
+	deleted:    backend/node_modules/lodash.isinteger/README.md
+	deleted:    backend/node_modules/lodash.isinteger/index.js
+	deleted:    backend/node_modules/lodash.isinteger/package.json
+	deleted:    backend/node_modules/lodash.isnumber/LICENSE
+	deleted:    backend/node_modules/lodash.isnumber/README.md
+	deleted:    backend/node_modules/lodash.isnumber/index.js
+	deleted:    backend/node_modules/lodash.isnumber/package.json
+	deleted:    backend/node_modules/lodash.isplainobject/LICENSE
+	deleted:    backend/node_modules/lodash.isplainobject/README.md
+	deleted:    backend/node_modules/lodash.isplainobject/index.js
+	deleted:    backend/node_modules/lodash.isplainobject/package.json
+	deleted:    backend/node_modules/lodash.isstring/LICENSE
+	deleted:    backend/node_modules/lodash.isstring/README.md
+	deleted:    backend/node_modules/lodash.isstring/index.js
+	deleted:    backend/node_modules/lodash.isstring/package.json
+	deleted:    backend/node_modules/lodash.mergewith/LICENSE
+	deleted:    backend/node_modules/lodash.mergewith/README.md
+	deleted:    backend/node_modules/lodash.mergewith/index.js
+	deleted:    backend/node_modules/lodash.mergewith/package.json
+	deleted:    backend/node_modules/lodash.once/LICENSE
+	deleted:    backend/node_modules/lodash.once/README.md
+	deleted:    backend/node_modules/lodash.once/index.js
+	deleted:    backend/node_modules/lodash.once/package.json
+	deleted:    backend/node_modules/lru-cache/LICENSE
+	deleted:    backend/node_modules/lru-cache/README.md
+	deleted:    backend/node_modules/lru-cache/index.js
+	deleted:    backend/node_modules/lru-cache/package.json
+	deleted:    backend/node_modules/make-fetch-happen/LICENSE
+	deleted:    backend/node_modules/make-fetch-happen/README.md
+	deleted:    backend/node_modules/make-fetch-happen/lib/agent.js
+	deleted:    backend/node_modules/make-fetch-happen/lib/cache/entry.js
+	deleted:    backend/node_modules/make-fetch-happen/lib/cache/errors.js
+	deleted:    backend/node_modules/make-fetch-happen/lib/cache/index.js
+	deleted:    backend/node_modules/make-fetch-happen/lib/cache/key.js
+	deleted:    backend/node_modules/make-fetch-happen/lib/cache/policy.js
+	deleted:    backend/node_modules/make-fetch-happen/lib/fetch.js
+	deleted:    backend/node_modules/make-fetch-happen/lib/index.js
+	deleted:    backend/node_modules/make-fetch-happen/lib/options.js
+	deleted:    backend/node_modules/make-fetch-happen/lib/remote.js
+	deleted:    backend/node_modules/make-fetch-happen/node_modules/negotiator/HISTORY.md
+	deleted:    backend/node_modules/make-fetch-happen/node_modules/negotiator/LICENSE
+	deleted:    backend/node_modules/make-fetch-happen/node_modules/negotiator/README.md
+	deleted:    backend/node_modules/make-fetch-happen/node_modules/negotiator/index.js
+	deleted:    backend/node_modules/make-fetch-happen/node_modules/negotiator/lib/charset.js
+	deleted:    backend/node_modules/make-fetch-happen/node_modules/negotiator/lib/encoding.js
+	deleted:    backend/node_modules/make-fetch-happen/node_modules/negotiator/lib/language.js
+	deleted:    backend/node_modules/make-fetch-happen/node_modules/negotiator/lib/mediaType.js
+	deleted:    backend/node_modules/make-fetch-happen/node_modules/negotiator/package.json
+	deleted:    backend/node_modules/make-fetch-happen/package.json
+	deleted:    backend/node_modules/math-intrinsics/.eslintrc
+	deleted:    backend/node_modules/math-intrinsics/.github/FUNDING.yml
+	deleted:    backend/node_modules/math-intrinsics/CHANGELOG.md
+	deleted:    backend/node_modules/math-intrinsics/LICENSE
+	deleted:    backend/node_modules/math-intrinsics/README.md
+	deleted:    backend/node_modules/math-intrinsics/abs.d.ts
+	deleted:    backend/node_modules/math-intrinsics/abs.js
+	deleted:    backend/node_modules/math-intrinsics/constants/maxArrayLength.d.ts
+	deleted:    backend/node_modules/math-intrinsics/constants/maxArrayLength.js
+	deleted:    backend/node_modules/math-intrinsics/constants/maxSafeInteger.d.ts
+	deleted:    backend/node_modules/math-intrinsics/constants/maxSafeInteger.js
+	deleted:    backend/node_modules/math-intrinsics/constants/maxValue.d.ts
+	deleted:    backend/node_modules/math-intrinsics/constants/maxValue.js
+	deleted:    backend/node_modules/math-intrinsics/floor.d.ts
+	deleted:    backend/node_modules/math-intrinsics/floor.js
+	deleted:    backend/node_modules/math-intrinsics/isFinite.d.ts
+	deleted:    backend/node_modules/math-intrinsics/isFinite.js
+	deleted:    backend/node_modules/math-intrinsics/isInteger.d.ts
+	deleted:    backend/node_modules/math-intrinsics/isInteger.js
+	deleted:    backend/node_modules/math-intrinsics/isNaN.d.ts
+	deleted:    backend/node_modules/math-intrinsics/isNaN.js
+	deleted:    backend/node_modules/math-intrinsics/isNegativeZero.d.ts
+	deleted:    backend/node_modules/math-intrinsics/isNegativeZero.js
+	deleted:    backend/node_modules/math-intrinsics/max.d.ts
+	deleted:    backend/node_modules/math-intrinsics/max.js
+	deleted:    backend/node_modules/math-intrinsics/min.d.ts
+	deleted:    backend/node_modules/math-intrinsics/min.js
+	deleted:    backend/node_modules/math-intrinsics/mod.d.ts
+	deleted:    backend/node_modules/math-intrinsics/mod.js
+	deleted:    backend/node_modules/math-intrinsics/package.json
+	deleted:    backend/node_modules/math-intrinsics/pow.d.ts
+	deleted:    backend/node_modules/math-intrinsics/pow.js
+	deleted:    backend/node_modules/math-intrinsics/round.d.ts
+	deleted:    backend/node_modules/math-intrinsics/round.js
+	deleted:    backend/node_modules/math-intrinsics/sign.d.ts
+	deleted:    backend/node_modules/math-intrinsics/sign.js
+	deleted:    backend/node_modules/math-intrinsics/test/index.js
+	deleted:    backend/node_modules/math-intrinsics/tsconfig.json
+	deleted:    backend/node_modules/media-typer/HISTORY.md
+	deleted:    backend/node_modules/media-typer/LICENSE
+	deleted:    backend/node_modules/media-typer/README.md
+	deleted:    backend/node_modules/media-typer/index.js
+	deleted:    backend/node_modules/media-typer/package.json
+	deleted:    backend/node_modules/merge-descriptors/index.d.ts
+	deleted:    backend/node_modules/merge-descriptors/index.js
+	deleted:    backend/node_modules/merge-descriptors/license
+	deleted:    backend/node_modules/merge-descriptors/package.json
+	deleted:    backend/node_modules/merge-descriptors/readme.md
+	deleted:    backend/node_modules/mime-db/HISTORY.md
+	deleted:    backend/node_modules/mime-db/LICENSE
+	deleted:    backend/node_modules/mime-db/README.md
+	deleted:    backend/node_modules/mime-db/db.json
+	deleted:    backend/node_modules/mime-db/index.js
+	deleted:    backend/node_modules/mime-db/package.json
+	deleted:    backend/node_modules/mime-types/HISTORY.md
+	deleted:    backend/node_modules/mime-types/LICENSE
+	deleted:    backend/node_modules/mime-types/README.md
+	deleted:    backend/node_modules/mime-types/index.js
+	deleted:    backend/node_modules/mime-types/mimeScore.js
+	deleted:    backend/node_modules/mime-types/package.json
+	deleted:    backend/node_modules/mimic-response/index.d.ts
+	deleted:    backend/node_modules/mimic-response/index.js
+	deleted:    backend/node_modules/mimic-response/license
+	deleted:    backend/node_modules/mimic-response/package.json
+	deleted:    backend/node_modules/mimic-response/readme.md
+	deleted:    backend/node_modules/minimist/.eslintrc
+	deleted:    backend/node_modules/minimist/.github/FUNDING.yml
+	deleted:    backend/node_modules/minimist/.nycrc
+	deleted:    backend/node_modules/minimist/CHANGELOG.md
+	deleted:    backend/node_modules/minimist/LICENSE
+	deleted:    backend/node_modules/minimist/README.md
+	deleted:    backend/node_modules/minimist/example/parse.js
+	deleted:    backend/node_modules/minimist/index.js
+	deleted:    backend/node_modules/minimist/package.json
+	deleted:    backend/node_modules/minimist/test/all_bool.js
+	deleted:    backend/node_modules/minimist/test/bool.js
+	deleted:    backend/node_modules/minimist/test/dash.js
+	deleted:    backend/node_modules/minimist/test/default_bool.js
+	deleted:    backend/node_modules/minimist/test/dotted.js
+	deleted:    backend/node_modules/minimist/test/kv_short.js
+	deleted:    backend/node_modules/minimist/test/long.js
+	deleted:    backend/node_modules/minimist/test/num.js
+	deleted:    backend/node_modules/minimist/test/parse.js
+	deleted:    backend/node_modules/minimist/test/parse_modified.js
+	deleted:    backend/node_modules/minimist/test/proto.js
+	deleted:    backend/node_modules/minimist/test/short.js
+	deleted:    backend/node_modules/minimist/test/stop_early.js
+	deleted:    backend/node_modules/minimist/test/unknown.js
+	deleted:    backend/node_modules/minimist/test/whitespace.js
+	deleted:    backend/node_modules/minipass-collect/LICENSE
+	deleted:    backend/node_modules/minipass-collect/README.md
+	deleted:    backend/node_modules/minipass-collect/index.js
+	deleted:    backend/node_modules/minipass-collect/package.json
+	deleted:    backend/node_modules/minipass-fetch/LICENSE
+	deleted:    backend/node_modules/minipass-fetch/README.md
+	deleted:    backend/node_modules/minipass-fetch/index.js
+	deleted:    backend/node_modules/minipass-fetch/lib/abort-error.js
+	deleted:    backend/node_modules/minipass-fetch/lib/blob.js
+	deleted:    backend/node_modules/minipass-fetch/lib/body.js
+	deleted:    backend/node_modules/minipass-fetch/lib/fetch-error.js
+	deleted:    backend/node_modules/minipass-fetch/lib/headers.js
+	deleted:    backend/node_modules/minipass-fetch/lib/index.js
+	deleted:    backend/node_modules/minipass-fetch/lib/request.js
+	deleted:    backend/node_modules/minipass-fetch/lib/response.js
+	deleted:    backend/node_modules/minipass-fetch/package.json
+	deleted:    backend/node_modules/minipass-flush/index.js
+	deleted:    backend/node_modules/minipass-pipeline/LICENSE
+	deleted:    backend/node_modules/minipass-pipeline/README.md
+	deleted:    backend/node_modules/minipass-pipeline/index.js
+	deleted:    backend/node_modules/minipass-pipeline/package.json
+	deleted:    backend/node_modules/minipass-sized/.npmignore
+	deleted:    backend/node_modules/minipass-sized/LICENSE
+	deleted:    backend/node_modules/minipass-sized/README.md
+	deleted:    backend/node_modules/minipass-sized/index.js
+	deleted:    backend/node_modules/minipass-sized/package-lock.json
+	deleted:    backend/node_modules/minipass-sized/package.json
+	deleted:    backend/node_modules/minipass-sized/test/basic.js
+	deleted:    backend/node_modules/minipass/LICENSE
+	deleted:    backend/node_modules/minipass/README.md
+	deleted:    backend/node_modules/minipass/index.d.ts
+	deleted:    backend/node_modules/minipass/index.js
+	deleted:    backend/node_modules/minipass/package.json
+	deleted:    backend/node_modules/minizlib/LICENSE
+	deleted:    backend/node_modules/minizlib/README.md
+	deleted:    backend/node_modules/minizlib/constants.js
+	deleted:    backend/node_modules/minizlib/index.js
+	deleted:    backend/node_modules/minizlib/package.json
+	deleted:    backend/node_modules/mkdirp-classic/LICENSE
+	deleted:    backend/node_modules/mkdirp-classic/README.md
+	deleted:    backend/node_modules/mkdirp-classic/index.js
+	deleted:    backend/node_modules/mkdirp-classic/package.json
+	deleted:    backend/node_modules/mkdirp/CHANGELOG.md
+	deleted:    backend/node_modules/mkdirp/LICENSE
+	deleted:    backend/node_modules/mkdirp/index.js
+	deleted:    backend/node_modules/mkdirp/lib/find-made.js
+	deleted:    backend/node_modules/mkdirp/lib/mkdirp-manual.js
+	deleted:    backend/node_modules/mkdirp/lib/mkdirp-native.js
+	deleted:    backend/node_modules/mkdirp/lib/opts-arg.js
+	deleted:    backend/node_modules/mkdirp/lib/path-arg.js
+	deleted:    backend/node_modules/mkdirp/lib/use-native.js
+	deleted:    backend/node_modules/mkdirp/package.json
+	deleted:    backend/node_modules/mkdirp/readme.markdown
+	deleted:    backend/node_modules/ms/index.js
+	deleted:    backend/node_modules/ms/license.md
+	deleted:    backend/node_modules/ms/package.json
+	deleted:    backend/node_modules/ms/readme.md
+	deleted:    backend/node_modules/napi-build-utils/.github/workflows/run-npm-tests.yml
+	deleted:    backend/node_modules/napi-build-utils/LICENSE
+	deleted:    backend/node_modules/napi-build-utils/README.md
+	deleted:    backend/node_modules/napi-build-utils/index.js
+	deleted:    backend/node_modules/napi-build-utils/index.md
+	deleted:    backend/node_modules/napi-build-utils/package.json
+	deleted:    backend/node_modules/negotiator/HISTORY.md
+	deleted:    backend/node_modules/negotiator/LICENSE
+	deleted:    backend/node_modules/negotiator/README.md
+	deleted:    backend/node_modules/negotiator/index.js
+	deleted:    backend/node_modules/negotiator/lib/charset.js
+	deleted:    backend/node_modules/negotiator/lib/encoding.js
+	deleted:    backend/node_modules/negotiator/lib/language.js
+	deleted:    backend/node_modules/negotiator/lib/mediaType.js
+	deleted:    backend/node_modules/negotiator/package.json
+	deleted:    backend/node_modules/node-abi/LICENSE
+	deleted:    backend/node_modules/node-abi/README.md
+	deleted:    backend/node_modules/node-abi/index.js
+	deleted:    backend/node_modules/node-addon-api/LICENSE.md
+	deleted:    backend/node_modules/node-addon-api/README.md
+	deleted:    backend/node_modules/node-addon-api/common.gypi
+	deleted:    backend/node_modules/node-addon-api/except.gypi
+	deleted:    backend/node_modules/node-addon-api/index.js
+	deleted:    backend/node_modules/node-addon-api/napi-inl.deprecated.h
+	deleted:    backend/node_modules/node-addon-api/napi-inl.h
+	deleted:    backend/node_modules/node-addon-api/napi.h
+	deleted:    backend/node_modules/node-addon-api/node_addon_api.gyp
+	deleted:    backend/node_modules/node-addon-api/node_api.gyp
+	deleted:    backend/node_modules/node-addon-api/noexcept.gypi
+	deleted:    backend/node_modules/node-addon-api/nothing.c
+	deleted:    backend/node_modules/node-addon-api/package-support.json
+	deleted:    backend/node_modules/node-addon-api/package.json
+	deleted:    backend/node_modules/node-addon-api/tools/README.md
+	deleted:    backend/node_modules/node-addon-api/tools/check-napi.js
+	deleted:    backend/node_modules/node-addon-api/tools/clang-format.js
+	deleted:    backend/node_modules/node-addon-api/tools/eslint-format.js
+	deleted:    backend/node_modules/node-gyp/.github/ISSUE_TEMPLATE.md
+	deleted:    backend/node_modules/node-gyp/.github/PULL_REQUEST_TEMPLATE.md
+	deleted:    backend/node_modules/node-gyp/.github/workflows/release-please.yml
+	deleted:    backend/node_modules/node-gyp/.github/workflows/tests.yml
+	deleted:    backend/node_modules/node-gyp/.github/workflows/visual-studio.yml
+	deleted:    backend/node_modules/node-gyp/CHANGELOG.md
+	deleted:    backend/node_modules/node-gyp/CONTRIBUTING.md
+	deleted:    backend/node_modules/node-gyp/LICENSE
+	deleted:    backend/node_modules/node-gyp/README.md
+	deleted:    backend/node_modules/node-gyp/addon.gypi
+	deleted:    backend/node_modules/node-gyp/docs/Common-issues.md
+	deleted:    backend/node_modules/node-gyp/docs/Error-pre-versions-of-node-cannot-be-installed.md
+	deleted:    backend/node_modules/node-gyp/docs/Home.md
+	deleted:    backend/node_modules/node-gyp/docs/Linking-to-OpenSSL.md
+	deleted:    backend/node_modules/node-gyp/docs/Updating-npm-bundled-node-gyp.md
+	deleted:    backend/node_modules/node-gyp/docs/binding.gyp-files-in-the-wild.md
+	deleted:    backend/node_modules/node-gyp/gyp/.flake8
+	deleted:    backend/node_modules/node-gyp/gyp/.github/workflows/Python_tests.yml
+	deleted:    backend/node_modules/node-gyp/gyp/.github/workflows/node-gyp.yml
+	deleted:    backend/node_modules/node-gyp/gyp/.github/workflows/nodejs-windows.yml
+	deleted:    backend/node_modules/node-gyp/gyp/.github/workflows/release-please.yml
+	deleted:    backend/node_modules/node-gyp/gyp/AUTHORS
+	deleted:    backend/node_modules/node-gyp/gyp/CHANGELOG.md
+	deleted:    backend/node_modules/node-gyp/gyp/CODE_OF_CONDUCT.md
+	deleted:    backend/node_modules/node-gyp/gyp/CONTRIBUTING.md
+	deleted:    backend/node_modules/node-gyp/gyp/LICENSE
+	deleted:    backend/node_modules/node-gyp/gyp/README.md
+	deleted:    backend/node_modules/node-gyp/gyp/data/win/large-pdb-shim.cc
+	deleted:    backend/node_modules/node-gyp/gyp/pylib/gyp/MSVSNew.py
+	deleted:    backend/node_modules/node-gyp/gyp/pylib/gyp/MSVSProject.py
+	deleted:    backend/node_modules/node-gyp/gyp/pylib/gyp/MSVSSettings.py
+	deleted:    backend/node_modules/node-gyp/gyp/pylib/gyp/MSVSToolFile.py
+	deleted:    backend/node_modules/node-gyp/gyp/pylib/gyp/MSVSUserFile.py
+	deleted:    backend/node_modules/node-gyp/gyp/pylib/gyp/MSVSUtil.py
+	deleted:    backend/node_modules/node-gyp/gyp/pylib/gyp/MSVSVersion.py
+	deleted:    backend/node_modules/node-gyp/gyp/pylib/gyp/common.py
+	deleted:    backend/node_modules/node-gyp/gyp/pylib/gyp/easy_xml.py
+	deleted:    backend/node_modules/node-gyp/gyp/pylib/gyp/generator/__init__.py
+	deleted:    backend/node_modules/node-gyp/gyp/pylib/gyp/generator/analyzer.py
+	deleted:    backend/node_modules/node-gyp/gyp/pylib/gyp/generator/android.py
+	deleted:    backend/node_modules/node-gyp/gyp/pylib/gyp/generator/cmake.py
+	deleted:    backend/node_modules/node-gyp/gyp/pylib/gyp/generator/compile_commands_json.py
+	deleted:    backend/node_modules/node-gyp/gyp/pylib/gyp/generator/dump_dependency_json.py
+	deleted:    backend/node_modules/node-gyp/gyp/pylib/gyp/generator/eclipse.py
+	deleted:    backend/node_modules/node-gyp/gyp/pylib/gyp/generator/gypd.py
+	deleted:    backend/node_modules/node-gyp/gyp/pylib/gyp/generator/gypsh.py
+	deleted:    backend/node_modules/node-gyp/gyp/pylib/gyp/generator/make.py
+	deleted:    backend/node_modules/node-gyp/gyp/pylib/gyp/generator/msvs.py
+	deleted:    backend/node_modules/node-gyp/gyp/pylib/gyp/generator/ninja.py
+	deleted:    backend/node_modules/node-gyp/gyp/pylib/gyp/generator/ninja_test.py
+	deleted:    backend/node_modules/node-gyp/gyp/pylib/gyp/generator/xcode.py
+	deleted:    backend/node_modules/node-gyp/gyp/pylib/gyp/generator/xcode_test.py
+	deleted:    backend/node_modules/node-gyp/gyp/pylib/gyp/input.py
+	deleted:    backend/node_modules/node-gyp/gyp/pylib/gyp/msvs_emulation.py
+	deleted:    backend/node_modules/node-gyp/gyp/pylib/gyp/ninja_syntax.py
+	deleted:    backend/node_modules/node-gyp/gyp/pylib/gyp/simple_copy.py
+	deleted:    backend/node_modules/node-gyp/gyp/pylib/gyp/xcode_emulation.py
+	deleted:    backend/node_modules/node-gyp/gyp/pylib/gyp/xcode_ninja.py
+	deleted:    backend/node_modules/node-gyp/gyp/pylib/gyp/xcodeproj_file.py
+	deleted:    backend/node_modules/node-gyp/gyp/pylib/gyp/xml_fix.py
+	deleted:    backend/node_modules/node-gyp/gyp/requirements_dev.txt
+	deleted:    backend/node_modules/node-gyp/gyp/setup.py
+	deleted:    backend/node_modules/node-gyp/gyp/tools/README
+	deleted:    backend/node_modules/node-gyp/gyp/tools/Xcode/README
+	deleted:    backend/node_modules/node-gyp/gyp/tools/Xcode/Specifications/gyp.pbfilespec
+	deleted:    backend/node_modules/node-gyp/gyp/tools/Xcode/Specifications/gyp.xclangspec
+	deleted:    backend/node_modules/node-gyp/gyp/tools/emacs/README
+	deleted:    backend/node_modules/node-gyp/gyp/tools/emacs/gyp-tests.el
+	deleted:    backend/node_modules/node-gyp/gyp/tools/emacs/gyp.el
+	deleted:    backend/node_modules/node-gyp/gyp/tools/emacs/testdata/media.gyp
+	deleted:    backend/node_modules/node-gyp/gyp/tools/emacs/testdata/media.gyp.fontified
+	deleted:    backend/node_modules/node-gyp/lib/Find-VisualStudio.cs
+	deleted:    backend/node_modules/node-gyp/lib/build.js
+	deleted:    backend/node_modules/node-gyp/lib/clean.js
+	deleted:    backend/node_modules/node-gyp/lib/configure.js
+	deleted:    backend/node_modules/node-gyp/lib/create-config-gypi.js
+	deleted:    backend/node_modules/node-gyp/lib/find-node-directory.js
+	deleted:    backend/node_modules/node-gyp/lib/find-python.js
+	deleted:    backend/node_modules/node-gyp/lib/find-visualstudio.js
+	deleted:    backend/node_modules/node-gyp/lib/install.js
+	deleted:    backend/node_modules/node-gyp/lib/list.js
+	deleted:    backend/node_modules/node-gyp/lib/node-gyp.js
+	deleted:    backend/node_modules/node-gyp/lib/process-release.js
+	deleted:    backend/node_modules/node-gyp/lib/rebuild.js
+	deleted:    backend/node_modules/node-gyp/lib/remove.js
+	deleted:    backend/node_modules/node-gyp/lib/util.js
+	deleted:    backend/node_modules/node-gyp/macOS_Catalina.md
+	deleted:    backend/node_modules/node-gyp/macOS_Catalina_acid_test.sh
+	deleted:    backend/node_modules/node-gyp/package.json
+	deleted:    backend/node_modules/node-gyp/src/win_delay_load_hook.cc
+	deleted:    backend/node_modules/node-gyp/test/common.js
+	deleted:    backend/node_modules/node-gyp/test/fixtures/VS_2017_BuildTools_minimal.txt
+	deleted:    backend/node_modules/node-gyp/test/fixtures/VS_2017_Community_workload.txt
+	deleted:    backend/node_modules/node-gyp/test/fixtures/VS_2017_Express.txt
+	deleted:    backend/node_modules/node-gyp/test/fixtures/VS_2017_Unusable.txt
+	deleted:    backend/node_modules/node-gyp/test/fixtures/VS_2019_BuildTools_minimal.txt
+	deleted:    backend/node_modules/node-gyp/test/fixtures/VS_2019_Community_workload.txt
+	deleted:    backend/node_modules/node-gyp/test/fixtures/VS_2019_Preview.txt
+	deleted:    backend/node_modules/node-gyp/test/fixtures/ca-bundle.crt
+	deleted:    backend/node_modules/node-gyp/test/fixtures/ca.crt
+	deleted:    backend/node_modules/node-gyp/test/fixtures/nodedir/include/node/config.gypi
+	deleted:    backend/node_modules/node-gyp/test/fixtures/server.crt
+	deleted:    backend/node_modules/node-gyp/test/fixtures/server.key
+	deleted:    backend/node_modules/node-gyp/test/fixtures/test-charmap.py
+	deleted:    backend/node_modules/node-gyp/test/process-exec-sync.js
+	deleted:    backend/node_modules/node-gyp/test/simple-proxy.js
+	deleted:    backend/node_modules/node-gyp/test/test-addon.js
+	deleted:    backend/node_modules/node-gyp/test/test-configure-python.js
+	deleted:    backend/node_modules/node-gyp/test/test-create-config-gypi.js
+	deleted:    backend/node_modules/node-gyp/test/test-download.js
+	deleted:    backend/node_modules/node-gyp/test/test-find-accessible-sync.js
+	deleted:    backend/node_modules/node-gyp/test/test-find-node-directory.js
+	deleted:    backend/node_modules/node-gyp/test/test-find-python.js
+	deleted:    backend/node_modules/node-gyp/test/test-find-visualstudio.js
+	deleted:    backend/node_modules/node-gyp/test/test-install.js
+	deleted:    backend/node_modules/node-gyp/test/test-options.js
+	deleted:    backend/node_modules/node-gyp/test/test-process-release.js
+	deleted:    backend/node_modules/nodemon/.prettierrc.json
+	deleted:    backend/node_modules/nodemon/LICENSE
+	deleted:    backend/node_modules/nodemon/README.md
+	deleted:    backend/node_modules/nodemon/bin/windows-kill.exe
+	deleted:    backend/node_modules/nodemon/doc/cli/authors.txt
+	deleted:    backend/node_modules/nodemon/doc/cli/config.txt
+	deleted:    backend/node_modules/nodemon/doc/cli/help.txt
+	deleted:    backend/node_modules/nodemon/doc/cli/logo.txt
+	deleted:    backend/node_modules/nodemon/doc/cli/options.txt
+	deleted:    backend/node_modules/nodemon/doc/cli/topics.txt
+	deleted:    backend/node_modules/nodemon/doc/cli/usage.txt
+	deleted:    backend/node_modules/nodemon/doc/cli/whoami.txt
+	deleted:    backend/node_modules/nodemon/index.d.ts
+	deleted:    backend/node_modules/nodemon/jsconfig.json
+	deleted:    backend/node_modules/nodemon/lib/cli/index.js
+	deleted:    backend/node_modules/nodemon/lib/cli/parse.js
+	deleted:    backend/node_modules/nodemon/lib/config/command.js
+	deleted:    backend/node_modules/nodemon/lib/config/defaults.js
+	deleted:    backend/node_modules/nodemon/lib/config/exec.js
+	deleted:    backend/node_modules/nodemon/lib/config/index.js
+	deleted:    backend/node_modules/nodemon/lib/config/load.js
+	deleted:    backend/node_modules/nodemon/lib/help/index.js
+	deleted:    backend/node_modules/nodemon/lib/index.js
+	deleted:    backend/node_modules/nodemon/lib/monitor/index.js
+	deleted:    backend/node_modules/nodemon/lib/monitor/match.js
+	deleted:    backend/node_modules/nodemon/lib/monitor/run.js
+	deleted:    backend/node_modules/nodemon/lib/monitor/signals.js
+	deleted:    backend/node_modules/nodemon/lib/monitor/watch.js
+	deleted:    backend/node_modules/nodemon/lib/nodemon.js
+	deleted:    backend/node_modules/nodemon/lib/rules/add.js
+	deleted:    backend/node_modules/nodemon/lib/rules/index.js
+	deleted:    backend/node_modules/nodemon/lib/rules/parse.js
+	deleted:    backend/node_modules/nodemon/lib/spawn.js
+	deleted:    backend/node_modules/nodemon/lib/utils/bus.js
+	deleted:    backend/node_modules/nodemon/lib/utils/clone.js
+	deleted:    backend/node_modules/nodemon/lib/utils/colour.js
+	deleted:    backend/node_modules/nodemon/lib/utils/index.js
+	deleted:    backend/node_modules/nodemon/lib/utils/log.js
+	deleted:    backend/node_modules/nodemon/lib/utils/merge.js
+	deleted:    backend/node_modules/nodemon/lib/version.js
+	deleted:    backend/node_modules/nodemon/package.json
+	deleted:    backend/node_modules/nopt/CHANGELOG.md
+	deleted:    backend/node_modules/nopt/LICENSE
+	deleted:    backend/node_modules/nopt/README.md
+	deleted:    backend/node_modules/nopt/lib/nopt.js
+	deleted:    backend/node_modules/nopt/package.json
+	deleted:    backend/node_modules/normalize-path/LICENSE
+	deleted:    backend/node_modules/normalize-path/README.md
+	deleted:    backend/node_modules/normalize-path/index.js
+	deleted:    backend/node_modules/normalize-path/package.json
+	deleted:    backend/node_modules/npmlog/LICENSE.md
+	deleted:    backend/node_modules/npmlog/README.md
+	deleted:    backend/node_modules/npmlog/lib/log.js
+	deleted:    backend/node_modules/npmlog/package.json
+	deleted:    backend/node_modules/object-assign/index.js
+	deleted:    backend/node_modules/object-assign/license
+	deleted:    backend/node_modules/object-assign/package.json
+	deleted:    backend/node_modules/object-assign/readme.md
+	deleted:    backend/node_modules/object-inspect/.eslintrc
+	deleted:    backend/node_modules/object-inspect/.github/FUNDING.yml
+	deleted:    backend/node_modules/object-inspect/.nycrc
+	deleted:    backend/node_modules/object-inspect/CHANGELOG.md
+	deleted:    backend/node_modules/object-inspect/LICENSE
+	deleted:    backend/node_modules/object-inspect/example/all.js
+	deleted:    backend/node_modules/object-inspect/example/circular.js
+	deleted:    backend/node_modules/object-inspect/example/fn.js
+	deleted:    backend/node_modules/object-inspect/example/inspect.js
+	deleted:    backend/node_modules/object-inspect/index.js
+	deleted:    backend/node_modules/object-inspect/package-support.json
+	deleted:    backend/node_modules/object-inspect/package.json
+	deleted:    backend/node_modules/object-inspect/readme.markdown
+	deleted:    backend/node_modules/object-inspect/test-core-js.js
+	deleted:    backend/node_modules/object-inspect/test/bigint.js
+	deleted:    backend/node_modules/object-inspect/test/browser/dom.js
+	deleted:    backend/node_modules/object-inspect/test/circular.js
+	deleted:    backend/node_modules/object-inspect/test/deep.js
+	deleted:    backend/node_modules/object-inspect/test/element.js
+	deleted:    backend/node_modules/object-inspect/test/err.js
+	deleted:    backend/node_modules/object-inspect/test/fakes.js
+	deleted:    backend/node_modules/object-inspect/test/fn.js
+	deleted:    backend/node_modules/object-inspect/test/global.js
+	deleted:    backend/node_modules/object-inspect/test/has.js
+	deleted:    backend/node_modules/object-inspect/test/holes.js
+	deleted:    backend/node_modules/object-inspect/test/indent-option.js
+	deleted:    backend/node_modules/object-inspect/test/inspect.js
+	deleted:    backend/node_modules/object-inspect/test/lowbyte.js
+	deleted:    backend/node_modules/object-inspect/test/number.js
+	deleted:    backend/node_modules/object-inspect/test/quoteStyle.js
+	deleted:    backend/node_modules/object-inspect/test/toStringTag.js
+	deleted:    backend/node_modules/object-inspect/test/undef.js
+	deleted:    backend/node_modules/object-inspect/test/values.js
+	deleted:    backend/node_modules/object-inspect/util.inspect.js
+	deleted:    backend/node_modules/on-finished/HISTORY.md
+	deleted:    backend/node_modules/on-finished/LICENSE
+	deleted:    backend/node_modules/on-finished/README.md
+	deleted:    backend/node_modules/on-finished/index.js
+	deleted:    backend/node_modules/on-finished/package.json
+	deleted:    backend/node_modules/once/LICENSE
+	deleted:    backend/node_modules/once/README.md
+	deleted:    backend/node_modules/once/once.js
+	deleted:    backend/node_modules/once/package.json
+	deleted:    backend/node_modules/openapi-types/CHANGELOG.md
+	deleted:    backend/node_modules/openapi-types/LICENSE
+	deleted:    backend/node_modules/openapi-types/README.md
+	deleted:    backend/node_modules/openapi-types/dist/index.d.ts
+	deleted:    backend/node_modules/openapi-types/dist/index.js
+	deleted:    backend/node_modules/openapi-types/dist/index.js.map
+	deleted:    backend/node_modules/openapi-types/package.json
+	deleted:    backend/node_modules/p-map/index.d.ts
+	deleted:    backend/node_modules/p-map/index.js
+	deleted:    backend/node_modules/p-map/license
+	deleted:    backend/node_modules/p-map/package.json
+	deleted:    backend/node_modules/p-map/readme.md
+	deleted:    backend/node_modules/parseurl/HISTORY.md
+	deleted:    backend/node_modules/parseurl/LICENSE
+	deleted:    backend/node_modules/parseurl/README.md
+	deleted:    backend/node_modules/parseurl/index.js
+	deleted:    backend/node_modules/parseurl/package.json
+	deleted:    backend/node_modules/path-is-absolute/index.js
+	deleted:    backend/node_modules/path-is-absolute/license
+	deleted:    backend/node_modules/path-is-absolute/package.json
+	deleted:    backend/node_modules/path-is-absolute/readme.md
+	deleted:    backend/node_modules/path-to-regexp/LICENSE
+	deleted:    backend/node_modules/picomatch/LICENSE
+	deleted:    backend/node_modules/picomatch/index.js
+	deleted:    backend/node_modules/picomatch/lib/picomatch.js
+	deleted:    backend/node_modules/picomatch/lib/scan.js
+	deleted:    backend/node_modules/picomatch/lib/utils.js
+	deleted:    backend/node_modules/prebuild-install/CHANGELOG.md
+	deleted:    backend/node_modules/prebuild-install/CONTRIBUTING.md
+	deleted:    backend/node_modules/prebuild-install/LICENSE
+	deleted:    backend/node_modules/prebuild-install/README.md
+	deleted:    backend/node_modules/prebuild-install/asset.js
+	deleted:    backend/node_modules/prebuild-install/download.js
+	deleted:    backend/node_modules/prebuild-install/error.js
+	deleted:    backend/node_modules/prebuild-install/help.txt
+	deleted:    backend/node_modules/prebuild-install/index.js
+	deleted:    backend/node_modules/prebuild-install/log.js
+	deleted:    backend/node_modules/prebuild-install/package.json
+	deleted:    backend/node_modules/prebuild-install/proxy.js
+	deleted:    backend/node_modules/prebuild-install/rc.js
+	deleted:    backend/node_modules/prebuild-install/util.js
+	deleted:    backend/node_modules/promise-inflight/LICENSE
+	deleted:    backend/node_modules/promise-inflight/README.md
+	deleted:    backend/node_modules/promise-inflight/inflight.js
+	deleted:    backend/node_modules/promise-inflight/package.json
+	deleted:    backend/node_modules/promise-retry/.editorconfig
+	deleted:    backend/node_modules/promise-retry/.jshintrc
+	deleted:    backend/node_modules/promise-retry/.travis.yml
+	deleted:    backend/node_modules/promise-retry/LICENSE
+	deleted:    backend/node_modules/promise-retry/README.md
+	deleted:    backend/node_modules/promise-retry/index.js
+	deleted:    backend/node_modules/promise-retry/package.json
+	deleted:    backend/node_modules/promise-retry/test/test.js
+	deleted:    backend/node_modules/proxy-addr/HISTORY.md
+	deleted:    backend/node_modules/proxy-addr/LICENSE
+	deleted:    backend/node_modules/proxy-addr/README.md
+	deleted:    backend/node_modules/proxy-addr/index.js
+	deleted:    backend/node_modules/proxy-addr/package.json
+	deleted:    backend/node_modules/pstree.remy/.travis.yml
+	deleted:    backend/node_modules/pstree.remy/LICENSE
+	deleted:    backend/node_modules/pstree.remy/README.md
+	deleted:    backend/node_modules/pstree.remy/lib/index.js
+	deleted:    backend/node_modules/pstree.remy/lib/tree.js
+	deleted:    backend/node_modules/pstree.remy/lib/utils.js
+	deleted:    backend/node_modules/pstree.remy/package.json
+	deleted:    backend/node_modules/pstree.remy/tests/fixtures/index.js
+	deleted:    backend/node_modules/pstree.remy/tests/fixtures/out1
+	deleted:    backend/node_modules/pstree.remy/tests/fixtures/out2
+	deleted:    backend/node_modules/pstree.remy/tests/index.test.js
+	deleted:    backend/node_modules/pump/.github/FUNDING.yml
+	deleted:    backend/node_modules/pump/.travis.yml
+	deleted:    backend/node_modules/pump/LICENSE
+	deleted:    backend/node_modules/pump/README.md
+	deleted:    backend/node_modules/pump/SECURITY.md
+	deleted:    backend/node_modules/pump/empty.js
+	deleted:    backend/node_modules/pump/index.js
+	deleted:    backend/node_modules/pump/package.json
+	deleted:    backend/node_modules/pump/test-browser.js
+	deleted:    backend/node_modules/pump/test-node.js
+	deleted:    backend/node_modules/qs/.editorconfig
+	deleted:    backend/node_modules/qs/.github/FUNDING.yml
+	deleted:    backend/node_modules/qs/.github/SECURITY.md
+	deleted:    backend/node_modules/qs/.github/THREAT_MODEL.md
+	deleted:    backend/node_modules/qs/.nycrc
+	deleted:    backend/node_modules/qs/LICENSE.md
+	deleted:    backend/node_modules/qs/README.md
+	deleted:    backend/node_modules/qs/eslint.config.mjs
+	deleted:    backend/node_modules/qs/lib/formats.js
+	deleted:    backend/node_modules/qs/lib/index.js
+	deleted:    backend/node_modules/qs/lib/stringify.js
+	deleted:    backend/node_modules/qs/lib/utils.js
+	deleted:    backend/node_modules/qs/test/empty-keys-cases.js
+	deleted:    backend/node_modules/range-parser/HISTORY.md
+	deleted:    backend/node_modules/range-parser/LICENSE
+	deleted:    backend/node_modules/range-parser/README.md
+	deleted:    backend/node_modules/range-parser/index.js
+	deleted:    backend/node_modules/range-parser/package.json
+	deleted:    backend/node_modules/raw-body/LICENSE
+	deleted:    backend/node_modules/raw-body/README.md
+	deleted:    backend/node_modules/raw-body/index.d.ts
+	deleted:    backend/node_modules/raw-body/index.js
+	deleted:    backend/node_modules/raw-body/package.json
+	deleted:    backend/node_modules/rc/LICENSE.APACHE2
+	deleted:    backend/node_modules/rc/LICENSE.BSD
+	deleted:    backend/node_modules/rc/LICENSE.MIT
+	deleted:    backend/node_modules/rc/README.md
+	deleted:    backend/node_modules/rc/browser.js
+	deleted:    backend/node_modules/rc/lib/utils.js
+	deleted:    backend/node_modules/rc/package.json
+	deleted:    backend/node_modules/rc/test/ini.js
+	deleted:    backend/node_modules/rc/test/nested-env-vars.js
+	deleted:    backend/node_modules/rc/test/test.js
+	deleted:    backend/node_modules/readable-stream/CONTRIBUTING.md
+	deleted:    backend/node_modules/readable-stream/GOVERNANCE.md
+	deleted:    backend/node_modules/readable-stream/LICENSE
+	deleted:    backend/node_modules/readable-stream/README.md
+	deleted:    backend/node_modules/readable-stream/errors-browser.js
+	deleted:    backend/node_modules/readable-stream/errors.js
+	deleted:    backend/node_modules/readable-stream/experimentalWarning.js
+	deleted:    backend/node_modules/readable-stream/lib/_stream_duplex.js
+	deleted:    backend/node_modules/readable-stream/lib/_stream_passthrough.js
+	deleted:    backend/node_modules/readable-stream/lib/_stream_readable.js
+	deleted:    backend/node_modules/readable-stream/lib/_stream_transform.js
+	deleted:    backend/node_modules/readable-stream/lib/_stream_writable.js
+	deleted:    backend/node_modules/readable-stream/lib/internal/streams/async_iterator.js
+	deleted:    backend/node_modules/readable-stream/lib/internal/streams/buffer_list.js
+	deleted:    backend/node_modules/readable-stream/lib/internal/streams/destroy.js
+	deleted:    backend/node_modules/readable-stream/lib/internal/streams/end-of-stream.js
+	deleted:    backend/node_modules/readable-stream/lib/internal/streams/from-browser.js
+	deleted:    backend/node_modules/readable-stream/lib/internal/streams/from.js
+	deleted:    backend/node_modules/readable-stream/lib/internal/streams/pipeline.js
+	deleted:    backend/node_modules/readable-stream/lib/internal/streams/state.js
+	deleted:    backend/node_modules/readable-stream/lib/internal/streams/stream-browser.js
+	deleted:    backend/node_modules/readable-stream/lib/internal/streams/stream.js
+	deleted:    backend/node_modules/readable-stream/package.json
+	deleted:    backend/node_modules/readable-stream/readable-browser.js
+	deleted:    backend/node_modules/readable-stream/readable.js
+	deleted:    backend/node_modules/readdirp/LICENSE
+	deleted:    backend/node_modules/readdirp/README.md
+	deleted:    backend/node_modules/readdirp/index.d.ts
+	deleted:    backend/node_modules/readdirp/index.js
+	deleted:    backend/node_modules/readdirp/package.json
+	deleted:    backend/node_modules/retry/.npmignore
+	deleted:    backend/node_modules/retry/.travis.yml
+	deleted:    backend/node_modules/retry/License
+	deleted:    backend/node_modules/retry/Makefile
+	deleted:    backend/node_modules/retry/README.md
+	deleted:    backend/node_modules/retry/equation.gif
+	deleted:    backend/node_modules/retry/example/dns.js
+	deleted:    backend/node_modules/retry/example/stop.js
+	deleted:    backend/node_modules/retry/index.js
+	deleted:    backend/node_modules/retry/lib/retry.js
+	deleted:    backend/node_modules/retry/lib/retry_operation.js
+	deleted:    backend/node_modules/retry/package.json
+	deleted:    backend/node_modules/retry/test/common.js
+	deleted:    backend/node_modules/retry/test/integration/test-forever.js
+	deleted:    backend/node_modules/retry/test/integration/test-retry-operation.js
+	deleted:    backend/node_modules/retry/test/integration/test-retry-wrap.js
+	deleted:    backend/node_modules/retry/test/integration/test-timeouts.js
+	deleted:    backend/node_modules/rimraf/CHANGELOG.md
+	deleted:    backend/node_modules/rimraf/LICENSE
+	deleted:    backend/node_modules/rimraf/README.md
+	deleted:    backend/node_modules/rimraf/package.json
+	deleted:    backend/node_modules/rimraf/rimraf.js
+	deleted:    backend/node_modules/router/HISTORY.md
+	deleted:    backend/node_modules/router/LICENSE
+	deleted:    backend/node_modules/router/README.md
+	deleted:    backend/node_modules/router/index.js
+	deleted:    backend/node_modules/router/lib/layer.js
+	deleted:    backend/node_modules/router/lib/route.js
+	deleted:    backend/node_modules/router/package.json
+	deleted:    backend/node_modules/safe-buffer/LICENSE
+	deleted:    backend/node_modules/safe-buffer/README.md
+	deleted:    backend/node_modules/safe-buffer/index.d.ts
+	deleted:    backend/node_modules/safe-buffer/index.js
+	deleted:    backend/node_modules/safe-buffer/package.json
+	deleted:    backend/node_modules/safer-buffer/LICENSE
+	deleted:    backend/node_modules/safer-buffer/Porting-Buffer.md
+	deleted:    backend/node_modules/safer-buffer/Readme.md
+	deleted:    backend/node_modules/safer-buffer/dangerous.js
+	deleted:    backend/node_modules/safer-buffer/package.json
+	deleted:    backend/node_modules/safer-buffer/safer.js
+	deleted:    backend/node_modules/safer-buffer/tests.js
+	deleted:    backend/node_modules/semver/LICENSE
+	deleted:    backend/node_modules/semver/README.md
+	deleted:    backend/node_modules/semver/classes/comparator.js
+	deleted:    backend/node_modules/semver/classes/index.js
+	deleted:    backend/node_modules/semver/classes/range.js
+	deleted:    backend/node_modules/semver/classes/semver.js
+	deleted:    backend/node_modules/semver/functions/clean.js
+	deleted:    backend/node_modules/semver/functions/cmp.js
+	deleted:    backend/node_modules/semver/functions/coerce.js
+	deleted:    backend/node_modules/semver/functions/compare-build.js
+	deleted:    backend/node_modules/semver/functions/compare-loose.js
+	deleted:    backend/node_modules/semver/functions/compare.js
+	deleted:    backend/node_modules/semver/functions/diff.js
+	deleted:    backend/node_modules/semver/functions/eq.js
+	deleted:    backend/node_modules/semver/functions/gt.js
+	deleted:    backend/node_modules/semver/functions/gte.js
+	deleted:    backend/node_modules/semver/functions/inc.js
+	deleted:    backend/node_modules/semver/functions/lt.js
+	deleted:    backend/node_modules/semver/functions/lte.js
+	deleted:    backend/node_modules/semver/functions/major.js
+	deleted:    backend/node_modules/semver/functions/minor.js
+	deleted:    backend/node_modules/semver/functions/neq.js
+	deleted:    backend/node_modules/semver/functions/parse.js
+	deleted:    backend/node_modules/semver/functions/patch.js
+	deleted:    backend/node_modules/semver/functions/prerelease.js
+	deleted:    backend/node_modules/semver/functions/rcompare.js
+	deleted:    backend/node_modules/semver/functions/rsort.js
+	deleted:    backend/node_modules/semver/functions/satisfies.js
+	deleted:    backend/node_modules/semver/functions/sort.js
+	deleted:    backend/node_modules/semver/functions/valid.js
+	deleted:    backend/node_modules/semver/index.js
+	deleted:    backend/node_modules/semver/internal/constants.js
+	deleted:    backend/node_modules/semver/internal/debug.js
+	deleted:    backend/node_modules/semver/internal/identifiers.js
+	deleted:    backend/node_modules/semver/internal/lrucache.js
+	deleted:    backend/node_modules/semver/internal/parse-options.js
+	deleted:    backend/node_modules/semver/internal/re.js
+	deleted:    backend/node_modules/semver/package.json
+	deleted:    backend/node_modules/semver/preload.js
+	deleted:    backend/node_modules/semver/range.bnf
+	deleted:    backend/node_modules/semver/ranges/gtr.js
+	deleted:    backend/node_modules/semver/ranges/intersects.js
+	deleted:    backend/node_modules/semver/ranges/ltr.js
+	deleted:    backend/node_modules/semver/ranges/max-satisfying.js
+	deleted:    backend/node_modules/semver/ranges/min-satisfying.js
+	deleted:    backend/node_modules/semver/ranges/min-version.js
+	deleted:    backend/node_modules/semver/ranges/outside.js
+	deleted:    backend/node_modules/semver/ranges/simplify.js
+	deleted:    backend/node_modules/semver/ranges/subset.js
+	deleted:    backend/node_modules/semver/ranges/to-comparators.js
+	deleted:    backend/node_modules/semver/ranges/valid.js
+	deleted:    backend/node_modules/send/LICENSE
+	deleted:    backend/node_modules/send/README.md
+	deleted:    backend/node_modules/send/index.js
+	deleted:    backend/node_modules/send/package.json
+	deleted:    backend/node_modules/serve-static/LICENSE
+	deleted:    backend/node_modules/serve-static/README.md
+	deleted:    backend/node_modules/serve-static/index.js
+	deleted:    backend/node_modules/serve-static/package.json
+	deleted:    backend/node_modules/set-blocking/CHANGELOG.md
+	deleted:    backend/node_modules/set-blocking/LICENSE.txt
+	deleted:    backend/node_modules/set-blocking/README.md
+	deleted:    backend/node_modules/set-blocking/index.js
+	deleted:    backend/node_modules/set-blocking/package.json
+	deleted:    backend/node_modules/setprototypeof/LICENSE
+	deleted:    backend/node_modules/setprototypeof/README.md
+	deleted:    backend/node_modules/setprototypeof/index.d.ts
+	deleted:    backend/node_modules/setprototypeof/index.js
+	deleted:    backend/node_modules/setprototypeof/package.json
+	deleted:    backend/node_modules/setprototypeof/test/index.js
+	deleted:    backend/node_modules/side-channel-list/.editorconfig
+	deleted:    backend/node_modules/side-channel-list/.eslintrc
+	deleted:    backend/node_modules/side-channel-list/.github/FUNDING.yml
+	deleted:    backend/node_modules/side-channel-list/.nycrc
+	deleted:    backend/node_modules/side-channel-list/LICENSE
+	deleted:    backend/node_modules/side-channel-list/README.md
+	deleted:    backend/node_modules/side-channel-list/index.d.ts
+	deleted:    backend/node_modules/side-channel-list/list.d.ts
+	deleted:    backend/node_modules/side-channel-list/tsconfig.json
+	deleted:    backend/node_modules/side-channel-map/.editorconfig
+	deleted:    backend/node_modules/side-channel-map/.eslintrc
+	deleted:    backend/node_modules/side-channel-map/.github/FUNDING.yml
+	deleted:    backend/node_modules/side-channel-map/.nycrc
+	deleted:    backend/node_modules/side-channel-map/CHANGELOG.md
+	deleted:    backend/node_modules/side-channel-map/LICENSE
+	deleted:    backend/node_modules/side-channel-map/README.md
+	deleted:    backend/node_modules/side-channel-map/index.d.ts
+	deleted:    backend/node_modules/side-channel-map/index.js
+	deleted:    backend/node_modules/side-channel-map/package.json
+	deleted:    backend/node_modules/side-channel-map/test/index.js
+	deleted:    backend/node_modules/side-channel-map/tsconfig.json
+	deleted:    backend/node_modules/side-channel-weakmap/.editorconfig
+	deleted:    backend/node_modules/side-channel-weakmap/.eslintrc
+	deleted:    backend/node_modules/side-channel-weakmap/.github/FUNDING.yml
+	deleted:    backend/node_modules/side-channel-weakmap/.nycrc
+	deleted:    backend/node_modules/side-channel-weakmap/CHANGELOG.md
+	deleted:    backend/node_modules/side-channel-weakmap/LICENSE
+	deleted:    backend/node_modules/side-channel-weakmap/README.md
+	deleted:    backend/node_modules/side-channel-weakmap/index.d.ts
+	deleted:    backend/node_modules/side-channel-weakmap/index.js
+	deleted:    backend/node_modules/side-channel-weakmap/package.json
+	deleted:    backend/node_modules/side-channel-weakmap/test/index.js
+	deleted:    backend/node_modules/side-channel-weakmap/tsconfig.json
+	deleted:    backend/node_modules/side-channel/.editorconfig
+	deleted:    backend/node_modules/side-channel/.eslintrc
+	deleted:    backend/node_modules/side-channel/.github/FUNDING.yml
+	deleted:    backend/node_modules/side-channel/.nycrc
+	deleted:    backend/node_modules/side-channel/CHANGELOG.md
+	deleted:    backend/node_modules/side-channel/LICENSE
+	deleted:    backend/node_modules/side-channel/README.md
+	deleted:    backend/node_modules/side-channel/index.d.ts
+	deleted:    backend/node_modules/side-channel/index.js
+	deleted:    backend/node_modules/side-channel/package.json
+	deleted:    backend/node_modules/side-channel/test/index.js
+	deleted:    backend/node_modules/side-channel/tsconfig.json
+	deleted:    backend/node_modules/signal-exit/LICENSE.txt
+	deleted:    backend/node_modules/signal-exit/README.md
+	deleted:    backend/node_modules/signal-exit/index.js
+	deleted:    backend/node_modules/signal-exit/package.json
+	deleted:    backend/node_modules/signal-exit/signals.js
+	deleted:    backend/node_modules/simple-concat/.travis.yml
+	deleted:    backend/node_modules/simple-concat/LICENSE
+	deleted:    backend/node_modules/simple-concat/README.md
+	deleted:    backend/node_modules/simple-concat/index.js
+	deleted:    backend/node_modules/simple-concat/package.json
+	deleted:    backend/node_modules/simple-concat/test/basic.js
+	deleted:    backend/node_modules/simple-get/.github/dependabot.yml
+	deleted:    backend/node_modules/simple-get/.github/workflows/ci.yml
+	deleted:    backend/node_modules/simple-get/LICENSE
+	deleted:    backend/node_modules/simple-get/README.md
+	deleted:    backend/node_modules/simple-get/index.js
+	deleted:    backend/node_modules/simple-get/package.json
+	deleted:    backend/node_modules/simple-update-notifier/LICENSE
+	deleted:    backend/node_modules/simple-update-notifier/README.md
+	deleted:    backend/node_modules/simple-update-notifier/build/index.d.ts
+	deleted:    backend/node_modules/simple-update-notifier/package.json
+	deleted:    backend/node_modules/simple-update-notifier/src/borderedText.ts
+	deleted:    backend/node_modules/simple-update-notifier/src/cache.spec.ts
+	deleted:    backend/node_modules/simple-update-notifier/src/cache.ts
+	deleted:    backend/node_modules/simple-update-notifier/src/getDistVersion.spec.ts
+	deleted:    backend/node_modules/simple-update-notifier/src/getDistVersion.ts
+	deleted:    backend/node_modules/simple-update-notifier/src/hasNewVersion.spec.ts
+	deleted:    backend/node_modules/simple-update-notifier/src/hasNewVersion.ts
+	deleted:    backend/node_modules/simple-update-notifier/src/index.spec.ts
+	deleted:    backend/node_modules/simple-update-notifier/src/index.ts
+	deleted:    backend/node_modules/simple-update-notifier/src/isNpmOrYarn.ts
+	deleted:    backend/node_modules/simple-update-notifier/src/types.ts
+	deleted:    backend/node_modules/smart-buffer/.prettierrc.yaml
+	deleted:    backend/node_modules/smart-buffer/.travis.yml
+	deleted:    backend/node_modules/smart-buffer/LICENSE
+	deleted:    backend/node_modules/smart-buffer/README.md
+	deleted:    backend/node_modules/smart-buffer/build/smartbuffer.js
+	deleted:    backend/node_modules/smart-buffer/build/smartbuffer.js.map
+	deleted:    backend/node_modules/smart-buffer/build/utils.js
+	deleted:    backend/node_modules/smart-buffer/build/utils.js.map
+	deleted:    backend/node_modules/smart-buffer/docs/CHANGELOG.md
+	deleted:    backend/node_modules/smart-buffer/docs/README_v3.md
+	deleted:    backend/node_modules/smart-buffer/docs/ROADMAP.md
+	deleted:    backend/node_modules/smart-buffer/package.json
+	deleted:    backend/node_modules/smart-buffer/typings/smartbuffer.d.ts
+	deleted:    backend/node_modules/smart-buffer/typings/utils.d.ts
+	deleted:    backend/node_modules/socks-proxy-agent/README.md
+	deleted:    backend/node_modules/socks-proxy-agent/dist/index.d.ts
+	deleted:    backend/node_modules/socks-proxy-agent/dist/index.js
+	deleted:    backend/node_modules/socks-proxy-agent/dist/index.js.map
+	deleted:    backend/node_modules/socks-proxy-agent/package.json
+	deleted:    backend/node_modules/socks/.eslintrc.cjs
+	deleted:    backend/node_modules/socks/.prettierrc.yaml
+	deleted:    backend/node_modules/socks/LICENSE
+	deleted:    backend/node_modules/socks/README.md
+	deleted:    backend/node_modules/socks/build/client/socksclient.js
+	deleted:    backend/node_modules/socks/build/client/socksclient.js.map
+	deleted:    backend/node_modules/socks/build/common/constants.js
+	deleted:    backend/node_modules/socks/build/common/constants.js.map
+	deleted:    backend/node_modules/socks/build/common/helpers.js
+	deleted:    backend/node_modules/socks/build/common/helpers.js.map
+	deleted:    backend/node_modules/socks/build/common/receivebuffer.js
+	deleted:    backend/node_modules/socks/build/common/receivebuffer.js.map
+	deleted:    backend/node_modules/socks/build/common/util.js
+	deleted:    backend/node_modules/socks/build/common/util.js.map
+	deleted:    backend/node_modules/socks/build/index.js
+	deleted:    backend/node_modules/socks/build/index.js.map
+	deleted:    backend/node_modules/socks/docs/examples/index.md
+	deleted:    backend/node_modules/socks/docs/examples/javascript/associateExample.md
+	deleted:    backend/node_modules/socks/docs/examples/javascript/bindExample.md
+	deleted:    backend/node_modules/socks/docs/examples/javascript/connectExample.md
+	deleted:    backend/node_modules/socks/docs/examples/typescript/associateExample.md
+	deleted:    backend/node_modules/socks/docs/examples/typescript/bindExample.md
+	deleted:    backend/node_modules/socks/docs/examples/typescript/connectExample.md
+	deleted:    backend/node_modules/socks/docs/index.md
+	deleted:    backend/node_modules/socks/docs/migratingFromV1.md
+	deleted:    backend/node_modules/socks/typings/client/socksclient.d.ts
+	deleted:    backend/node_modules/socks/typings/common/constants.d.ts
+	deleted:    backend/node_modules/socks/typings/common/helpers.d.ts
+	deleted:    backend/node_modules/socks/typings/common/receivebuffer.d.ts
+	deleted:    backend/node_modules/socks/typings/common/util.d.ts
+	deleted:    backend/node_modules/socks/typings/index.d.ts
+	deleted:    backend/node_modules/sqlite3/LICENSE
+	deleted:    backend/node_modules/sqlite3/README.md
+	deleted:    backend/node_modules/sqlite3/binding.gyp
+	deleted:    backend/node_modules/sqlite3/deps/common-sqlite.gypi
+	deleted:    backend/node_modules/sqlite3/deps/extract.js
+	deleted:    backend/node_modules/sqlite3/deps/sqlite-autoconf-3440200.tar.gz
+	deleted:    backend/node_modules/sqlite3/lib/sqlite3-binding.js
+	deleted:    backend/node_modules/sqlite3/lib/sqlite3.d.ts
+	deleted:    backend/node_modules/sqlite3/lib/sqlite3.js
+	deleted:    backend/node_modules/sqlite3/lib/trace.js
+	deleted:    backend/node_modules/sqlite3/package.json
+	deleted:    backend/node_modules/sqlite3/src/async.h
+	deleted:    backend/node_modules/sqlite3/src/backup.cc
+	deleted:    backend/node_modules/sqlite3/src/backup.h
+	deleted:    backend/node_modules/sqlite3/src/database.cc
+	deleted:    backend/node_modules/sqlite3/src/database.h
+	deleted:    backend/node_modules/sqlite3/src/gcc-preinclude.h
+	deleted:    backend/node_modules/sqlite3/src/macros.h
+	deleted:    backend/node_modules/sqlite3/src/node_sqlite3.cc
+	deleted:    backend/node_modules/sqlite3/src/statement.cc
+	deleted:    backend/node_modules/sqlite3/src/statement.h
+	deleted:    backend/node_modules/sqlite3/src/threading.h
+	deleted:    backend/node_modules/ssri/CHANGELOG.md
+	deleted:    backend/node_modules/ssri/LICENSE.md
+	deleted:    backend/node_modules/ssri/README.md
+	deleted:    backend/node_modules/ssri/index.js
+	deleted:    backend/node_modules/ssri/package.json
+	deleted:    backend/node_modules/statuses/HISTORY.md
+	deleted:    backend/node_modules/statuses/LICENSE
+	deleted:    backend/node_modules/statuses/README.md
+	deleted:    backend/node_modules/statuses/codes.json
+	deleted:    backend/node_modules/statuses/index.js
+	deleted:    backend/node_modules/statuses/package.json
+	deleted:    backend/node_modules/string-width/index.d.ts
+	deleted:    backend/node_modules/string-width/index.js
+	deleted:    backend/node_modules/string-width/license
+	deleted:    backend/node_modules/string-width/package.json
+	deleted:    backend/node_modules/string-width/readme.md
+	deleted:    backend/node_modules/string_decoder/LICENSE
+	deleted:    backend/node_modules/string_decoder/README.md
+	deleted:    backend/node_modules/string_decoder/lib/string_decoder.js
+	deleted:    backend/node_modules/string_decoder/package.json
+	deleted:    backend/node_modules/strip-ansi/index.d.ts
+	deleted:    backend/node_modules/strip-ansi/index.js
+	deleted:    backend/node_modules/strip-ansi/license
+	deleted:    backend/node_modules/strip-ansi/package.json
+	deleted:    backend/node_modules/strip-ansi/readme.md
+	deleted:    backend/node_modules/strip-json-comments/index.js
+	deleted:    backend/node_modules/strip-json-comments/license
+	deleted:    backend/node_modules/strip-json-comments/package.json
+	deleted:    backend/node_modules/strip-json-comments/readme.md
+	deleted:    backend/node_modules/supports-color/browser.js
+	deleted:    backend/node_modules/supports-color/index.js
+	deleted:    backend/node_modules/supports-color/license
+	deleted:    backend/node_modules/supports-color/package.json
+	deleted:    backend/node_modules/supports-color/readme.md
+	deleted:    backend/node_modules/swagger-jsdoc/CHANGELOG.md
+	deleted:    backend/node_modules/swagger-jsdoc/LICENSE
+	deleted:    backend/node_modules/swagger-jsdoc/README.md
+	deleted:    backend/node_modules/swagger-jsdoc/docusaurus/.eslintrc.json
+	deleted:    backend/node_modules/swagger-jsdoc/docusaurus/README.md
+	deleted:    backend/node_modules/swagger-jsdoc/docusaurus/babel.config.js
+	deleted:    backend/node_modules/swagger-jsdoc/docusaurus/docs/intro.md
+	deleted:    backend/node_modules/swagger-jsdoc/docusaurus/docusaurus.config.js
+	deleted:    backend/node_modules/swagger-jsdoc/docusaurus/package.json
+	deleted:    backend/node_modules/swagger-jsdoc/docusaurus/sidebars.js
+	deleted:    backend/node_modules/swagger-jsdoc/docusaurus/src/css/custom.css
+	deleted:    backend/node_modules/swagger-jsdoc/docusaurus/src/pages/index.js
+	deleted:    backend/node_modules/swagger-jsdoc/docusaurus/src/pages/index.module.css
+	deleted:    backend/node_modules/swagger-jsdoc/docusaurus/src/pages/markdown-page.md
+	deleted:    backend/node_modules/swagger-jsdoc/docusaurus/static/.nojekyll
+	deleted:    backend/node_modules/swagger-jsdoc/docusaurus/static/img/docusaurus.png
+	deleted:    backend/node_modules/swagger-jsdoc/docusaurus/static/img/favicon.ico
+	deleted:    backend/node_modules/swagger-jsdoc/docusaurus/static/img/logo.svg
+	deleted:    backend/node_modules/swagger-jsdoc/docusaurus/static/img/screenshot.png
+	deleted:    backend/node_modules/swagger-jsdoc/docusaurus/static/img/undraw_docusaurus_mountain.svg
+	deleted:    backend/node_modules/swagger-jsdoc/docusaurus/static/img/undraw_docusaurus_react.svg
+	deleted:    backend/node_modules/swagger-jsdoc/docusaurus/static/img/undraw_docusaurus_tree.svg
+	deleted:    backend/node_modules/swagger-jsdoc/docusaurus/versioned_docs/version-5.x/Contributing/contributing.md
+	deleted:    backend/node_modules/swagger-jsdoc/docusaurus/versioned_docs/version-5.x/Contributing/report-issues.md
+	deleted:    backend/node_modules/swagger-jsdoc/docusaurus/versioned_docs/version-5.x/cli.md
+	deleted:    backend/node_modules/swagger-jsdoc/docusaurus/versioned_docs/version-5.x/fundamental-concepts.md
+	deleted:    backend/node_modules/swagger-jsdoc/docusaurus/versioned_docs/version-5.x/installation.md
+	deleted:    backend/node_modules/swagger-jsdoc/docusaurus/versioned_docs/version-5.x/intro.md
+	deleted:    backend/node_modules/swagger-jsdoc/docusaurus/versioned_docs/version-5.x/quick-start.md
+	deleted:    backend/node_modules/swagger-jsdoc/docusaurus/versioned_docs/version-5.x/validation.md
+	deleted:    backend/node_modules/swagger-jsdoc/docusaurus/versioned_docs/version-6.x/Contributing/_category_.json
+	deleted:    backend/node_modules/swagger-jsdoc/docusaurus/versioned_docs/version-6.x/Contributing/fundamental-concepts.md
+	deleted:    backend/node_modules/swagger-jsdoc/docusaurus/versioned_docs/version-6.x/Contributing/project-goals.md
+	deleted:    backend/node_modules/swagger-jsdoc/docusaurus/versioned_docs/version-6.x/Contributing/reporting-issues.md
+	deleted:    backend/node_modules/swagger-jsdoc/docusaurus/versioned_docs/version-6.x/Contributing/typescript.md
+	deleted:    backend/node_modules/swagger-jsdoc/docusaurus/versioned_docs/version-6.x/Quick Start/_category_.json
+	deleted:    backend/node_modules/swagger-jsdoc/docusaurus/versioned_docs/version-6.x/Quick Start/cli.md
+	deleted:    backend/node_modules/swagger-jsdoc/docusaurus/versioned_docs/version-6.x/Quick Start/first-steps.md
+	deleted:    backend/node_modules/swagger-jsdoc/docusaurus/versioned_docs/version-6.x/intro.md
+	deleted:    backend/node_modules/swagger-jsdoc/docusaurus/versioned_docs/version-7.x/Contributing/_category_.json
+	deleted:    backend/node_modules/swagger-jsdoc/docusaurus/versioned_docs/version-7.x/Contributing/fundamental-concepts.md
+	deleted:    backend/node_modules/swagger-jsdoc/docusaurus/versioned_docs/version-7.x/Contributing/project-goals.md
+	deleted:    backend/node_modules/swagger-jsdoc/docusaurus/versioned_docs/version-7.x/Contributing/reporting-issues.md
+	deleted:    backend/node_modules/swagger-jsdoc/docusaurus/versioned_docs/version-7.x/Contributing/typescript.md
+	deleted:    backend/node_modules/swagger-jsdoc/docusaurus/versioned_docs/version-7.x/intro.md
+	deleted:    backend/node_modules/swagger-jsdoc/docusaurus/versioned_docs/version-7.x/quick-start/_category_.json
+	deleted:    backend/node_modules/swagger-jsdoc/docusaurus/versioned_docs/version-7.x/quick-start/first-steps.md
+	deleted:    backend/node_modules/swagger-jsdoc/docusaurus/versioned_sidebars/version-5.x-sidebars.json
+	deleted:    backend/node_modules/swagger-jsdoc/docusaurus/versioned_sidebars/version-6.x-sidebars.json
+	deleted:    backend/node_modules/swagger-jsdoc/docusaurus/versioned_sidebars/version-7.x-sidebars.json
+	deleted:    backend/node_modules/swagger-jsdoc/docusaurus/versions.json
+	deleted:    backend/node_modules/swagger-jsdoc/docusaurus/yarn.lock
+	deleted:    backend/node_modules/swagger-jsdoc/index.js
+	deleted:    backend/node_modules/swagger-jsdoc/node_modules/glob/LICENSE
+	deleted:    backend/node_modules/swagger-jsdoc/node_modules/glob/README.md
+	deleted:    backend/node_modules/swagger-jsdoc/node_modules/glob/changelog.md
+	deleted:    backend/node_modules/swagger-jsdoc/node_modules/glob/common.js
+	deleted:    backend/node_modules/swagger-jsdoc/node_modules/glob/glob.js
+	deleted:    backend/node_modules/swagger-jsdoc/node_modules/glob/package.json
+	deleted:    backend/node_modules/swagger-jsdoc/node_modules/glob/sync.js
+	deleted:    backend/node_modules/swagger-jsdoc/package.json
+	deleted:    backend/node_modules/swagger-jsdoc/src/lib.js
+	deleted:    backend/node_modules/swagger-jsdoc/src/specification.js
+	deleted:    backend/node_modules/swagger-jsdoc/src/utils.js
+	deleted:    backend/node_modules/swagger-parser/CHANGELOG.md
+	deleted:    backend/node_modules/swagger-parser/LICENSE
+	deleted:    backend/node_modules/swagger-parser/README.md
+	deleted:    backend/node_modules/swagger-parser/index.d.ts
+	deleted:    backend/node_modules/swagger-parser/index.js
+	deleted:    backend/node_modules/swagger-parser/package.json
+	deleted:    backend/node_modules/swagger-ui-dist/LICENSE
+	deleted:    backend/node_modules/swagger-ui-dist/NOTICE
+	deleted:    backend/node_modules/swagger-ui-dist/README.md
+	deleted:    backend/node_modules/swagger-ui-dist/absolute-path.js
+	deleted:    backend/node_modules/swagger-ui-dist/favicon-16x16.png
+	deleted:    backend/node_modules/swagger-ui-dist/favicon-32x32.png
+	deleted:    backend/node_modules/swagger-ui-dist/index.css
+	deleted:    backend/node_modules/swagger-ui-dist/index.html
+	deleted:    backend/node_modules/swagger-ui-dist/index.js
+	deleted:    backend/node_modules/swagger-ui-dist/oauth2-redirect.html
+	deleted:    backend/node_modules/swagger-ui-dist/oauth2-redirect.js
+	deleted:    backend/node_modules/swagger-ui-dist/swagger-initializer.js
+	deleted:    backend/node_modules/swagger-ui-dist/swagger-ui-bundle.js.map
+	deleted:    backend/node_modules/swagger-ui-dist/swagger-ui-es-bundle-core.js.LICENSE.txt
+	deleted:    backend/node_modules/swagger-ui-dist/swagger-ui-es-bundle.js.map
+	deleted:    backend/node_modules/swagger-ui-dist/swagger-ui-standalone-preset.js.LICENSE.txt
+	deleted:    backend/node_modules/swagger-ui-dist/swagger-ui-standalone-preset.js.map
+	deleted:    backend/node_modules/swagger-ui-express/LICENSE
+	deleted:    backend/node_modules/swagger-ui-express/README.md
+	deleted:    backend/node_modules/swagger-ui-express/index.js
+	deleted:    backend/node_modules/swagger-ui-express/package.json
+	deleted:    backend/node_modules/tar-fs/.travis.yml
+	deleted:    backend/node_modules/tar-fs/LICENSE
+	deleted:    backend/node_modules/tar-fs/README.md
+	deleted:    backend/node_modules/tar-fs/index.js
+	deleted:    backend/node_modules/tar-fs/node_modules/chownr/LICENSE
+	deleted:    backend/node_modules/tar-fs/node_modules/chownr/README.md
+	deleted:    backend/node_modules/tar-fs/node_modules/chownr/chownr.js
+	deleted:    backend/node_modules/tar-fs/node_modules/chownr/package.json
+	deleted:    backend/node_modules/tar-fs/package.json
+	deleted:    backend/node_modules/tar-fs/test/fixtures/a/hello.txt
+	deleted:    backend/node_modules/tar-fs/test/fixtures/b/a/test.txt
+	deleted:    backend/node_modules/tar-fs/test/fixtures/d/file1
+	deleted:    backend/node_modules/tar-fs/test/fixtures/d/file2
+	deleted:    backend/node_modules/tar-fs/test/fixtures/d/sub-dir/file5
+	deleted:    backend/node_modules/tar-fs/test/fixtures/d/sub-files/file3
+	deleted:    backend/node_modules/tar-fs/test/fixtures/d/sub-files/file4
+	deleted:    backend/node_modules/tar-fs/test/fixtures/e/directory/.ignore
+	deleted:    backend/node_modules/tar-fs/test/fixtures/e/file
+	deleted:    backend/node_modules/tar-fs/test/fixtures/invalid.tar
+	deleted:    backend/node_modules/tar-fs/test/index.js
+	deleted:    backend/node_modules/tar-stream/LICENSE
+	deleted:    backend/node_modules/tar-stream/README.md
+	deleted:    backend/node_modules/tar-stream/extract.js
+	deleted:    backend/node_modules/tar-stream/headers.js
+	deleted:    backend/node_modules/tar-stream/index.js
+	deleted:    backend/node_modules/tar-stream/pack.js
+	deleted:    backend/node_modules/tar-stream/package.json
+	deleted:    backend/node_modules/tar-stream/sandbox.js
+	deleted:    backend/node_modules/tar/LICENSE
+	deleted:    backend/node_modules/tar/README.md
+	deleted:    backend/node_modules/tar/index.js
+	deleted:    backend/node_modules/tar/lib/create.js
+	deleted:    backend/node_modules/tar/lib/extract.js
+	deleted:    backend/node_modules/tar/lib/get-write-flag.js
+	deleted:    backend/node_modules/tar/lib/header.js
+	deleted:    backend/node_modules/tar/lib/high-level-opt.js
+	deleted:    backend/node_modules/tar/lib/large-numbers.js
+	deleted:    backend/node_modules/tar/lib/list.js
+	deleted:    backend/node_modules/tar/lib/mkdir.js
+	deleted:    backend/node_modules/tar/lib/mode-fix.js
+	deleted:    backend/node_modules/tar/lib/normalize-unicode.js
+	deleted:    backend/node_modules/tar/lib/normalize-windows-path.js
+	deleted:    backend/node_modules/tar/lib/pack.js
+	deleted:    backend/node_modules/tar/lib/parse.js
+	deleted:    backend/node_modules/tar/lib/path-reservations.js
+	deleted:    backend/node_modules/tar/lib/pax.js
+	deleted:    backend/node_modules/tar/lib/read-entry.js
+	deleted:    backend/node_modules/tar/lib/replace.js
+	deleted:    backend/node_modules/tar/lib/strip-absolute-path.js
+	deleted:    backend/node_modules/tar/lib/strip-trailing-slashes.js
+	deleted:    backend/node_modules/tar/lib/types.js
+	deleted:    backend/node_modules/tar/lib/unpack.js
+	deleted:    backend/node_modules/tar/lib/update.js
+	deleted:    backend/node_modules/tar/lib/warn-mixin.js
+	deleted:    backend/node_modules/tar/lib/winchars.js
+	deleted:    backend/node_modules/tar/lib/write-entry.js
+	deleted:    backend/node_modules/tar/node_modules/minipass/LICENSE
+	deleted:    backend/node_modules/tar/node_modules/minipass/README.md
+	deleted:    backend/node_modules/tar/node_modules/minipass/index.d.ts
+	deleted:    backend/node_modules/tar/node_modules/minipass/index.js
+	deleted:    backend/node_modules/tar/node_modules/minipass/index.mjs
+	deleted:    backend/node_modules/tar/node_modules/minipass/package.json
+	deleted:    backend/node_modules/tar/package.json
+	deleted:    backend/node_modules/to-regex-range/LICENSE
+	deleted:    backend/node_modules/to-regex-range/README.md
+	deleted:    backend/node_modules/to-regex-range/index.js
+	deleted:    backend/node_modules/to-regex-range/package.json
+	deleted:    backend/node_modules/toidentifier/HISTORY.md
+	deleted:    backend/node_modules/toidentifier/LICENSE
+	deleted:    backend/node_modules/toidentifier/README.md
+	deleted:    backend/node_modules/toidentifier/index.js
+	deleted:    backend/node_modules/toidentifier/package.json
+	deleted:    backend/node_modules/touch/LICENSE
+	deleted:    backend/node_modules/touch/README.md
+	deleted:    backend/node_modules/touch/index.js
+	deleted:    backend/node_modules/touch/package.json
+	deleted:    backend/node_modules/tunnel-agent/LICENSE
+	deleted:    backend/node_modules/tunnel-agent/README.md
+	deleted:    backend/node_modules/tunnel-agent/index.js
+	deleted:    backend/node_modules/tunnel-agent/package.json
+	deleted:    backend/node_modules/type-is/HISTORY.md
+	deleted:    backend/node_modules/type-is/LICENSE
+	deleted:    backend/node_modules/type-is/README.md
+	deleted:    backend/node_modules/type-is/index.js
+	deleted:    backend/node_modules/type-is/package.json
+	deleted:    backend/node_modules/undefsafe/.github/workflows/release.yml
+	deleted:    backend/node_modules/undefsafe/.jscsrc
+	deleted:    backend/node_modules/undefsafe/.jshintrc
+	deleted:    backend/node_modules/undefsafe/.travis.yml
+	deleted:    backend/node_modules/undefsafe/LICENSE
+	deleted:    backend/node_modules/undefsafe/README.md
+	deleted:    backend/node_modules/undefsafe/example.js
+	deleted:    backend/node_modules/undefsafe/lib/undefsafe.js
+	deleted:    backend/node_modules/undefsafe/package.json
+	deleted:    backend/node_modules/unique-filename/.nyc_output/54942.json
+	deleted:    backend/node_modules/unique-filename/.nyc_output/54944.json
+	deleted:    backend/node_modules/unique-filename/LICENSE
+	deleted:    backend/node_modules/unique-filename/README.md
+	deleted:    backend/node_modules/unique-filename/coverage/__root__/index.html
+	deleted:    backend/node_modules/unique-filename/coverage/__root__/index.js.html
+	deleted:    backend/node_modules/unique-filename/coverage/base.css
+	deleted:    backend/node_modules/unique-filename/coverage/index.html
+	deleted:    backend/node_modules/unique-filename/coverage/prettify.css
+	deleted:    backend/node_modules/unique-filename/coverage/prettify.js
+	deleted:    backend/node_modules/unique-filename/coverage/sort-arrow-sprite.png
+	deleted:    backend/node_modules/unique-filename/coverage/sorter.js
+	deleted:    backend/node_modules/unique-filename/index.js
+	deleted:    backend/node_modules/unique-filename/package.json
+	deleted:    backend/node_modules/unique-filename/test/index.js
+	deleted:    backend/node_modules/unique-slug/.travis.yml
+	deleted:    backend/node_modules/unique-slug/LICENSE
+	deleted:    backend/node_modules/unique-slug/README.md
+	deleted:    backend/node_modules/unique-slug/index.js
+	deleted:    backend/node_modules/unique-slug/package.json
+	deleted:    backend/node_modules/unique-slug/test/index.js
+	deleted:    backend/node_modules/unpipe/HISTORY.md
+	deleted:    backend/node_modules/unpipe/LICENSE
+	deleted:    backend/node_modules/unpipe/README.md
+	deleted:    backend/node_modules/unpipe/index.js
+	deleted:    backend/node_modules/unpipe/package.json
+	deleted:    backend/node_modules/util-deprecate/History.md
+	deleted:    backend/node_modules/util-deprecate/LICENSE
+	deleted:    backend/node_modules/util-deprecate/README.md
+	deleted:    backend/node_modules/util-deprecate/browser.js
+	deleted:    backend/node_modules/util-deprecate/node.js
+	deleted:    backend/node_modules/util-deprecate/package.json
+	deleted:    backend/node_modules/validator/LICENSE
+	deleted:    backend/node_modules/validator/es/lib/alpha.js
+	deleted:    backend/node_modules/validator/es/lib/blacklist.js
+	deleted:    backend/node_modules/validator/es/lib/contains.js
+	deleted:    backend/node_modules/validator/es/lib/equals.js
+	deleted:    backend/node_modules/validator/es/lib/escape.js
+	deleted:    backend/node_modules/validator/es/lib/isAbaRouting.js
+	deleted:    backend/node_modules/validator/es/lib/isAfter.js
+	deleted:    backend/node_modules/validator/es/lib/isAlpha.js
+	deleted:    backend/node_modules/validator/es/lib/isAlphanumeric.js
+	deleted:    backend/node_modules/validator/es/lib/isAscii.js
+	deleted:    backend/node_modules/validator/es/lib/isBIC.js
+	deleted:    backend/node_modules/validator/es/lib/isBase64.js
+	deleted:    backend/node_modules/validator/es/lib/isBefore.js
+	deleted:    backend/node_modules/validator/es/lib/isBoolean.js
+	deleted:    backend/node_modules/validator/es/lib/isBtcAddress.js
+	deleted:    backend/node_modules/validator/es/lib/isByteLength.js
+	deleted:    backend/node_modules/validator/es/lib/isCreditCard.js
+	deleted:    backend/node_modules/validator/es/lib/isDataURI.js
+	deleted:    backend/node_modules/validator/es/lib/isDate.js
+	deleted:    backend/node_modules/validator/es/lib/isDecimal.js
+	deleted:    backend/node_modules/validator/es/lib/isDivisibleBy.js
+	deleted:    backend/node_modules/validator/es/lib/isEAN.js
+	deleted:    backend/node_modules/validator/es/lib/isEmail.js
+	deleted:    backend/node_modules/validator/es/lib/isEmpty.js
+	deleted:    backend/node_modules/validator/es/lib/isEthereumAddress.js
+	deleted:    backend/node_modules/validator/es/lib/isFQDN.js
+	deleted:    backend/node_modules/validator/es/lib/isFloat.js
+	deleted:    backend/node_modules/validator/es/lib/isFullWidth.js
+	deleted:    backend/node_modules/validator/es/lib/isHSL.js
+	deleted:    backend/node_modules/validator/es/lib/isHalfWidth.js
+	deleted:    backend/node_modules/validator/es/lib/isHash.js
+	deleted:    backend/node_modules/validator/es/lib/isHexColor.js
+	deleted:    backend/node_modules/validator/es/lib/isHexadecimal.js
+	deleted:    backend/node_modules/validator/es/lib/isIMEI.js
+	deleted:    backend/node_modules/validator/es/lib/isIP.js
+	deleted:    backend/node_modules/validator/es/lib/isIPRange.js
+	deleted:    backend/node_modules/validator/es/lib/isISBN.js
+	deleted:    backend/node_modules/validator/es/lib/isISIN.js
+	deleted:    backend/node_modules/validator/es/lib/isISO15924.js
+	deleted:    backend/node_modules/validator/es/lib/isISO31661Numeric.js
+	deleted:    backend/node_modules/validator/es/lib/isISO4217.js
+	deleted:    backend/node_modules/validator/es/lib/isISO6346.js
+	deleted:    backend/node_modules/validator/es/lib/isISO6391.js
+	deleted:    backend/node_modules/validator/es/lib/isISO8601.js
+	deleted:    backend/node_modules/validator/es/lib/isISRC.js
+	deleted:    backend/node_modules/validator/es/lib/isISSN.js
+	deleted:    backend/node_modules/validator/es/lib/isIn.js
+	deleted:    backend/node_modules/validator/es/lib/isInt.js
+	deleted:    backend/node_modules/validator/es/lib/isJWT.js
+	deleted:    backend/node_modules/validator/es/lib/isLatLong.js
+	deleted:    backend/node_modules/validator/es/lib/isLength.js
+	deleted:    backend/node_modules/validator/es/lib/isLicensePlate.js
+	deleted:    backend/node_modules/validator/es/lib/isLocale.js
+	deleted:    backend/node_modules/validator/es/lib/isLowercase.js
+	deleted:    backend/node_modules/validator/es/lib/isLuhnNumber.js
+	deleted:    backend/node_modules/validator/es/lib/isMACAddress.js
+	deleted:    backend/node_modules/validator/es/lib/isMD5.js
+	deleted:    backend/node_modules/validator/es/lib/isMagnetURI.js
+	deleted:    backend/node_modules/validator/es/lib/isMailtoURI.js
+	deleted:    backend/node_modules/validator/es/lib/isMimeType.js
+	deleted:    backend/node_modules/validator/es/lib/isMongoId.js
+	deleted:    backend/node_modules/validator/es/lib/isMultibyte.js
+	deleted:    backend/node_modules/validator/es/lib/isNumeric.js
+	deleted:    backend/node_modules/validator/es/lib/isOctal.js
+	deleted:    backend/node_modules/validator/es/lib/isPort.js
+	deleted:    backend/node_modules/validator/es/lib/isRFC3339.js
+	deleted:    backend/node_modules/validator/es/lib/isSemVer.js
+	deleted:    backend/node_modules/validator/es/lib/isStrongPassword.js
+	deleted:    backend/node_modules/validator/es/lib/isSurrogatePair.js
+	deleted:    backend/node_modules/validator/es/lib/isTime.js
+	deleted:    backend/node_modules/validator/es/lib/isULID.js
+	deleted:    backend/node_modules/validator/es/lib/isURL.js
+	deleted:    backend/node_modules/validator/es/lib/isUUID.js
+	deleted:    backend/node_modules/validator/es/lib/isUppercase.js
+	deleted:    backend/node_modules/validator/es/lib/isVariableWidth.js
+	deleted:    backend/node_modules/validator/es/lib/isWhitelisted.js
+	deleted:    backend/node_modules/validator/es/lib/ltrim.js
+	deleted:    backend/node_modules/validator/es/lib/matches.js
+	deleted:    backend/node_modules/validator/es/lib/normalizeEmail.js
+	deleted:    backend/node_modules/validator/es/lib/rtrim.js
+	deleted:    backend/node_modules/validator/es/lib/stripLow.js
+	deleted:    backend/node_modules/validator/es/lib/toBoolean.js
+	deleted:    backend/node_modules/validator/es/lib/toDate.js
+	deleted:    backend/node_modules/validator/es/lib/toFloat.js
+	deleted:    backend/node_modules/validator/es/lib/toInt.js
+	deleted:    backend/node_modules/validator/es/lib/trim.js
+	deleted:    backend/node_modules/validator/es/lib/unescape.js
+	deleted:    backend/node_modules/validator/es/lib/util/algorithms.js
+	deleted:    backend/node_modules/validator/es/lib/util/assertString.js
+	deleted:    backend/node_modules/validator/es/lib/util/checkHost.js
+	deleted:    backend/node_modules/validator/es/lib/util/includesArray.js
+	deleted:    backend/node_modules/validator/es/lib/util/includesString.js
+	deleted:    backend/node_modules/validator/es/lib/util/multilineRegex.js
+	deleted:    backend/node_modules/validator/es/lib/util/nullUndefinedCheck.js
+	deleted:    backend/node_modules/validator/es/lib/util/toString.js
+	deleted:    backend/node_modules/validator/es/lib/util/typeOf.js
+	deleted:    backend/node_modules/validator/es/lib/whitelist.js
+	deleted:    backend/node_modules/validator/lib/alpha.js
+	deleted:    backend/node_modules/validator/lib/blacklist.js
+	deleted:    backend/node_modules/validator/lib/contains.js
+	deleted:    backend/node_modules/validator/lib/equals.js
+	deleted:    backend/node_modules/validator/lib/escape.js
+	deleted:    backend/node_modules/validator/lib/isAbaRouting.js
+	deleted:    backend/node_modules/validator/lib/isAfter.js
+	deleted:    backend/node_modules/validator/lib/isAlpha.js
+	deleted:    backend/node_modules/validator/lib/isAlphanumeric.js
+	deleted:    backend/node_modules/validator/lib/isAscii.js
+	deleted:    backend/node_modules/validator/lib/isBIC.js
+	deleted:    backend/node_modules/validator/lib/isBase64.js
+	deleted:    backend/node_modules/validator/lib/isBefore.js
+	deleted:    backend/node_modules/validator/lib/isBoolean.js
+	deleted:    backend/node_modules/validator/lib/isBtcAddress.js
+	deleted:    backend/node_modules/validator/lib/isByteLength.js
+	deleted:    backend/node_modules/validator/lib/isCreditCard.js
+	deleted:    backend/node_modules/validator/lib/isDataURI.js
+	deleted:    backend/node_modules/validator/lib/isDate.js
+	deleted:    backend/node_modules/validator/lib/isDecimal.js
+	deleted:    backend/node_modules/validator/lib/isDivisibleBy.js
+	deleted:    backend/node_modules/validator/lib/isEAN.js
+	deleted:    backend/node_modules/validator/lib/isEmail.js
+	deleted:    backend/node_modules/validator/lib/isEmpty.js
+	deleted:    backend/node_modules/validator/lib/isEthereumAddress.js
+	deleted:    backend/node_modules/validator/lib/isFQDN.js
+	deleted:    backend/node_modules/validator/lib/isFloat.js
+	deleted:    backend/node_modules/validator/lib/isFullWidth.js
+	deleted:    backend/node_modules/validator/lib/isHSL.js
+	deleted:    backend/node_modules/validator/lib/isHalfWidth.js
+	deleted:    backend/node_modules/validator/lib/isHash.js
+	deleted:    backend/node_modules/validator/lib/isHexColor.js
+	deleted:    backend/node_modules/validator/lib/isHexadecimal.js
+	deleted:    backend/node_modules/validator/lib/isIMEI.js
+	deleted:    backend/node_modules/validator/lib/isIP.js
+	deleted:    backend/node_modules/validator/lib/isIPRange.js
+	deleted:    backend/node_modules/validator/lib/isISBN.js
+	deleted:    backend/node_modules/validator/lib/isISIN.js
+	deleted:    backend/node_modules/validator/lib/isISO15924.js
+	deleted:    backend/node_modules/validator/lib/isISO31661Numeric.js
+	deleted:    backend/node_modules/validator/lib/isISO4217.js
+	deleted:    backend/node_modules/validator/lib/isISO6346.js
+	deleted:    backend/node_modules/validator/lib/isISO6391.js
+	deleted:    backend/node_modules/validator/lib/isISO8601.js
+	deleted:    backend/node_modules/validator/lib/isISRC.js
+	deleted:    backend/node_modules/validator/lib/isISSN.js
+	deleted:    backend/node_modules/validator/lib/isIn.js
+	deleted:    backend/node_modules/validator/lib/isInt.js
+	deleted:    backend/node_modules/validator/lib/isJWT.js
+	deleted:    backend/node_modules/validator/lib/isLatLong.js
+	deleted:    backend/node_modules/validator/lib/isLength.js
+	deleted:    backend/node_modules/validator/lib/isLicensePlate.js
+	deleted:    backend/node_modules/validator/lib/isLocale.js
+	deleted:    backend/node_modules/validator/lib/isLowercase.js
+	deleted:    backend/node_modules/validator/lib/isLuhnNumber.js
+	deleted:    backend/node_modules/validator/lib/isMACAddress.js
+	deleted:    backend/node_modules/validator/lib/isMD5.js
+	deleted:    backend/node_modules/validator/lib/isMagnetURI.js
+	deleted:    backend/node_modules/validator/lib/isMailtoURI.js
+	deleted:    backend/node_modules/validator/lib/isMimeType.js
+	deleted:    backend/node_modules/validator/lib/isMongoId.js
+	deleted:    backend/node_modules/validator/lib/isMultibyte.js
+	deleted:    backend/node_modules/validator/lib/isNumeric.js
+	deleted:    backend/node_modules/validator/lib/isOctal.js
+	deleted:    backend/node_modules/validator/lib/isPort.js
+	deleted:    backend/node_modules/validator/lib/isRFC3339.js
+	deleted:    backend/node_modules/validator/lib/isSemVer.js
+	deleted:    backend/node_modules/validator/lib/isStrongPassword.js
+	deleted:    backend/node_modules/validator/lib/isSurrogatePair.js
+	deleted:    backend/node_modules/validator/lib/isTime.js
+	deleted:    backend/node_modules/validator/lib/isULID.js
+	deleted:    backend/node_modules/validator/lib/isURL.js
+	deleted:    backend/node_modules/validator/lib/isUUID.js
+	deleted:    backend/node_modules/validator/lib/isUppercase.js
+	deleted:    backend/node_modules/validator/lib/isVariableWidth.js
+	deleted:    backend/node_modules/validator/lib/isWhitelisted.js
+	deleted:    backend/node_modules/validator/lib/ltrim.js
+	deleted:    backend/node_modules/validator/lib/matches.js
+	deleted:    backend/node_modules/validator/lib/normalizeEmail.js
+	deleted:    backend/node_modules/validator/lib/rtrim.js
+	deleted:    backend/node_modules/validator/lib/stripLow.js
+	deleted:    backend/node_modules/validator/lib/toBoolean.js
+	deleted:    backend/node_modules/validator/lib/toDate.js
+	deleted:    backend/node_modules/validator/lib/toFloat.js
+	deleted:    backend/node_modules/validator/lib/toInt.js
+	deleted:    backend/node_modules/validator/lib/trim.js
+	deleted:    backend/node_modules/validator/lib/unescape.js
+	deleted:    backend/node_modules/validator/lib/util/algorithms.js
+	deleted:    backend/node_modules/validator/lib/util/assertString.js
+	deleted:    backend/node_modules/validator/lib/util/checkHost.js
+	deleted:    backend/node_modules/validator/lib/util/includesArray.js
+	deleted:    backend/node_modules/validator/lib/util/includesString.js
+	deleted:    backend/node_modules/validator/lib/util/multilineRegex.js
+	deleted:    backend/node_modules/validator/lib/util/nullUndefinedCheck.js
+	deleted:    backend/node_modules/validator/lib/util/toString.js
+	deleted:    backend/node_modules/validator/lib/util/typeOf.js
+	deleted:    backend/node_modules/validator/lib/whitelist.js
+	deleted:    backend/node_modules/vary/HISTORY.md
+	deleted:    backend/node_modules/vary/LICENSE
+	deleted:    backend/node_modules/vary/README.md
+	deleted:    backend/node_modules/vary/index.js
+	deleted:    backend/node_modules/vary/package.json
+	deleted:    backend/node_modules/which/CHANGELOG.md
+	deleted:    backend/node_modules/which/LICENSE
+	deleted:    backend/node_modules/which/README.md
+	deleted:    backend/node_modules/which/package.json
+	deleted:    backend/node_modules/which/which.js
+	deleted:    backend/node_modules/wrappy/LICENSE
+	deleted:    backend/node_modules/wrappy/README.md
+	deleted:    backend/node_modules/wrappy/package.json
+	deleted:    backend/node_modules/wrappy/wrappy.js
+	deleted:    backend/node_modules/yallist/LICENSE
+	deleted:    backend/node_modules/yallist/README.md
+	deleted:    backend/node_modules/yallist/iterator.js
+	deleted:    backend/node_modules/yallist/package.json
+	deleted:    backend/node_modules/yallist/yallist.js
+	deleted:    backend/node_modules/yaml/LICENSE
+	deleted:    backend/node_modules/yaml/README.md
+	deleted:    backend/node_modules/yaml/browser/dist/Schema-ea978338.js
+	deleted:    backend/node_modules/yaml/browser/dist/errors-2634d01a.js
+	deleted:    backend/node_modules/yaml/browser/dist/index.js
+	deleted:    backend/node_modules/yaml/browser/dist/parse-cst.js
+	deleted:    backend/node_modules/yaml/browser/dist/parse-d1ba890f.js
+	deleted:    backend/node_modules/yaml/browser/dist/stringifyNumber-d8af95b1.js
+	deleted:    backend/node_modules/yaml/browser/dist/types.js
+	deleted:    backend/node_modules/yaml/browser/dist/util.js
+	deleted:    backend/node_modules/yaml/browser/index.js
+	deleted:    backend/node_modules/yaml/browser/parse-cst.js
+	deleted:    backend/node_modules/yaml/browser/types.js
+	deleted:    backend/node_modules/yaml/browser/util.js
+	deleted:    backend/node_modules/yaml/dist/Document-f89a2614.js
+	deleted:    backend/node_modules/yaml/dist/Schema-807430ba.js
+	deleted:    backend/node_modules/yaml/dist/_rollupPluginBabelHelpers-eed30217.js
+	deleted:    backend/node_modules/yaml/dist/index.js
+	deleted:    backend/node_modules/yaml/dist/parse-3997f544.js
+	deleted:    backend/node_modules/yaml/dist/parse-cst.js
+	deleted:    backend/node_modules/yaml/dist/stringifyNumber-dea1120c.js
+	deleted:    backend/node_modules/yaml/dist/test-events.js
+	deleted:    backend/node_modules/yaml/dist/types.js
+	deleted:    backend/node_modules/yaml/dist/util.js
+	deleted:    backend/node_modules/yaml/index.d.ts
+	deleted:    backend/node_modules/yaml/index.js
+	deleted:    backend/node_modules/yaml/package.json
+	deleted:    backend/node_modules/yaml/parse-cst.d.ts
+	deleted:    backend/node_modules/yaml/parse-cst.js
+	deleted:    backend/node_modules/yaml/types.d.ts
+	deleted:    backend/node_modules/yaml/types.js
+	deleted:    backend/node_modules/yaml/types.mjs
+	deleted:    backend/node_modules/yaml/util.d.ts
+	deleted:    backend/node_modules/yaml/util.js
+	deleted:    backend/node_modules/yaml/util.mjs
+	deleted:    backend/node_modules/z-schema/LICENSE
+	deleted:    backend/node_modules/z-schema/README.md
+	deleted:    backend/node_modules/z-schema/dist/ZSchema-browser-min.js
+	deleted:    backend/node_modules/z-schema/dist/ZSchema-browser-min.js.map
+	deleted:    backend/node_modules/z-schema/dist/ZSchema-browser-test.js
+	deleted:    backend/node_modules/z-schema/dist/ZSchema-browser.js
+	deleted:    backend/node_modules/z-schema/index.d.ts
+	deleted:    backend/node_modules/z-schema/node_modules/commander/LICENSE
+	deleted:    backend/node_modules/z-schema/node_modules/commander/Readme.md
+	deleted:    backend/node_modules/z-schema/node_modules/commander/esm.mjs
+	deleted:    backend/node_modules/z-schema/node_modules/commander/index.js
+	deleted:    backend/node_modules/z-schema/node_modules/commander/lib/argument.js
+	deleted:    backend/node_modules/z-schema/node_modules/commander/lib/command.js
+	deleted:    backend/node_modules/z-schema/node_modules/commander/lib/error.js
+	deleted:    backend/node_modules/z-schema/node_modules/commander/lib/help.js
+	deleted:    backend/node_modules/z-schema/node_modules/commander/lib/option.js
+	deleted:    backend/node_modules/z-schema/node_modules/commander/lib/suggestSimilar.js
+	deleted:    backend/node_modules/z-schema/node_modules/commander/package-support.json
+	deleted:    backend/node_modules/z-schema/node_modules/commander/package.json
+	deleted:    backend/node_modules/z-schema/node_modules/commander/typings/index.d.ts
+	deleted:    backend/node_modules/z-schema/package.json
+	deleted:    backend/node_modules/z-schema/src/Errors.js
+	deleted:    backend/node_modules/z-schema/src/FormatValidators.js
+	deleted:    backend/node_modules/z-schema/src/JsonValidation.js
+	deleted:    backend/node_modules/z-schema/src/Polyfills.js
+	deleted:    backend/node_modules/z-schema/src/Report.js
+	deleted:    backend/node_modules/z-schema/src/SchemaCache.js
+	deleted:    backend/node_modules/z-schema/src/SchemaCompilation.js
+	deleted:    backend/node_modules/z-schema/src/SchemaValidation.js
+	deleted:    backend/node_modules/z-schema/src/Utils.js
+	deleted:    backend/node_modules/z-schema/src/ZSchema.js
+	deleted:    backend/node_modules/z-schema/src/schemas/hyper-schema.json
+	deleted:    backend/node_modules/z-schema/src/schemas/schema.json
+	modified:   backend/package-lock.json
+	modified:   backend/package.json
+	new file:   backend/prisma/bookings.db
+	new file:   backend/prisma/migrations/20260505152605_init/migration.sql
+	new file:   backend/prisma/migrations/20260507053725_add_room_model/migration.sql
+	new file:   backend/prisma/migrations/migration_lock.toml
+	new file:   backend/prisma/schema.prisma
+	modified:   backend/server.js
+	modified:   frontend/src/App.jsx
+	modified:   frontend/src/components/AdminDashboard.jsx
+	new file:   frontend/src/components/BookingCreate.jsx
+	modified:   frontend/src/components/BookingEdit.jsx
+	modified:   frontend/src/components/BookingForm.jsx
+	modified:   frontend/src/components/BookingList.jsx
+	modified:   frontend/src/components/ProtectedRoute.jsx
+	new file:   frontend/src/components/Reports.jsx
+	new file:   frontend/src/components/RoomsManagement.jsx
+	modified:   frontend/src/config.js
+	modified:   tests/booking-api.postman_collection.json
+
+Unmerged paths:
+  (use "git add/rm <file>..." as appropriate to mark resolution)
+	both added:      .gitattributes
+	both added:      .github/workflows/ci-cd.yml
+	both added:      .github/workflows/ci.yml
+	both added:      backend/Dockerfile
+	both modified:   backend/database.js
+	deleted by them: backend/node_modules/.bin/bcrypt
+	deleted by them: backend/node_modules/.bin/color-support
+	deleted by them: backend/node_modules/.bin/js-yaml
+	deleted by them: backend/node_modules/.bin/mkdirp
+	deleted by them: backend/node_modules/.bin/node-gyp
+	deleted by them: backend/node_modules/.bin/node-which
+	deleted by them: backend/node_modules/.bin/nodemon
+	deleted by them: backend/node_modules/.bin/nodetouch
+	deleted by them: backend/node_modules/.bin/nopt
+	deleted by them: backend/node_modules/.bin/prebuild-install
+	deleted by them: backend/node_modules/.bin/rc
+	deleted by them: backend/node_modules/.bin/rimraf
+	deleted by them: backend/node_modules/.bin/semver
+	deleted by them: backend/node_modules/.bin/swagger-jsdoc
+	deleted by them: backend/node_modules/.bin/z-schema
+	deleted by them: backend/node_modules/.package-lock.json
+	deleted by them: backend/node_modules/@types/json-schema/README.md
+	deleted by them: backend/node_modules/balanced-match/LICENSE.md
+	deleted by them: backend/node_modules/balanced-match/README.md
+	deleted by them: backend/node_modules/balanced-match/dist/commonjs/index.d.ts
+	deleted by them: backend/node_modules/balanced-match/dist/commonjs/index.d.ts.map
+	deleted by them: backend/node_modules/balanced-match/dist/commonjs/index.js
+	deleted by them: backend/node_modules/balanced-match/dist/commonjs/index.js.map
+	deleted by them: backend/node_modules/balanced-match/dist/commonjs/package.json
+	deleted by them: backend/node_modules/balanced-match/dist/esm/index.d.ts
+	deleted by them: backend/node_modules/balanced-match/dist/esm/index.d.ts.map
+	deleted by them: backend/node_modules/balanced-match/dist/esm/index.js
+	deleted by them: backend/node_modules/balanced-match/dist/esm/index.js.map
+	deleted by them: backend/node_modules/balanced-match/dist/esm/package.json
+	deleted by them: backend/node_modules/balanced-match/package.json
+	deleted by them: backend/node_modules/bcryptjs/bin/bcrypt
+	deleted by them: backend/node_modules/brace-expansion/LICENSE
+	deleted by them: backend/node_modules/brace-expansion/README.md
+	deleted by them: backend/node_modules/brace-expansion/dist/commonjs/index.d.ts
+	deleted by them: backend/node_modules/brace-expansion/dist/commonjs/index.d.ts.map
+	deleted by them: backend/node_modules/brace-expansion/dist/commonjs/index.js
+	deleted by them: backend/node_modules/brace-expansion/dist/commonjs/package.json
+	deleted by them: backend/node_modules/brace-expansion/dist/esm/index.d.ts
+	deleted by them: backend/node_modules/brace-expansion/dist/esm/index.d.ts.map
+	deleted by them: backend/node_modules/brace-expansion/dist/esm/index.js
+	deleted by them: backend/node_modules/brace-expansion/dist/esm/package.json
+	deleted by them: backend/node_modules/brace-expansion/package.json
+	deleted by them: backend/node_modules/color-support/bin.js
+	deleted by them: backend/node_modules/content-disposition/README.md
+	deleted by them: backend/node_modules/content-disposition/index.js
+	deleted by them: backend/node_modules/content-disposition/package.json
+	deleted by them: backend/node_modules/glob/node_modules/brace-expansion/LICENSE
+	deleted by them: backend/node_modules/glob/node_modules/minimatch/LICENSE
+	deleted by them: backend/node_modules/hasown/CHANGELOG.md
+	deleted by them: backend/node_modules/hasown/index.d.ts
+	deleted by them: backend/node_modules/hasown/package.json
+	deleted by them: backend/node_modules/ip-address/README.md
+	deleted by them: backend/node_modules/ip-address/dist/address-error.d.ts
+	deleted by them: backend/node_modules/ip-address/dist/address-error.js.map
+	deleted by them: backend/node_modules/ip-address/dist/common.d.ts
+	deleted by them: backend/node_modules/ip-address/dist/common.js
+	deleted by them: backend/node_modules/ip-address/dist/common.js.map
+	deleted by them: backend/node_modules/ip-address/dist/ip-address.d.ts
+	deleted by them: backend/node_modules/ip-address/dist/ip-address.js.map
+	deleted by them: backend/node_modules/ip-address/dist/ipv4.d.ts
+	deleted by them: backend/node_modules/ip-address/dist/ipv4.js
+	deleted by them: backend/node_modules/ip-address/dist/ipv4.js.map
+	deleted by them: backend/node_modules/ip-address/dist/ipv6.d.ts
+	deleted by them: backend/node_modules/ip-address/dist/ipv6.js
+	deleted by them: backend/node_modules/ip-address/dist/ipv6.js.map
+	deleted by them: backend/node_modules/ip-address/dist/v4/constants.d.ts
+	deleted by them: backend/node_modules/ip-address/dist/v4/constants.js.map
+	deleted by them: backend/node_modules/ip-address/dist/v6/constants.d.ts
+	deleted by them: backend/node_modules/ip-address/dist/v6/constants.js
+	deleted by them: backend/node_modules/ip-address/dist/v6/constants.js.map
+	deleted by them: backend/node_modules/ip-address/dist/v6/helpers.d.ts
+	deleted by them: backend/node_modules/ip-address/dist/v6/helpers.js
+	deleted by them: backend/node_modules/ip-address/dist/v6/helpers.js.map
+	deleted by them: backend/node_modules/ip-address/dist/v6/regular-expressions.d.ts
+	deleted by them: backend/node_modules/ip-address/dist/v6/regular-expressions.js.map
+	deleted by them: backend/node_modules/ip-address/package.json
+	deleted by them: backend/node_modules/js-yaml/bin/js-yaml.js
+	deleted by them: backend/node_modules/minimatch/LICENSE.md
+	deleted by them: backend/node_modules/minimatch/README.md
+	deleted by them: backend/node_modules/minimatch/dist/commonjs/assert-valid-pattern.d.ts
+	deleted by them: backend/node_modules/minimatch/dist/commonjs/assert-valid-pattern.d.ts.map
+	deleted by them: backend/node_modules/minimatch/dist/commonjs/assert-valid-pattern.js
+	deleted by them: backend/node_modules/minimatch/dist/commonjs/assert-valid-pattern.js.map
+	deleted by them: backend/node_modules/minimatch/dist/commonjs/ast.d.ts
+	deleted by them: backend/node_modules/minimatch/dist/commonjs/ast.js
+	deleted by them: backend/node_modules/minimatch/dist/commonjs/brace-expressions.d.ts
+	deleted by them: backend/node_modules/minimatch/dist/commonjs/brace-expressions.d.ts.map
+	deleted by them: backend/node_modules/minimatch/dist/commonjs/brace-expressions.js
+	deleted by them: backend/node_modules/minimatch/dist/commonjs/brace-expressions.js.map
+	deleted by them: backend/node_modules/minimatch/dist/commonjs/escape.d.ts
+	deleted by them: backend/node_modules/minimatch/dist/commonjs/escape.js
+	deleted by them: backend/node_modules/minimatch/dist/commonjs/index.d.ts
+	deleted by them: backend/node_modules/minimatch/dist/commonjs/index.d.ts.map
+	deleted by them: backend/node_modules/minimatch/dist/commonjs/index.js
+	deleted by them: backend/node_modules/minimatch/dist/commonjs/package.json
+	deleted by them: backend/node_modules/minimatch/dist/commonjs/unescape.d.ts
+	deleted by them: backend/node_modules/minimatch/dist/commonjs/unescape.js
+	deleted by them: backend/node_modules/minimatch/dist/esm/assert-valid-pattern.d.ts
+	deleted by them: backend/node_modules/minimatch/dist/esm/assert-valid-pattern.d.ts.map
+	deleted by them: backend/node_modules/minimatch/dist/esm/assert-valid-pattern.js
+	deleted by them: backend/node_modules/minimatch/dist/esm/assert-valid-pattern.js.map
+	deleted by them: backend/node_modules/minimatch/dist/esm/ast.d.ts
+	deleted by them: backend/node_modules/minimatch/dist/esm/ast.js
+	deleted by them: backend/node_modules/minimatch/dist/esm/brace-expressions.d.ts
+	deleted by them: backend/node_modules/minimatch/dist/esm/brace-expressions.d.ts.map
+	deleted by them: backend/node_modules/minimatch/dist/esm/brace-expressions.js
+	deleted by them: backend/node_modules/minimatch/dist/esm/brace-expressions.js.map
+	deleted by them: backend/node_modules/minimatch/dist/esm/escape.d.ts
+	deleted by them: backend/node_modules/minimatch/dist/esm/escape.js
+	deleted by them: backend/node_modules/minimatch/dist/esm/index.d.ts
+	deleted by them: backend/node_modules/minimatch/dist/esm/index.d.ts.map
+	deleted by them: backend/node_modules/minimatch/dist/esm/index.js
+	deleted by them: backend/node_modules/minimatch/dist/esm/package.json
+	deleted by them: backend/node_modules/minimatch/dist/esm/unescape.d.ts
+	deleted by them: backend/node_modules/minimatch/dist/esm/unescape.js
+	deleted by them: backend/node_modules/minimatch/package.json
+	deleted by them: backend/node_modules/minipass-flush/README.md
+	deleted by them: backend/node_modules/minipass-flush/package.json
+	deleted by them: backend/node_modules/mkdirp/bin/cmd.js
+	deleted by them: backend/node_modules/node-abi/abi_registry.json
+	deleted by them: backend/node_modules/node-abi/package.json
+	deleted by them: backend/node_modules/node-addon-api/tools/conversion.js
+	deleted by them: backend/node_modules/node-gyp/bin/node-gyp.js
+	deleted by them: backend/node_modules/node-gyp/gyp/gyp
+	deleted by them: backend/node_modules/node-gyp/gyp/gyp.bat
+	deleted by them: backend/node_modules/node-gyp/gyp/gyp_main.py
+	deleted by them: backend/node_modules/node-gyp/gyp/pylib/gyp/MSVSSettings_test.py
+	deleted by them: backend/node_modules/node-gyp/gyp/pylib/gyp/__init__.py
+	deleted by them: backend/node_modules/node-gyp/gyp/pylib/gyp/common_test.py
+	deleted by them: backend/node_modules/node-gyp/gyp/pylib/gyp/easy_xml_test.py
+	deleted by them: backend/node_modules/node-gyp/gyp/pylib/gyp/flock_tool.py
+	deleted by them: backend/node_modules/node-gyp/gyp/pylib/gyp/generator/msvs_test.py
+	deleted by them: backend/node_modules/node-gyp/gyp/pylib/gyp/input_test.py
+	deleted by them: backend/node_modules/node-gyp/gyp/pylib/gyp/mac_tool.py
+	deleted by them: backend/node_modules/node-gyp/gyp/pylib/gyp/win_tool.py
+	deleted by them: backend/node_modules/node-gyp/gyp/test_gyp.py
+	deleted by them: backend/node_modules/node-gyp/gyp/tools/emacs/run-unit-tests.sh
+	deleted by them: backend/node_modules/node-gyp/gyp/tools/graphviz.py
+	deleted by them: backend/node_modules/node-gyp/gyp/tools/pretty_gyp.py
+	deleted by them: backend/node_modules/node-gyp/gyp/tools/pretty_sln.py
+	deleted by them: backend/node_modules/node-gyp/gyp/tools/pretty_vcproj.py
+	deleted by them: backend/node_modules/node-gyp/update-gyp.py
+	deleted by them: backend/node_modules/nodemon/bin/nodemon.js
+	deleted by them: backend/node_modules/nopt/bin/nopt.js
+	deleted by them: backend/node_modules/path-to-regexp/Readme.md
+	deleted by them: backend/node_modules/path-to-regexp/dist/index.d.ts
+	deleted by them: backend/node_modules/path-to-regexp/dist/index.js
+	deleted by them: backend/node_modules/path-to-regexp/dist/index.js.map
+	deleted by them: backend/node_modules/path-to-regexp/package.json
+	deleted by them: backend/node_modules/picomatch/README.md
+	deleted by them: backend/node_modules/picomatch/lib/constants.js
+	deleted by them: backend/node_modules/picomatch/lib/parse.js
+	deleted by them: backend/node_modules/picomatch/package.json
+	deleted by them: backend/node_modules/prebuild-install/bin.js
+	deleted by them: backend/node_modules/qs/CHANGELOG.md
+	deleted by them: backend/node_modules/qs/dist/qs.js
+	deleted by them: backend/node_modules/qs/lib/parse.js
+	deleted by them: backend/node_modules/qs/package.json
+	deleted by them: backend/node_modules/qs/test/parse.js
+	deleted by them: backend/node_modules/qs/test/stringify.js
+	deleted by them: backend/node_modules/qs/test/utils.js
+	deleted by them: backend/node_modules/rc/cli.js
+	deleted by them: backend/node_modules/rc/index.js
+	deleted by them: backend/node_modules/rimraf/bin.js
+	deleted by them: backend/node_modules/semver/bin/semver.js
+	deleted by them: backend/node_modules/side-channel-list/CHANGELOG.md
+	deleted by them: backend/node_modules/side-channel-list/index.js
+	deleted by them: backend/node_modules/side-channel-list/package.json
+	deleted by them: backend/node_modules/side-channel-list/test/index.js
+	deleted by them: backend/node_modules/simple-update-notifier/build/index.js
+	deleted by them: backend/node_modules/socks/package.json
+	deleted by them: backend/node_modules/sqlite3/build/Release/node_sqlite3.node
+	deleted by them: backend/node_modules/sqlite3/deps/sqlite3.gyp
+	deleted by them: backend/node_modules/swagger-jsdoc/bin/swagger-jsdoc.js
+	deleted by them: backend/node_modules/swagger-jsdoc/node_modules/balanced-match/.github/FUNDING.yml
+	deleted by them: backend/node_modules/swagger-jsdoc/node_modules/balanced-match/LICENSE.md
+	deleted by them: backend/node_modules/swagger-jsdoc/node_modules/balanced-match/index.js
+	deleted by them: backend/node_modules/swagger-jsdoc/node_modules/brace-expansion/LICENSE
+	deleted by them: backend/node_modules/swagger-jsdoc/node_modules/brace-expansion/index.js
+	deleted by them: backend/node_modules/swagger-jsdoc/node_modules/minimatch/LICENSE
+	deleted by them: backend/node_modules/swagger-jsdoc/node_modules/minimatch/minimatch.js
+	deleted by them: backend/node_modules/swagger-ui-dist/log.bundle-sizes.swagger-ui.txt
+	deleted by them: backend/node_modules/swagger-ui-dist/log.es-bundle-core-sizes.swagger-ui.txt
+	deleted by them: backend/node_modules/swagger-ui-dist/log.es-bundle-sizes.swagger-ui.txt
+	deleted by them: backend/node_modules/swagger-ui-dist/package.json
+	deleted by them: backend/node_modules/swagger-ui-dist/swagger-ui-bundle.js
+	deleted by them: backend/node_modules/swagger-ui-dist/swagger-ui-bundle.js.LICENSE.txt
+	deleted by them: backend/node_modules/swagger-ui-dist/swagger-ui-es-bundle-core.js
+	deleted by them: backend/node_modules/swagger-ui-dist/swagger-ui-es-bundle-core.js.map
+	deleted by them: backend/node_modules/swagger-ui-dist/swagger-ui-es-bundle.js
+	deleted by them: backend/node_modules/swagger-ui-dist/swagger-ui-es-bundle.js.LICENSE.txt
+	deleted by them: backend/node_modules/swagger-ui-dist/swagger-ui-standalone-preset.js
+	deleted by them: backend/node_modules/swagger-ui-dist/swagger-ui.css
+	deleted by them: backend/node_modules/swagger-ui-dist/swagger-ui.css.map
+	deleted by them: backend/node_modules/swagger-ui-dist/swagger-ui.js
+	deleted by them: backend/node_modules/swagger-ui-dist/swagger-ui.js.map
+	deleted by them: backend/node_modules/touch/bin/nodetouch.js
+	deleted by them: backend/node_modules/validator/README.md
+	deleted by them: backend/node_modules/validator/es/index.js
+	deleted by them: backend/node_modules/validator/es/lib/isBase32.js
+	deleted by them: backend/node_modules/validator/es/lib/isBase58.js
+	deleted by them: backend/node_modules/validator/es/lib/isCurrency.js
+	deleted by them: backend/node_modules/validator/es/lib/isIBAN.js
+	deleted by them: backend/node_modules/validator/es/lib/isISO31661Alpha2.js
+	deleted by them: backend/node_modules/validator/es/lib/isISO31661Alpha3.js
+	deleted by them: backend/node_modules/validator/es/lib/isIdentityCard.js
+	deleted by them: backend/node_modules/validator/es/lib/isJSON.js
+	deleted by them: backend/node_modules/validator/es/lib/isMobilePhone.js
+	deleted by them: backend/node_modules/validator/es/lib/isPassportNumber.js
+	deleted by them: backend/node_modules/validator/es/lib/isPostalCode.js
+	deleted by them: backend/node_modules/validator/es/lib/isRgbColor.js
+	deleted by them: backend/node_modules/validator/es/lib/isSlug.js
+	deleted by them: backend/node_modules/validator/es/lib/isTaxID.js
+	deleted by them: backend/node_modules/validator/es/lib/isVAT.js
+	deleted by them: backend/node_modules/validator/es/lib/util/merge.js
+	deleted by them: backend/node_modules/validator/index.js
+	deleted by them: backend/node_modules/validator/lib/isBase32.js
+	deleted by them: backend/node_modules/validator/lib/isBase58.js
+	deleted by them: backend/node_modules/validator/lib/isCurrency.js
+	deleted by them: backend/node_modules/validator/lib/isIBAN.js
+	deleted by them: backend/node_modules/validator/lib/isISO31661Alpha2.js
+	deleted by them: backend/node_modules/validator/lib/isISO31661Alpha3.js
+	deleted by them: backend/node_modules/validator/lib/isIdentityCard.js
+	deleted by them: backend/node_modules/validator/lib/isJSON.js
+	deleted by them: backend/node_modules/validator/lib/isMobilePhone.js
+	deleted by them: backend/node_modules/validator/lib/isPassportNumber.js
+	deleted by them: backend/node_modules/validator/lib/isPostalCode.js
+	deleted by them: backend/node_modules/validator/lib/isRgbColor.js
+	deleted by them: backend/node_modules/validator/lib/isSlug.js
+	deleted by them: backend/node_modules/validator/lib/isTaxID.js
+	deleted by them: backend/node_modules/validator/lib/isVAT.js
+	deleted by them: backend/node_modules/validator/lib/util/merge.js
+	deleted by them: backend/node_modules/validator/package.json
+	deleted by them: backend/node_modules/validator/validator.js
+	deleted by them: backend/node_modules/validator/validator.min.js
+	deleted by them: backend/node_modules/which/bin/node-which
+	deleted by them: backend/node_modules/wide-align/LICENSE
+	deleted by them: backend/node_modules/wide-align/README.md
+	deleted by them: backend/node_modules/wide-align/align.js
+	deleted by them: backend/node_modules/wide-align/package.json
+	deleted by them: backend/node_modules/z-schema/bin/z-schema
+
+Changes not staged for commit:
+  (use "git add/rm <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+	modified:   .DS_Store
+	deleted:    .github/workflows/deploy-qa
+	modified:   README.md
+	deleted:    backend/.env.example
+	deleted:    backend/.gitignore
+	deleted:    backend/docker-compose.yml
+	deleted:    backend/docker-entrypoint.sh
+	deleted:    backend/healthcheck.js
+	modified:   backend/package.json
+	deleted:    backend/prisma/bookings.db
+	deleted:    backend/prisma/migrations/20260505152605_init/migration.sql
+	deleted:    backend/prisma/migrations/20260507053725_add_room_model/migration.sql
+	deleted:    backend/prisma/migrations/migration_lock.toml
+	deleted:    backend/prisma/schema.prisma
+	modified:   frontend/src/App.jsx
+	modified:   frontend/src/components/AdminDashboard.jsx
+	deleted:    frontend/src/components/BookingCreate.jsx
+	modified:   frontend/src/components/BookingEdit.jsx
+	modified:   frontend/src/components/BookingForm.jsx
+	modified:   frontend/src/components/BookingList.jsx
+	modified:   frontend/src/components/ProtectedRoute.jsx
+	deleted:    frontend/src/components/Reports.jsx
+	deleted:    frontend/src/components/RoomsManagement.jsx
+	modified:   frontend/src/config.js
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+	final_final.txt
+
